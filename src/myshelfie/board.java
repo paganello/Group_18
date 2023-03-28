@@ -39,7 +39,24 @@ public class board {
 	game[9][7]=7;
 	game[9][8]=7;
 	game[9][9]=7;
-	if (playercount==)
-	
-	
+	if (playercount<4) {
+	game[1][5]=7;
+	game[2][6]=7;
+	game[4][2]=7;
+	game[5][1]=7;
+	game[5][9]=7;
+	game[6][8]=7;
+	game[8][4]=7;
+	game[9][5]=7;
+	if (playercount<3) {
+		game[4][4]=7;
+		game[3][3]=7;
+		game[3][7]=7;
+		game[4][9]=7;
+		game[6][1]=7;
+		game[7][3]=7;
+		game[7][7]=7;
+		game[9][6]=7;
+		}
+	}	
 }
