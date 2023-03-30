@@ -1,10 +1,11 @@
 package src.myshelfie;
 
 public class board {
-	public int playercount;
-
-	matrix game= new matrix();
-	game.matrix(9,9);
+	//int playercount;
+	
+	matrix game; // = new matrix();
+	/*
+	game.matrix(9, 9);
 	game[1][1]=7;
 	game[1][2]=7;
 	game[1][3]=7;
@@ -58,5 +59,5 @@ public class board {
 		game[7][7]=7;
 		game[9][6]=7;
 		}
-	}	
+	}	*/
 }
