@@ -7,14 +7,14 @@ public class matrix {
 	private int j;	
 	
 	//costruttore matrice
-	public void Matrix(int i, int j) {
+	public matrix(int i, int j) {
 		this.i = i;
 		this.j = j;
 		this.m = new int[this.i][this.j];
 		
-		for (int k=0; k<this.i; k++) {
-			for(int n=0; n<this.j; n++) {
-				this.m [k][n]=0;
+		for (int k=0; k <= this.i; k++) {
+			for(int n=0; n <= this.j; n++) {
+				this.m [k][n]= 0;
 			}
 		}
 	}	
