@@ -1,6 +1,6 @@
 package src.myshelfie;
 
-public class box {
+public class Box {
 	public int cont1=22;
 	public int cont2=22;
 	public int cont3=22;

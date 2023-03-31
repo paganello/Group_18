@@ -1,6 +1,6 @@
 package src.myshelfie;
 
-public class tile { 
+public class Tile { 
 	int color; 	//1= verde
 				//2= bianco
 				//3=giallo

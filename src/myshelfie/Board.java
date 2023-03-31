@@ -1,12 +1,14 @@
 package src.myshelfie;
 
-public class board {
+public class Board {
 	int playercount;
 	
-	matrix game;
+	Matrix game;
 	
-	public void CreateBoard (int playercount) {
-		game = new matrix(9, 9);
+	public Board (int playercount) {
+		game = new Matrix(9, 9);
+		
+		
 		
 		//non funziona perche ha bisogno di un metodo per inserire i valori
 

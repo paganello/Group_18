@@ -1,13 +1,13 @@
 package src.myshelfie;
 
-public class matrix {
+public class Matrix {
 	//dichiarazione variabili
 	private int [][]m;
 	private int i;
 	private int j;	
 	
 	//costruttore matrice
-	public matrix(int i, int j) {
+	public Matrix(int i, int j) {
 		this.i = i;
 		this.j = j;
 		this.m = new int[this.i][this.j];

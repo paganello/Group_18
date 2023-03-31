@@ -2,7 +2,7 @@ package src.myshelfie;
 
 import java.util.Scanner;
 
-public class player {
+public class Player {
 	
 	//dichiarazione variabile classe player
 	String nome;
@@ -10,10 +10,10 @@ public class player {
 	int order;
 	boolean chair;
 	int numshelf;
-	matrix shelf; 
+	Matrix shelf; 
 	
 	//costruttore per il player
-	public void CreatePlayer (int order) {
+	public Player (int order) {
 		this.order = order;
 		this.chair = false;
 		//assegnazione sedia al primo player
@@ -26,9 +26,8 @@ public class player {
 		this.nome = sc.nextLine();
 		sc.close();
 		
-		//creazione libreria del player
+		//creazione libreria del player 
 		this.numshelf = this.order;
-		this.shelf = new matrix();
-		this.shelf.Matrix(6,5);
+		this.shelf = new Matrix(6,5);
 	}
 }
