@@ -1,4 +1,4 @@
-package src.myshelfie;
+package myshelfie;
 
 public class Main {
 	

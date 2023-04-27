@@ -1,4 +1,4 @@
-package src.myshelfie;
+package myshelfie;
 
 public class Pubgoal {
 	//gli obbiettivi da verificare in ogni turnCheck=22;

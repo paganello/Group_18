@@ -1,4 +1,4 @@
-package src.myshelfie;
+package myshelfie;
 
 public class Tile { 
 	int color; 	//1= verde
