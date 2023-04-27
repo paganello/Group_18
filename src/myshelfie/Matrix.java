@@ -10,12 +10,18 @@ public class Matrix {
 	public Matrix(int i, int j) {
 		this.i = i;
 		this.j = j;
-		this.m = new int[this.i][this.j];
+		m = new int[this.i][this.j];
 		
 		for (int k=0; k <= this.i; k++) {
 			for(int n=0; n <= this.j; n++) {
-				this.m [k][n]= 0;
+				m [k][n]= 0;
 			}
 		}
-	}	
+	}
+	public Matrix modmat(Matrix mat, int i, int j, int value) {
+		this.i=i;
+		this.j=j;
+		int mat [i][j]= 7;
+		
+	}
 }
