@@ -18,10 +18,7 @@ public class Matrix {
 			}
 		}
 	}
-	public Matrix modmat(Matrix mat, int i, int j, int value) {
-		this.i=i;
-		this.j=j;
-		int mat [i][j]= 7;
-		
+	public void modmat(int i, int j, int value) {
+		this.m [i][j]= value;		
 	}
 }
