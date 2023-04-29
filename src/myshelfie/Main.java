@@ -9,10 +9,10 @@ public class Main {
 		//codice di debug
 		System.out.println("inserisci numero giocatori= ");
 		Scanner sc = new Scanner(System.in);
-		int nPlayer = sc.nextInt();
+		int nPlayers = sc.nextInt();
 	
 	    //scorrimento di board per verificare le classi e relativi costruttori
-		Board table = new Board(nPlayer);
+		Board table = new Board(nPlayers);
 	
 		for(int i = 0; i < 9; i++) {
 			for(int j = 0; j < 9; j++) {

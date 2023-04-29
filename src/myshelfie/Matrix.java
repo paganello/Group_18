@@ -19,12 +19,18 @@ public class Matrix {
 		this.m = m;	//dopo la modifica assegna all'oggetto matrice la matrice attributo modificata
 	}
 	
-	public void modmat(int i, int j, int value) {	//metodo di modifica delle singole celle della tabella
+	public void modMat(int i, int j, int value) {	//metodo di modifica delle singole celle della tabella
 		//if(i <= nI && j <= nJ){
 			this.m [i][j] = value;
 		/*}else{
 			System.out.println("Coding Error");
 		}*/
+	}
+	
+	public void modMatByArrayMaps(int[] iMap, int[] jMap, int value) {
+		for(int i = 0; i < iMap.length; i++) {
+			modMat(iMap[i]-1, jMap[i]-1, 7); //decrementa tutto di uno per adattare all'array che parte da 0 e non da 1, poi scrive nella tile ij il valore 7
+		}
 	}
 	
 	public void printTile(int i, int j) {
