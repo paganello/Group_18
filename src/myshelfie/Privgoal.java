@@ -1,4 +1,5 @@
 package myshelfie;
+import java.util.Random;
 
 public class Privgoal {
 	//gli obbiettivi personali da verificare in fase pointCheck
@@ -8,12 +9,19 @@ public class Privgoal {
 	input il goal (del 12 possibili) lo vada a verificare mediante uno specifico script.*/
 	
 	int nGoal;    // 1 - 12
-	boolean State;
+	boolean state;
 	
 	public Privgoal(int nGoal) {
 		this.nGoal = nGoal;  
-		this.State = false;
+		this.state = false;
+		
+		Random rand = new Random();
+		do {
+			nGoal = rand.nextInt(12);
+		}while(nGoal <= 0);	//verifica che il numero randomico sia tale che  1 <= nGoal <= 12
+
 	}
+	
 	
 	public void isDone() {  //da decidere se fare ritornare boolean o modificare il valore di State
 		

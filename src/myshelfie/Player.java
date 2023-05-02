@@ -9,13 +9,20 @@ public class Player {
 	int points;
 	int order;
 	boolean chair;
-	int numshelf;
+	int numShelf;
+	int privateGoal;
+	int[] publicGoals;
 	Matrix shelf; 
 	
 	//costruttore per il player
 	public Player (int order) {
+		
+		points = 0;
+		//da aggiungere asseganzione dei goals
+		
 		this.order = order;
 		this.chair = false;
+		
 		//assegnazione sedia al primo player
 		if(this.order == 1) {
 			this.chair = true;
@@ -27,7 +34,7 @@ public class Player {
 		sc.close();
 		
 		//creazione libreria del player 
-		this.numshelf = this.order;
+		this.numShelf = this.order;
 		this.shelf = new Matrix(6,5);
 	}
 }
