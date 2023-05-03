@@ -10,6 +10,7 @@ public class Main {
 		System.out.println("inserisci numero giocatori= ");
 		Scanner sc = new Scanner(System.in);
 		int nPlayers = sc.nextInt();
+		sc.close();
 	
 	    //scorrimento di board per verificare le classi e relativi costruttori
 		Board table = new Board(nPlayers);

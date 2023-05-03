@@ -1,5 +1,4 @@
 package myshelfie;
-
 import java.util.Scanner;
 
 public class Player {
@@ -7,34 +6,31 @@ public class Player {
 	//dichiarazione variabile classe player
 	String nome;
 	int points;
-	int order;
 	boolean chair;
 	int numShelf;
 	int privateGoal;
 	int[] publicGoals;
-	Matrix shelf; 
+	BoxMatrix shelf; 
 	
 	//costruttore per il player
 	public Player (int order) {
 		
 		points = 0;
 		//da aggiungere asseganzione dei goals
-		
-		this.order = order;
 		this.chair = false;
 		
 		//assegnazione sedia al primo player
-		if(this.order == 1) {
+		if(order == 1) {
 			this.chair = true;
 		}
 		//richiesta nome
-		System.out.println("Inserisci il nome del giocatore " + this.order + ": ");
+		System.out.println("Inserisci il nome del giocatore " + (order+1) + ": ");
 		Scanner sc = new Scanner(System.in);
 		this.nome = sc.nextLine();
 		sc.close();
 		
 		//creazione libreria del player 
-		this.numShelf = this.order;
-		this.shelf = new Matrix(6,5);
+		this.numShelf = order;
+		this.shelf = new BoxMatrix(6,5);
 	}
 }
