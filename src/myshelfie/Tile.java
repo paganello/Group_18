@@ -15,10 +15,12 @@ public class Tile {
 				//5 = azzurro
 				//6 = rosa
 	int i, j;
+	boolean verified;
 	
 	public Tile (int i, int j, int color) {
 		
 		this.owner = 0;
+		this.verified = false;
 		this.i = i;
 		this.j = j;
 		this.color = color;

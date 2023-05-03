@@ -24,17 +24,23 @@ public class Pubgoal {
 	}
 	
 	
-	public void isDone(int nGoal,int turnPlayer,int shelf) {//goal l'obbiettivo pubblico da verificare, turnplayer il giocatore in verifca
-		// che eventualmente riceve i punti in palio
-		//metodo che verrà chiamato due volte, una per ogni goal da verificare
+	public boolean isDone(int nGoal,int turnPlayer,BoxMatrix playerShelf) {
+		/*goal l'obbiettivo pubblico da verificare, turnplayer il giocatore in verifca
+		 * che eventualmente riceve i punti in palio
+		 *metodo che verrà chiamato due volte, una per ogni goal da verificare
+		 */
 		switch (nGoal) {
 		
 		case 1:
-
-			break;
-		case 2:
 			
 			break;
+			
+		case 2:
+			if(isPubGoal_2_Done(playerShelf)) {
+				return true;
+			}
+			return false;
+			
 		case 3:
 			
 			break;
@@ -70,5 +76,18 @@ public class Pubgoal {
 			break;
 		}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
 		// il grosso dell'algoritmo per verificare i goal publici.
+	}
+	
+
+	
+	private boolean isPubGoal_2_Done(BoxMatrix playerShelf){
+		if(playerShelf.m[0][0].tile.color == playerShelf.m[0][4].tile.color) {
+			if(playerShelf.m[0][4].tile.color == playerShelf.m[5][4].tile.color) {
+				if(playerShelf.m[5][4].tile.color == playerShelf.m[5][0].tile.color) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }

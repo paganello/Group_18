@@ -28,7 +28,7 @@ public class Privgoal {
 		switch (this.nGoal) {
 		
 		case 1:
-
+			
 			break;
 		case 2:
 			
