@@ -8,12 +8,12 @@ public class Tile {
 				//3 = palyer 3
 				//4 = palyer 4
 	
-	int color; 	//1 = verde
-				//2 = bianco
-				//3 = giallo
-				//4 = blu
-				//5 = azzurro
-				//6 = rosa
+	private int color; 	//1 = verde
+						//2 = bianco
+						//3 = giallo
+						//4 = blu
+						//5 = azzurro
+						//6 = rosa
 	int i, j;
 	boolean verified;
 	
@@ -35,5 +35,8 @@ public class Tile {
 		this.j = j;
 	}
 	
+	public int getColor() {
+		return this.color;
+	}
 	
 }

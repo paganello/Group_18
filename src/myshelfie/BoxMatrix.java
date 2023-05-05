@@ -35,7 +35,6 @@ public class BoxMatrix {
 	}
 	
 	
-	
 	public void modBox(int i, int j, boolean fillable) {	//modifica fillable
 		//if(i <= nI && j <= nJ){
 		//	this.m[i][j] = value;
@@ -55,5 +54,70 @@ public class BoxMatrix {
 	
 	public void printTile(int i, int j) {	//temporaneo, stampa il val di fillable
 		System.out.print(this.m[i][j].fillable + " ");
+	}
+	
+	
+	public void putTileIn(Tile tile, int c, int player) {
+		
+		int j = c - 1;
+		switch (j) {
+		case 0:
+			for (int i = 0; i < this.nI; i++) {
+				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
+					this.m[i][j].tile = tile;
+					this.m[i][j].tile.owner = player;
+					this.m[i][j].tile.i = i; 
+					this.m[i][j].tile.j = j;
+				}
+			}
+			break;
+			
+		case 1:
+			for (int i = 0; i < this.nI; i++) {
+				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
+					this.m[i][j].tile = tile;
+					this.m[i][j].tile.owner = player;
+					this.m[i][j].tile.i = i; 
+					this.m[i][j].tile.j = j;
+				}
+			}
+			break;
+			
+		case 2:
+			for (int i = 0; i < this.nI; i++) {
+				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
+					this.m[i][j].tile = tile;
+					this.m[i][j].tile.owner = player;
+					this.m[i][j].tile.i = i; 
+					this.m[i][j].tile.j = j;
+				}
+			}
+			break;
+			
+		case 3:
+			for (int i = 0; i < this.nI; i++) {
+				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
+					this.m[i][j].tile = tile;
+					this.m[i][j].tile.owner = player;
+					this.m[i][j].tile.i = i; 
+					this.m[i][j].tile.j = j;
+				}
+			}
+			break;
+			
+		case 4:
+			for (int i = 0; i < this.nI; i++) {
+				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
+					this.m[i][j].tile = tile;
+					this.m[i][j].tile.owner = player;
+					this.m[i][j].tile.i = i; 
+					this.m[i][j].tile.j = j;
+				}
+			}
+			break;
+
+		default:
+			break;
+		}
 	}
 }
