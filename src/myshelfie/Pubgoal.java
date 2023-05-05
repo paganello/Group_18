@@ -3,7 +3,7 @@ import java.util.Random;
 
 
 public class Pubgoal {
-	int[] nGoals;
+	private int[] nGoals;
 	
 	public Pubgoal(){
 		
@@ -23,6 +23,14 @@ public class Pubgoal {
 		return ("Goal 1 = " + nGoals[0] + "/nGoal 2 = " + nGoals[1]);
 	}
 	
+	public int[] getGoalsNumber() {
+		
+		int[] tmp = new int[2];
+		tmp[0] = this.nGoals[0];
+		tmp[1] = this.nGoals[1];
+		return tmp;
+	}
+	
 	
 	public boolean isDone(int nGoal,int turnPlayer,BoxMatrix playerShelf) {
 		/*goal l'obbiettivo pubblico da verificare, turnplayer il giocatore in verifca
@@ -32,8 +40,10 @@ public class Pubgoal {
 		switch (nGoal) {
 		
 		case 1:
-			
-			break;
+			/*if(isPubGoal_1_Done(playerShelf)) {
+				return true;
+			}
+			return false;*/
 			
 		case 2:
 			if(isPubGoal_2_Done(playerShelf)) {
@@ -78,12 +88,42 @@ public class Pubgoal {
 		// il grosso dell'algoritmo per verificare i goal publici.
 	}
 	
+	/*private boolean isPubGoal_1_Done(BoxMatrix playerShelf){
+		for (int k = 0; k < playerShelf.nI; k++) {
+			for (int n = 0; n < playerShelf.nJ; n++) {
+				if(playerShelf.m[k][n].empty) {
+					if(!playerShelf.m[k][n].tile.verified) {
+						if((k+1) < 6 && (n+1) < 5) {
+							if(playerShelf.m[k][n].tile.getColor() == playerShelf.m[k][n+1].tile.getColor()) {
+								if(playerShelf.m[k][n].tile.getColor() != playerShelf.m[k+1][n].tile.getColor() && playerShelf.m[k][n+1].tile.getColor() != playerShelf.m[k+1][n+1].tile.getColor() && playerShelf.m[k][n+1].tile.getColor() != playerShelf.m[k][n+2].tile.getColor()) {
+									
+								}
+								
+							}else {
+								
+							}
+							if(playerShelf.m[k][n].tile.getColor() == playerShelf.m[k+1][n].tile.getColor()) {
+								if(playerShelf.m[k+1][n].tile.getColor() != playerShelf.m[k+2][n].tile.getColor() && playerShelf.m[k+1][n].tile.getColor() != playerShelf.m[k+1][n+1].tile.getColor() && playerShelf.m[k][n].tile.getColor() != playerShelf.m[k][n+1].tile.getColor()) {
+									
+								}
+							}
+						}
+						if(playerShelf.m[k][n].tile.getColor() == playerShelf.m[k][n+1].tile.getColor()) {
+							
+						}else {
+							
+						}
+					}
+				}
+			}
+		}
+	}*/
 
 	
 	private boolean isPubGoal_2_Done(BoxMatrix playerShelf){
-		if(playerShelf.m[0][0].tile.color == playerShelf.m[0][4].tile.color) {
-			if(playerShelf.m[0][4].tile.color == playerShelf.m[5][4].tile.color) {
-				if(playerShelf.m[5][4].tile.color == playerShelf.m[5][0].tile.color) {
+		if(playerShelf.m[0][0].tile.getColor() == playerShelf.m[0][4].tile.getColor()) {
+			if(playerShelf.m[0][4].tile.getColor() == playerShelf.m[5][4].tile.getColor()) {
+				if(playerShelf.m[5][4].tile.getColor() == playerShelf.m[5][0].tile.getColor()) {
 					return true;
 				}
 			}

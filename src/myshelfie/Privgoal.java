@@ -8,16 +8,15 @@ public class Privgoal {
 	degli oggetti goal con i medesimi attributi e costruttore, per la verifica creiamo un metodo che preso in
 	input il goal (del 12 possibili) lo vada a verificare mediante uno specifico script.*/
 	
-	int nGoal;    // 1 - 12
-	boolean state;
+	private int nGoal;    // 1 - 12
+	private boolean state;
 	
-	public Privgoal(int nGoal) {
-		this.nGoal = nGoal;  
-		this.state = false;
+	public Privgoal() { 
+		this.setState(false);
 		
 		Random rand = new Random();
 		do {
-			nGoal = rand.nextInt(12);
+			this.nGoal = rand.nextInt(12);
 		}while(nGoal <= 0);	//verifica che il numero randomico sia tale che  1 <= nGoal <= 12
 
 	}
@@ -68,5 +67,24 @@ public class Privgoal {
 			break;
 		}
 	}
+
+
+
+	public boolean getState() {
+		
+		return state;
+	}
+
+
+	public void setState(boolean state) {
+		
+		this.state = state;
+	}
+	
+	
+	public int getGoalNumber() {
+		
+		return nGoal;
+	}	
 	
 }
