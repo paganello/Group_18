@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+C:\Users\diegr\Desktop\Gruppo 18-MyShelfie\Group_18\.metadata\.plugins\org.eclipse.jdt.core
-3959137331.index
-13633591.index
-1865797976.index
