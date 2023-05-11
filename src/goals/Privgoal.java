@@ -1,5 +1,6 @@
-package myshelfie;
+package goals;
 import java.util.Random;
+import structure.BoxMatrix;
 
 public class Privgoal {
 	//gli obbiettivi personali da verificare in fase pointCheck
@@ -204,10 +205,10 @@ public class Privgoal {
 		
 		int k = 0;
 		
-		for (int i = 0; i < playerShelf.nI; i++) {
-			for (int j = 0; j < playerShelf.nJ; j++) {
+		for (int i = 0; i < playerShelf.getI(); i++) {
+			for (int j = 0; j < playerShelf.getJ(); j++) {
 				if(i == iMap[k] && j == jMap[k]) {
-					if (playerShelf.m[i][j].tile.getColor() == colorMap[k]) {
+					if (playerShelf.getMatrix(i, j).getTile().getColor() == colorMap[k]) {
 						k++;
 					}else {
 						return false;
@@ -218,18 +219,20 @@ public class Privgoal {
 		return true;
 	}
 
-
+	
+	
+	/*
+	 * Getter and Setters
+	 * */
 	public boolean getState() {
 		
 		return state;
 	}
 
-
 	public void setState(boolean state) {
 		
 		this.state = state;
 	}
-	
 	
 	public int getGoalNumber() {
 		

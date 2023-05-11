@@ -1,7 +1,6 @@
-package myshelfie;
-import java.util.Scanner;
+package main;
 
-public class Main {
+public class Main {	
 	public static void main(String[] args) {
 		
 		
@@ -23,18 +22,28 @@ public class Main {
 	System.out.println();/
 	*/
 	GameState stato;
-	stato= GameState.drawPhase;
+	stato = GameState.drawPhase;
 	do {
-	switch (stato) {
-	case drawPhase:
 		
-	case turnStart:
+		switch (stato) {
+			case drawPhase:
+			
+				break;
 		
-	case lastTurnStart:
+			case turnStart:
+			
+				break;
 		
-	case endPhase:
+			case lastTurnStart:
+			
+				break;
+		
+			case endPhase:
+			
+				break;
 	
-	}
+		}
+		
 	}while(stato !=GameState.gameEnd); 
 		
 	

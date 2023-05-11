@@ -1,4 +1,5 @@
-package myshelfie;
+package structure;
+
 
 public class Board {
 

@@ -1,6 +1,5 @@
-package myshelfie;
+package structure;
 
-import java.util.Scanner;
 
 public class Tile { 
 	
@@ -41,5 +40,4 @@ public class Tile {
 		return this.color;
 	}
 
-	
 }

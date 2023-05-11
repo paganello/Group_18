@@ -1,4 +1,4 @@
-package myshelfie;
+package main;
 
 public enum GameState {
 	drawPhase,
