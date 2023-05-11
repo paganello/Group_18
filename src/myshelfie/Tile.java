@@ -17,7 +17,7 @@ public class Tile {
 						//5 = azzurro
 						//6 = rosa
 	int i, j;
-	boolean verified;
+	boolean verified; //serve per i goal
 	
 	public Tile (int i, int j, int color) {
 		

@@ -71,7 +71,7 @@ public class BoxMatrix {
 				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
 					this.m[i][j].tile = tile;
 					this.m[i][j].tile.owner = player;
-					this.m[i][j].tile.i = i; 
+					this.m[i][j].tile.i = i;
 					this.m[i][j].tile.j = j;
 				}
 			}

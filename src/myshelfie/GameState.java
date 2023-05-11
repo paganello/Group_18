@@ -1,8 +1,10 @@
 package myshelfie;
 
-public enum gameState {
+public enum GameState {
 	drawPhase,
 	turnStart,
 	lastTurnStart,
-	endPhase;
+	endPhase,
+	gameEnd;
+	
 }
