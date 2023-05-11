@@ -91,8 +91,21 @@ public class Player {
 	 * 
 	 * modifica direttamente l'attributo points di publicGoals.
 	 * */
-	public void computePubGoals() {
+	public void computePubGoals() {		//DA VERIFICARE REGOLAMENTO CON LA GESTIONE DEI PUNTI E DI QUANTE VOLTE VALE UN OBBIETTIVO !!!!
 		publicGoals.verify(shelf);
 		publicGoals.computePoints();
 	}
+	
+	
+	/*
+	 * Metodo di computazione dei punti derivanti da goals privati + genGoals.
+	 * 
+	 * modifica direttamente l'attributo points di publicGoals.
+	 * */
+	public void computesFinalPoints() {
+		privateGoal.verify(shelf);
+		//genGoal.verify(shelf);
+		this.points = publicGoals.getpoints() + privateGoal.getPoints() + genGoal.getPoints();
+	}
+	
 }
