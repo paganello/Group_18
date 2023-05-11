@@ -1,5 +1,7 @@
 package myshelfie;
 
+import java.util.Scanner;
+
 public class Tile { 
 	
 	int owner;	//0 = board
@@ -38,34 +40,6 @@ public class Tile {
 	public int getColor() {
 		return this.color;
 	}
+
 	
-	/*
-	 * Method freeSide checks if the input tile has at least a free side in the board 
-	 */
-public boolean freeSide (BoxMatrix Board, Tile tile, int i, int j) {
-		tile.changeTileCoordinates(this.i, this.j+1);
-		if(tile.color==0 || tile.color==7){
-			return true;
-		tile.changeTileCoordinates(this.i, this.j-1);  //devo sottrarre a partire dal valore iniziale o da quello modificato?
-		if(tile.color==0 || tile.color==7){
-			return true;
-		tile.changeTileCoordinates(this.i+1, this.j);
-		if(tile.color==0 || tile.color==7){
-			return true;
-		tile.changeTileCoordinates(this.i-1, this.j);
-		if(tile.color==0 || tile.color==7){
-			return true;
-		return false;
-	}
 }
-
-
-
-
-
-
-
-
-
-
-

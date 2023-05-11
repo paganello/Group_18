@@ -123,4 +123,22 @@ public class BoxMatrix {
 			break;
 		}
 	}
+	
+	
+	/*
+	 * Method freeSide checks if the input tile has at least a free side in the board 
+	 */
+	public boolean freeSide (int i, int j) {
+		
+		if(m[i][j+1].empty || !m[i][j+1].fillable)
+			return true;
+		if(m[i][j-1].empty || !m[i][j-1].fillable)
+			return true;
+		if(m[i+1][j].empty || !m[i+1][j].fillable)
+			return true;
+		if(m[i-1][j].empty || !m[i-1][j].fillable)
+			return true;
+		
+		return false;
+	}
 }
