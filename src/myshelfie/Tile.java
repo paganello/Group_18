@@ -1,5 +1,7 @@
 package myshelfie;
 
+import java.util.Scanner;
+
 public class Tile { 
 	
 	int owner;	//0 = board
@@ -58,14 +60,3 @@ public boolean freeSide (BoxMatrix Board, Tile tile, int i, int j) {
 		return false;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
