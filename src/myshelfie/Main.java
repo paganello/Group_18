@@ -6,7 +6,7 @@ public class Main {
 		
 		
 		
-		//codice di debug
+		/*//codice di debug
 		System.out.println("inserisci numero giocatori= ");
 		Scanner sc = new Scanner(System.in);
 		int nPlayers = sc.nextInt();
@@ -19,7 +19,24 @@ public class Main {
 			for(int j = 0; j < 9; j++) {
 				table.matrix.printTileColor(i,j);
 			}
-		System.out.println();
-		}
+		
+	System.out.println();/
+	*/
+	GameState stato;
+	stato= GameState.drawPhase;
+	do {
+	switch (stato) {
+	case drawPhase:
+		
+	case turnStart:
+		
+	case lastTurnStart:
+		
+	case endPhase:
+	
+	}
+	}while(stato !=GameState.gameEnd) {
+		
+	}
 	}	
 }
