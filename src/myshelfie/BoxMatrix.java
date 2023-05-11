@@ -1,5 +1,7 @@
 package myshelfie;
 
+import java.util.Scanner;
+
 public class BoxMatrix {
 	//dichiarazione variabili
 	Box[][] m;
@@ -140,5 +142,33 @@ public class BoxMatrix {
 			return true;
 		
 		return false;
+	}
+
+	
+	public Tile [] removeTilesFromBoard (int i, int j) {
+		/*nel main
+		 * System.out.println("Inserisci le coordinate della prima tessera che vuoi prendere dal tabellone.");
+		Scanner sc=new Scanner (System.in);
+		do{
+			scatola.nI=sc.nextInt();
+			scatola.nJ=sc.nextInt();
+			
+		}while (!scatola.freeSide(nI, nJ));*/
+		Scanner sc=new Scanner (System.in);
+		Tile  removedTiles [] = new Tile [3];
+		int choice;
+		System.out.println("Che cosa vui fare?/n1-Prendi la casella a destra./n2-Prendi la casella a sinistra/n3-Prendi la casella in alto./n4-Prendi la casella in basso/n5-Prendi solo le caselle selezionate");
+		choice=sc.nextInt();
+		switch (choice) {
+		case 1:
+			
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		default:
+		}
+		
+		return removedTiles;
 	}
 }
