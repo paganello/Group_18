@@ -1,11 +1,15 @@
-package myshelfie;
+package goals;
+import java.util.Iterator;
 import java.util.Random;
+import main.*;
+import structure.*;
 
 
 public class Pubgoal {
 	private int[] nGoals;
-	private boolean done;
+	private boolean[] done;
 	private int points;
+	static int[] scoreTiles = {8,6,6,4,4,2,2,2,2}; //array delle tessere che assegnano i punti
 	
 	
 	/*
@@ -15,7 +19,8 @@ public class Pubgoal {
 		
 		int UPPER_BOUND = 11; //costante indicante il massimo numero estraibile	=> vanno da 0 a 11 = 12 goals
 		this.nGoals = new int[2];
-		this.done = false;	 // init a false
+		this.done[0] = false;	 // init a false
+		this.done[1] = false;
 		this.points = 0;
 		
 		Random rand = new Random();
@@ -48,7 +53,7 @@ public class Pubgoal {
 	/*
 	 * Getter di done
 	 * */
-	public boolean isDone() {
+	public boolean[] isDone() {
 		return done;
 	}
 	
@@ -70,72 +75,98 @@ public class Pubgoal {
 	 * Ritorna true se è stato completato altrimenti false.
 	 * nGoal è l'obbiettivo pubblico da verificare, playerShelf è la board del player che eventualmente riceve i punti in palio
 	 */
-	public void isDone(int nGoal, BoxMatrix playerShelf) {
+	public void verify(BoxMatrix playerShelf) {
 		
-		switch (nGoal) {
-		
-		case 0:
-			/*if(isPubGoal_1_Done(playerShelf)) {
-				return true;
-			}*/
-			this.done = false;
-			
-		case 1:
-			if(isPubGoal_2_Done(playerShelf)) {
-				this.done = true;
-			}
-			this.done = false;
-			
-		case 2:
-			
-			this.done = false;
-			
-		case 3:
-			
-			this.done = false;
-			
-		case 4:
-			
-			this.done = false;
-			
-		case 5:
-			if(isPubGoal_6_Done(playerShelf)) {
-				this.done = true;
-			}
-			this.done = false;
-			
-		case 6:
-			if(isPubGoal_7_Done(playerShelf)) {
-				this.done = true;
-			}
-			this.done = false;
-			
-		case 7:
-			
-			this.done = false;
-			
-		case 8:
-			
-			this.done = false;
-			
-		case 9:
-			
-			this.done = false;
-			
-		case 10:
-			
-			this.done = false;
-			
-		case 11:
-			
-			this.done = false;
-			
-		default:
-			this.done = false;
-		}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
-		// il grosso dell'algoritmo per verificare i goal publici.
+		for (int i = 0; i < 2; i++) {
+			switch (this.nGoals[i]) {
+				case 0:
+				/*if(isPubGoal_1_Done(playerShelf)) {
+					return true;
+				}*/
+					this.done[i] = false;
+				
+				case 1:
+					if(isPubGoal_2_Done(playerShelf)) {
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+				
+				case 2:
+				
+					this.done[i] = false;
+				
+				case 3:
+				
+					this.done[i] = false;
+				
+				case 4:
+				
+					this.done[i] = false;
+				
+				case 5:
+					if(isPubGoal_6_Done(playerShelf)) {
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+				
+				case 6:
+					if(isPubGoal_7_Done(playerShelf)) {
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+				
+				case 7:
+				
+					this.done[i] = false;
+				
+				case 8:
+				
+					this.done[i] = false;
+				
+				case 9:
+				
+					this.done[i] = false;
+				
+				case 10:
+				
+					this.done[i] = false;
+				
+				case 11:
+				
+					this.done[i] = false;
+				
+				default:
+					this.done[i] = false;
+			}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
+			// il grosso dell'algoritmo per verificare i goal publici.
+		}		
 	}
 	
+	
+	/*
+	 * Metodo di asseganzione dei punti (viene aggiornato l'attributo "points") in base al raggiungimento dei singoli goals pubblici.
+	 * */
+	public void computePoints() {
+		for (int i = 0; i < 2; i++) {
+			if(done[i]) {
+				int j = 0;
+				while(scoreTiles[j] == 0) {
+					j++;
+				}
+				
+				if(scoreTiles[j] != 0) {
+					this.points = this.points + scoreTiles[j];
+					scoreTiles[j] = 0;
+				}
+			}
+		}		
+	}
+	
+	
+	/*
+	 * METODI DI VERIFICA DEI SINGOLI GOALS, SONO PRIVATI E VENGONO RICHIAMATI IN isDone.
+	 * RITORNANO TRUE O FALSE
+	 * */
 	
 	/*private boolean isPubGoal_1_Done(BoxMatrix playerShelf){
 		for (int k = 0; k < playerShelf.nI; k++) {
@@ -168,14 +199,10 @@ public class Pubgoal {
 		}
 	}*/
 
-	/*
-	 * METODI DI VERIFICA DEI SINGOLI GOALS, SONO PRIVATI E VENGONO RICHIAMATI IN isDone.
-	 * RITORNANO TRUE O FALSE
-	 * */
 	private boolean isPubGoal_2_Done(BoxMatrix playerShelf){
-		if(playerShelf.m[0][0].tile.getColor() == playerShelf.m[0][4].tile.getColor()) {
-			if(playerShelf.m[0][4].tile.getColor() == playerShelf.m[5][4].tile.getColor()) {
-				if(playerShelf.m[5][4].tile.getColor() == playerShelf.m[5][0].tile.getColor()) {
+		if(playerShelf.getMatrix(0, 0).getTile().getColor() == playerShelf.getMatrix(0, 4).getTile().getColor()) {
+			if(playerShelf.getMatrix(0, 4).getTile().getColor() == playerShelf.getMatrix(5, 4).getTile().getColor()) {
+				if(playerShelf.getMatrix(5, 4).getTile().getColor() == playerShelf.getMatrix(5, 0).getTile().getColor()) {
 					return true;
 				}
 			}
