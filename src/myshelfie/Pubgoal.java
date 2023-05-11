@@ -64,12 +64,13 @@ public class Pubgoal {
 			if(isPubGoal_6_Done(playerShelf)) {
 				return true;
 			}
-			break;
+			return false;
 		case 7:
 			if(isPubGoal_7_Done(playerShelf)) {
 				return true;
+			}
+			return false;
 			
-			break;
 		case 8:
 			
 			break;
