@@ -35,8 +35,8 @@ public class Main {
 	case endPhase:
 	
 	}
-	}while(stato !=GameState.gameEnd) {
+	}while(stato !=GameState.gameEnd); 
 		
-	}
+	
 	}	
 }
