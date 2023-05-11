@@ -7,7 +7,7 @@ public class Pubgoal {
 	
 	public Pubgoal(){
 		
-		int UPPER_BOUND = 12; //costante indicante il massimo numero estraibile	
+		int UPPER_BOUND = 11; //costante indicante il massimo numero estraibile	=> vanno da 0 a 11 = 12 goals
 		nGoals = new int[2];
 		
 		Random rand = new Random();
@@ -16,11 +16,11 @@ public class Pubgoal {
 			do{											//al numero di player e ordine conseguito.		
 				nGoals[1] = rand.nextInt(UPPER_BOUND);
 			}while(nGoals[0]==nGoals[1]);
-		}while(nGoals[0] <= 0 && nGoals[0] <= 0);
+		}while(nGoals[0] < 0 && nGoals[1] < 0);
 	}
 	
 	public String toString(){	//Sovrascrive il metodo toString di java
-		return ("Goal 1 = " + nGoals[0] + "/nGoal 2 = " + nGoals[1]);
+		return ("Goal 1 = " + nGoals[0]+1 + "/nGoal 2 = " + nGoals[1]+1);
 	}
 	
 	public int[] getGoalsNumber() {
@@ -32,66 +32,75 @@ public class Pubgoal {
 	}
 	
 	
-	public boolean isDone(int nGoal,int turnPlayer,BoxMatrix playerShelf) {
+	public boolean isDone(int nGoal, int turnPlayer, BoxMatrix playerShelf) {
 		/*goal l'obbiettivo pubblico da verificare, turnplayer il giocatore in verifca
 		 * che eventualmente riceve i punti in palio
 		 *metodo che verrà chiamato due volte, una per ogni goal da verificare
 		 */
 		switch (nGoal) {
 		
-		case 1:
+		case 0:
 			/*if(isPubGoal_1_Done(playerShelf)) {
 				return true;
-			}
-			return false;*/
+			}*/
+			return false;
 			
-		case 2:
+		case 1:
 			if(isPubGoal_2_Done(playerShelf)) {
 				return true;
 			}
 			return false;
 			
+		case 2:
+			
+			return false;
+			
 		case 3:
 			
-			break;
+			return false;
+			
 		case 4:
 			
-			break;
-		case 5:
+			return false;
 			
-			break;
-		case 6:
+		case 5:
 			if(isPubGoal_6_Done(playerShelf)) {
 				return true;
 			}
 			return false;
-		case 7:
+			
+		case 6:
 			if(isPubGoal_7_Done(playerShelf)) {
 				return true;
 			}
 			return false;
 			
+		case 7:
+			
+			return false;
+			
 		case 8:
 			
-			break;
+			return false;
+			
 		case 9:
 			
-			break;
+			return false;
+			
 		case 10:
 			
-			break;
+			return false;
+			
 		case 11:
 			
-			break;
-		case 12:
-			
-			break;
+			return false;
 			
 		default:
-			break;
+			return false;
 		}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
 		// il grosso dell'algoritmo per verificare i goal publici.
 	}
+	
 	
 	/*private boolean isPubGoal_1_Done(BoxMatrix playerShelf){
 		for (int k = 0; k < playerShelf.nI; k++) {
@@ -168,26 +177,25 @@ public class Pubgoal {
 	}
 
 	private boolean isPubGoal_7_Done(BoxMatrix playerShelf) {
-		int counter;
 		int verifier=1;
 		int c=0;
 			while(c<2) {
-				if(playerShelf.m[1+c][1].tile.getColor() == playerShelf.m[2+c][2].tile.getColor())
-					if(playerShelf.m[2+c][2].tile.getColor() == playerShelf.m[3+c][3].tile.getColor())
-						if(playerShelf.m[3+c][3].tile.getColor() == playerShelf.m[4+c][4].tile.getColor())
-							if(playerShelf.m[4+c][4].tile.getColor() == playerShelf.m[5+c][5].tile.getColor()) {
+				if(playerShelf.m[1][1+c].tile.getColor() == playerShelf.m[2][2+c].tile.getColor())
+					if(playerShelf.m[2][2+c].tile.getColor() == playerShelf.m[3][3+c].tile.getColor())
+						if(playerShelf.m[3][3+c].tile.getColor() == playerShelf.m[4][4+c].tile.getColor())
+							if(playerShelf.m[4][4+c].tile.getColor() == playerShelf.m[5][5+c].tile.getColor()) {
 									verifier=0;
 								}
 								else {
 									verifier=verifier*1;
 								}
 								
-			if(playerShelf.m[1+c][5].tile.getColor() == playerShelf.m[2+c][4].tile.getColor())
-				if(playerShelf.m[2+c][4].tile.getColor() == playerShelf.m[3+c][3].tile.getColor())
-					if(playerShelf.m[3+c][3].tile.getColor() == playerShelf.m[4+c][2].tile.getColor())
-						if(playerShelf.m[4+c][2].tile.getColor() == playerShelf.m[5+c][1].tile.getColor()) {
+			if(playerShelf.m[1][6-c].tile.getColor() == playerShelf.m[2][5-c].tile.getColor())
+				if(playerShelf.m[2][5-c].tile.getColor() == playerShelf.m[3][4-c].tile.getColor())
+					if(playerShelf.m[3][4-c].tile.getColor() == playerShelf.m[4][3-c].tile.getColor())
+						if(playerShelf.m[4][3-c].tile.getColor() == playerShelf.m[5][2-c].tile.getColor()) {
 								verifier=0;
-							}
+						     }
 							else {
 								verifier=verifier*1;
 							}
