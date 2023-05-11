@@ -4,25 +4,58 @@ import java.util.Random;
 
 public class Pubgoal {
 	private int[] nGoals;
+	private boolean done;
+	private int points;
 	
+	
+	/*
+	 *COSTRUTTORE 
+	 */
 	public Pubgoal(){
 		
 		int UPPER_BOUND = 11; //costante indicante il massimo numero estraibile	=> vanno da 0 a 11 = 12 goals
-		nGoals = new int[2];
+		this.nGoals = new int[2];
+		this.done = false;	 // init a false
+		this.points = 0;
 		
 		Random rand = new Random();
 		do {
-			nGoals[0] = rand.nextInt(UPPER_BOUND);		//questo metodo definisce solo la generazione degli obb. comuni, starà poi al main calcolare i punteggi in base
+			this.nGoals[0] = rand.nextInt(UPPER_BOUND);		//questo metodo definisce solo la generazione degli obb. comuni, starà poi al main calcolare i punteggi in base
 			do{											//al numero di player e ordine conseguito.		
-				nGoals[1] = rand.nextInt(UPPER_BOUND);
-			}while(nGoals[0]==nGoals[1]);
-		}while(nGoals[0] < 0 && nGoals[1] < 0);
+				this.nGoals[1] = rand.nextInt(UPPER_BOUND);
+			}while(this.nGoals[0] == this.nGoals[1]);
+		}while(this.nGoals[0] < 0 && this.nGoals[1] < 0);
+		
 	}
 	
+	
+	/*
+	 * Override metodo toString per lo stamp dei goal number
+	 */
 	public String toString(){	//Sovrascrive il metodo toString di java
 		return ("Goal 1 = " + nGoals[0]+1 + "/nGoal 2 = " + nGoals[1]+1);
 	}
 	
+	
+	/*
+	 * Getter di points
+	 * */
+	public int getpoints() {
+		return points;
+	}
+	
+	
+	/*
+	 * Getter di done
+	 * */
+	public boolean isDone() {
+		return done;
+	}
+	
+	
+	/*
+	 * Metodo che ritorna l'array dei goals
+	 */
 	public int[] getGoalsNumber() {
 		
 		int[] tmp = new int[2];
@@ -32,71 +65,73 @@ public class Pubgoal {
 	}
 	
 	
-	public boolean isDone(int nGoal, int turnPlayer, BoxMatrix playerShelf) {
-		/*goal l'obbiettivo pubblico da verificare, turnplayer il giocatore in verifca
-		 * che eventualmente riceve i punti in palio
-		 *metodo che verrà chiamato due volte, una per ogni goal da verificare
-		 */
+	/*
+	 * Metodo che esegue la verifica se un goal è stato completato con successo, verrà chiamato due volte, una per ogni goal da verificare
+	 * Ritorna true se è stato completato altrimenti false.
+	 * nGoal è l'obbiettivo pubblico da verificare, playerShelf è la board del player che eventualmente riceve i punti in palio
+	 */
+	public void isDone(int nGoal, BoxMatrix playerShelf) {
+		
 		switch (nGoal) {
 		
 		case 0:
 			/*if(isPubGoal_1_Done(playerShelf)) {
 				return true;
 			}*/
-			return false;
+			this.done = false;
 			
 		case 1:
 			if(isPubGoal_2_Done(playerShelf)) {
-				return true;
+				this.done = true;
 			}
-			return false;
+			this.done = false;
 			
 		case 2:
 			
-			return false;
+			this.done = false;
 			
 		case 3:
 			
-			return false;
+			this.done = false;
 			
 		case 4:
 			
-			return false;
+			this.done = false;
 			
 		case 5:
 			if(isPubGoal_6_Done(playerShelf)) {
-				return true;
+				this.done = true;
 			}
-			return false;
+			this.done = false;
 			
 		case 6:
 			if(isPubGoal_7_Done(playerShelf)) {
-				return true;
+				this.done = true;
 			}
-			return false;
+			this.done = false;
 			
 		case 7:
 			
-			return false;
+			this.done = false;
 			
 		case 8:
 			
-			return false;
+			this.done = false;
 			
 		case 9:
 			
-			return false;
+			this.done = false;
 			
 		case 10:
 			
-			return false;
+			this.done = false;
 			
 		case 11:
 			
-			return false;
+			this.done = false;
 			
 		default:
-			return false;
+			this.done = false;
 		}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
 		// il grosso dell'algoritmo per verificare i goal publici.
 	}
@@ -133,7 +168,10 @@ public class Pubgoal {
 		}
 	}*/
 
-	
+	/*
+	 * METODI DI VERIFICA DEI SINGOLI GOALS, SONO PRIVATI E VENGONO RICHIAMATI IN isDone.
+	 * RITORNANO TRUE O FALSE
+	 * */
 	private boolean isPubGoal_2_Done(BoxMatrix playerShelf){
 		if(playerShelf.m[0][0].tile.getColor() == playerShelf.m[0][4].tile.getColor()) {
 			if(playerShelf.m[0][4].tile.getColor() == playerShelf.m[5][4].tile.getColor()) {
@@ -203,10 +241,11 @@ public class Pubgoal {
 			}
 
 		if(verifier==0) {
-		return true;	
+			return true;	
 		}
 		else {
 			return false;
 		}
 	}
+
 }
