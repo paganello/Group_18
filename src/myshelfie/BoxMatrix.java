@@ -52,8 +52,11 @@ public class BoxMatrix {
 	}
 	
 	
-	public void printTile(int i, int j) {	//temporaneo, stampa il val di fillable
+	public void printTileFillable(int i, int j) {	//temporaneo, stampa il val di fillable
 		System.out.print(this.m[i][j].fillable + " ");
+	}
+	public void printTileColor(int i, int j) {	//temporaneo, stampa il val di color
+		System.out.print(this.m[i][j].tile.getColor() + " ");
 	}
 	
 	
