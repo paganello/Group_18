@@ -59,18 +59,4 @@ public boolean freeSide (BoxMatrix Board, Tile tile, int i, int j) {
 			return true;
 		return false;
 	}
-
-/*
- * Method removeTiles ask which tiles the players want to take and check if they can be taken.
- */
-public Tile removeTiles (BoxMatrix Board) {
-	int x,y;
-	Scanner sc=new Scanner (System.in);
-	System.out.println("Inserire le coordinate della casella che si desidera prendere.");
-	x=sc.nextInt();
-	y=sc.nextInt();
-	Tile [] removedTiles = new Tile [4];
-	
-	
-}
 }
