@@ -214,10 +214,10 @@ public class Pubgoal {
 		int counter=0;
 		int c=1;
 		int verifier=1;
-			while(c<7) {
+			while(c < 7) {
 				for (int m=0; m<6;m++) {
 					for(int n=0; n<5; n++) {
-						if(playerShelf.m[m][n].tile.getColor() ==c) {
+						if(playerShelf.getMatrix(m, n).getTile().getColor() == c) {
 							counter++;
 						}
 					}
@@ -233,6 +233,7 @@ public class Pubgoal {
 					verifier= verifier*1;
 				}
 			};
+			
 		if (verifier== 0) {
 			return true;
 		}
@@ -245,20 +246,20 @@ public class Pubgoal {
 		int verifier=1;
 		int c=0;
 			while(c<2) {
-				if(playerShelf.m[1][1+c].tile.getColor() == playerShelf.m[2][2+c].tile.getColor())
-					if(playerShelf.m[2][2+c].tile.getColor() == playerShelf.m[3][3+c].tile.getColor())
-						if(playerShelf.m[3][3+c].tile.getColor() == playerShelf.m[4][4+c].tile.getColor())
-							if(playerShelf.m[4][4+c].tile.getColor() == playerShelf.m[5][5+c].tile.getColor()) {
+				if(playerShelf.getMatrix(1, 1+c).getTile().getColor() == playerShelf.getMatrix(2, 2+c).getTile().getColor())
+					if(playerShelf.getMatrix(2, 2+c).getTile().getColor() == playerShelf.getMatrix(3, 3+c).getTile().getColor())
+						if(playerShelf.getMatrix(3, 3+c).getTile().getColor() == playerShelf.getMatrix(4, 4+c).getTile().getColor())
+							if(playerShelf.getMatrix(4, 4+c).getTile().getColor() == playerShelf.getMatrix(5, 5+c).getTile().getColor()) {
 									verifier=0;
 								}
 								else {
 									verifier=verifier*1;
 								}
-								
-			if(playerShelf.m[1][6-c].tile.getColor() == playerShelf.m[2][5-c].tile.getColor())
-				if(playerShelf.m[2][5-c].tile.getColor() == playerShelf.m[3][4-c].tile.getColor())
-					if(playerShelf.m[3][4-c].tile.getColor() == playerShelf.m[4][3-c].tile.getColor())
-						if(playerShelf.m[4][3-c].tile.getColor() == playerShelf.m[5][2-c].tile.getColor()) {
+				
+			if(playerShelf.getMatrix(1, 6-c).getTile().getColor() == playerShelf.getMatrix(2, 5-c).getTile().getColor())
+				if(playerShelf.getMatrix(2, 5-c).getTile().getColor() == playerShelf.getMatrix(3, 4-c).getTile().getColor())
+					if(playerShelf.getMatrix(3, 4-c).getTile().getColor() == playerShelf.getMatrix(4, 3-c).getTile().getColor())
+						if(playerShelf.getMatrix(4, 3-c).getTile().getColor() == playerShelf.getMatrix(5, 2-c).getTile().getColor()) {
 								verifier=0;
 						     }
 							else {
