@@ -10,198 +10,234 @@ public class Privgoal {
 	input il goal (del 12 possibili) lo vada a verificare mediante uno specifico script.*/
 	
 	private int nGoal;    // 1 - 12
-	private boolean state;
+	private boolean done;
+	private int points;
 	
+	
+	
+	/*
+	 * COSTRUTTORE	
+	 * */
 	public Privgoal() { 
-		this.setState(false);
+		this.points = 0;
 		
 		Random rand = new Random();
 		do {
-			this.nGoal = rand.nextInt(12);
-		}while(nGoal <= 0);	//verifica che il numero randomico sia tale che  1 <= nGoal <= 12
+			this.nGoal = rand.nextInt(11);
+		}while(nGoal < 0);	//verifica che il numero randomico sia tale che  1 <= nGoal <= 12
 
 	}
 	
 	
-	public boolean isDone(BoxMatrix playerShelf) {  //da decidere se fare ritornare boolean o modificare il valore di State
+	/*
+	 * Metodo di verifica del goal privato
+	 * */
+	public void verify(BoxMatrix playerShelf) {  //da decidere se fare ritornare boolean o modificare il valore di State
 		
+		int matches = 0;
 		switch (this.nGoal) {
 		
-		case 1:
+		case 0:
 			
 			int[] iMap_0 = {0, 0, 1, 2, 3, 5};
 			int[] jMap_0 = {0, 2, 4, 3, 1, 2};
 			int[] colorMap_0 = {6, 4, 1, 2, 3, 5};
 			
-			if (verifyIfTileMatchByArray(iMap_0, jMap_0, colorMap_0, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_0, jMap_0, colorMap_0, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 2:
+		case 1:
 			
 			int[] iMap_1 = {1, 2, 2, 3, 4, 5};
 			int[] jMap_1 = {1, 0, 2, 4, 3, 4};
 			int[] colorMap_1 = {6, 1, 3, 2, 5, 4};
 			
-			if (verifyIfTileMatchByArray(iMap_1, jMap_1, colorMap_1, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_1, jMap_1, colorMap_1, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 3:
+		case 2:
 			
 			int[] iMap_2 = {1, 1, 2, 3, 3, 5};
 			int[] jMap_2 = {0, 3, 2, 1, 4, 0};
 			int[] colorMap_2 = {4, 3, 6, 1, 5, 2};
 			
-			if (verifyIfTileMatchByArray(iMap_2, jMap_2, colorMap_2, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_2, jMap_2, colorMap_2, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 4:
+		case 3:
 			
 			int[] iMap_3 = {0, 2, 2, 3, 4, 4};
 			int[] jMap_3 = {4, 0, 2, 4, 1, 2};
 			int[] colorMap_3 = {2, 5, 4, 6, 2, 2};
 			
-			if (verifyIfTileMatchByArray(iMap_3, jMap_3, colorMap_3, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_3, jMap_3, colorMap_3, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 5:
+		case 4:
 			
 			int[] iMap_4 = {1, 3, 3, 4, 5, 5};
 			int[] jMap_4 = {1, 1, 2, 5, 0, 3};
 			int[] colorMap_4 = {5, 4, 2, 6, 3, 1};
 			
-			if (verifyIfTileMatchByArray(iMap_4, jMap_4, colorMap_4, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_4, jMap_4, colorMap_4, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 6:
+		case 5:
 			
 			int[] iMap_5 = {0, 0, 2, 4, 4, 5};
 			int[] jMap_5 = {2, 4, 3, 1, 3, 0};
 			int[] colorMap_5 = {5, 1, 2, 3, 4, 6};
 			
-			if (verifyIfTileMatchByArray(iMap_5, jMap_5, colorMap_5, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_5, jMap_5, colorMap_5, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 7:
+		case 6:
 			
 			int[] iMap_6 = {0, 1, 2, 3, 4, 5};
 			int[] jMap_6 = {0, 3, 1, 0, 4, 2};
 			int[] colorMap_6 = {1, 4, 6, 5, 3, 2};
 			
-			if (verifyIfTileMatchByArray(iMap_6, jMap_6, colorMap_6, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_6, jMap_6, colorMap_6, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 8:
+		case 7:
 			
 			int[] iMap_7 = {0, 1, 2, 3, 4, 5};
 			int[] jMap_7 = {4, 1, 2, 0, 3, 3};
 			int[] colorMap_7 = {4, 1, 5, 6, 2, 3};
 			
-			if (verifyIfTileMatchByArray(iMap_7, jMap_7, colorMap_7, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_7, jMap_7, colorMap_7, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 9:
+		case 8:
 			
 			int[] iMap_8 = {0, 2, 3, 4, 4, 5};
 			int[] jMap_8 = {2, 2, 4, 1, 4, 0};
 			int[] colorMap_8 = {3, 1, 2, 5, 6, 4};
 			
-			if (verifyIfTileMatchByArray(iMap_8, jMap_8, colorMap_8, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_8, jMap_8, colorMap_8, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 10:
+		case 9:
 			
 			int[] iMap_9 = {0, 1, 2, 3, 4, 5};
 			int[] jMap_9 = {4, 1, 0, 3, 1, 3};
 			int[] colorMap_9 = {5, 3, 2, 1, 4, 6};
 			
-			if (verifyIfTileMatchByArray(iMap_9, jMap_9, colorMap_9, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_9, jMap_9, colorMap_9, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 11:
+		case 10:
 			
 			int[] iMap_10 = {0, 1, 2, 3, 4, 5};
 			int[] jMap_10 = {2, 1, 0, 2, 4, 3};
 			int[] colorMap_10 = {6, 2, 3, 4, 1, 5};
 			
-			if (verifyIfTileMatchByArray(iMap_10, jMap_10, colorMap_10, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_10, jMap_10, colorMap_10, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
-		case 12:
+		case 11:
 			
 			int[] iMap_11 = {0, 1, 2, 3, 4, 5};
 			int[] jMap_11 = {2, 1, 2, 3, 4, 0};
 			int[] colorMap_11 = {2, 6, 4, 5, 3, 1};
 			
-			if (verifyIfTileMatchByArray(iMap_11, jMap_11, colorMap_11, playerShelf)) {
-				this.state = true;
-				return true;
+			matches = verifyIfTileMatchByArray(iMap_11, jMap_11, colorMap_11, playerShelf);
+			
+			if (matches > 0) {
+				this.done = true;
+				computePoints(matches);
 			}else {
-				return false;
+				this.done = false;
 			}
 			
 			
 		default:
-			return false;
+			this.done = false;
 		}
 	}
 	
-	
-	private boolean verifyIfTileMatchByArray(int[] iMap, int[] jMap, int[] colorMap, BoxMatrix playerShelf) {
+	/*
+	 * Metodo PRIVATO usato da verify per controllare i match
+	 * */
+	private int verifyIfTileMatchByArray(int[] iMap, int[] jMap, int[] colorMap, BoxMatrix playerShelf) {
 		
 		int k = 0;
 		
@@ -211,32 +247,67 @@ public class Privgoal {
 					if (playerShelf.getMatrix(i, j).getTile().getColor() == colorMap[k]) {
 						k++;
 					}else {
-						return false;
+						return k;
 					}
 				}
 			}
 		}
-		return true;
+		return k;
 	}
 
+	/*
+	 * Metodo PRIVATO usato da verify per la computazione dei punti 
+	 * */
+	private void computePoints(int m) {
+		switch (m) {
+		
+		case 1:
+			this.points = 1;
+			break;
+			
+		case 2:
+			this.points = 2;
+			break;
+			
+		case 3:
+			this.points = 4;
+			break;
+			
+		case 4:
+			this.points = 6;
+			break;
+			
+		case 5:
+			this.points = 9;
+			break;
+			
+		case 6:
+			this.points = 12;
+			break;
+
+		default:
+			break;
+		}
+	}
 	
 	
 	/*
 	 * Getter and Setters
 	 * */
-	public boolean getState() {
+	public boolean isDone() {
 		
-		return state;
-	}
-
-	public void setState(boolean state) {
-		
-		this.state = state;
+		return done;
 	}
 	
 	public int getGoalNumber() {
 		
 		return nGoal;
+	}
+
+
+	public int getPoints() {
+		return points;
 	}	
+	
 	
 }
