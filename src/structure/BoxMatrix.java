@@ -1,12 +1,11 @@
-package myshelfie;
-
+package structure;
 import java.util.Scanner;
 
 public class BoxMatrix {
 	//dichiarazione variabili
-	Box[][] m;
-	int nI;	//numero max di righe
-	int nJ;	//numero max di colonne
+	private Box[][] m;
+	private int nI;	//numero max di righe
+	private int nJ;	//numero max di colonne
 	
 	public BoxMatrix(int i, int j) {	//costruttore matrice, Funziona!
 		
@@ -37,19 +36,33 @@ public class BoxMatrix {
 	}
 	
 	
-	public void modBox(int i, int j, boolean fillable) {	//modifica fillable
-		//if(i <= nI && j <= nJ){
-		//	this.m[i][j] = value;
-		this.m[i][j].fillable = fillable;
-		/*}else{
-			System.out.println("Coding Error");
-		}*/
+	/*
+	 * Getter m
+	 * */
+	public Box getMatrix(int i, int j){
+		return this.m[i][j];
 	}
 	
 	
-	public void modBoxesByArrayMaps(int[] iMap, int[] jMap, boolean fillable) {
+	/*
+	 * Getter nI
+	 * */
+	public int getI(){
+		return this.nI;
+	}
+	
+	
+	/*
+	 * Getter nJ
+	 * */
+	public int getJ(){
+		return this.nJ;
+	}
+	
+	
+	public void modFillableByArrayMaps(int[] iMap, int[] jMap, boolean fillable) {
 		for(int i = 0; i < iMap.length; i++) {
-			modBox(iMap[i]-1, jMap[i]-1, fillable); //decrementa tutto di uno per adattare all'array che parte da 0 e non da 1, poi scrive nella box ij
+			this.m[iMap[i]-1][jMap[i]-1].fillable = fillable;
 		}
 	}
 	
