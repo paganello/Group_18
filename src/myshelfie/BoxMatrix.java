@@ -138,6 +138,7 @@ public class BoxMatrix {
 			return true;
 		if(m[i-1][j].empty || !m[i-1][j].fillable)
 			return true;
+		
 		return false;
 	}
 }
