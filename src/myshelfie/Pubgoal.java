@@ -168,26 +168,25 @@ public class Pubgoal {
 	}
 
 	private boolean isPubGoal_7_Done(BoxMatrix playerShelf) {
-		int counter;
 		int verifier=1;
 		int c=0;
 			while(c<2) {
-				if(playerShelf.m[1+c][1].tile.getColor() == playerShelf.m[2+c][2].tile.getColor())
-					if(playerShelf.m[2+c][2].tile.getColor() == playerShelf.m[3+c][3].tile.getColor())
-						if(playerShelf.m[3+c][3].tile.getColor() == playerShelf.m[4+c][4].tile.getColor())
-							if(playerShelf.m[4+c][4].tile.getColor() == playerShelf.m[5+c][5].tile.getColor()) {
+				if(playerShelf.m[1][1+c].tile.getColor() == playerShelf.m[2][2+c].tile.getColor())
+					if(playerShelf.m[2][2+c].tile.getColor() == playerShelf.m[3][3+c].tile.getColor())
+						if(playerShelf.m[3][3+c].tile.getColor() == playerShelf.m[4][4+c].tile.getColor())
+							if(playerShelf.m[4][4+c].tile.getColor() == playerShelf.m[5][5+c].tile.getColor()) {
 									verifier=0;
 								}
 								else {
 									verifier=verifier*1;
 								}
 								
-			if(playerShelf.m[1+c][5].tile.getColor() == playerShelf.m[2+c][4].tile.getColor())
-				if(playerShelf.m[2+c][4].tile.getColor() == playerShelf.m[3+c][3].tile.getColor())
-					if(playerShelf.m[3+c][3].tile.getColor() == playerShelf.m[4+c][2].tile.getColor())
-						if(playerShelf.m[4+c][2].tile.getColor() == playerShelf.m[5+c][1].tile.getColor()) {
+			if(playerShelf.m[1][6-c].tile.getColor() == playerShelf.m[2][5-c].tile.getColor())
+				if(playerShelf.m[2][5-c].tile.getColor() == playerShelf.m[3][4-c].tile.getColor())
+					if(playerShelf.m[3][4-c].tile.getColor() == playerShelf.m[4][3-c].tile.getColor())
+						if(playerShelf.m[4][3-c].tile.getColor() == playerShelf.m[5][2-c].tile.getColor()) {
 								verifier=0;
-							}
+						     }
 							else {
 								verifier=verifier*1;
 							}
