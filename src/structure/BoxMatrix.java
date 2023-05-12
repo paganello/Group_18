@@ -187,10 +187,10 @@ public class BoxMatrix {
 		return removedTiles;
 	}
 
-	public void fillBoard (BoxMatrix matrix) {
-		for(int i = 1; i <= matrix.nI; i++) {
-			for(int j = 1; j <= matrix.nJ; j++) {
-				if(matrix.m[i][j].fillable == true && matrix.m[i][j].empty == false) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
+	public void fillBoard () {
+		for(int i = 1; i <= nI; i++) {
+			for(int j = 1; j <= nJ; j++) {
+				if(m[i][j].fillable == true && m[i][j].empty == false) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
 					int UPPER_BOUND = 6;
 					int LOWER_BOUND = 1;
 					Random rand = new Random();
@@ -199,14 +199,14 @@ public class BoxMatrix {
 					
 					Tile newTile = new Tile(i, j, color); //creo la nuova tile
 					
-					matrix.m[i][j].fillBox(newTile); //inserisco la tile nel box
+					m[i][j].fillBox(newTile); //inserisco la tile nel box
 				}
 			}
 		}
 		
 	}
 
-	public boolean takeable(BoxMatrix matrix, int i, int j) {
+	public boolean takeable(int i, int j) {
 		int sideCovered = 0;
 		int sideUncovered = 0;
 		int adjacentTile = 0;
@@ -217,7 +217,7 @@ public class BoxMatrix {
 		 *  ma non devo verificare i lati coperti devo verificare che abbia un lato in comune
 		 *  con un altra tile
 		 */
-		if(matrix.m[i+1][j].empty == false) { //controlla la box accanto
+		if(m[i+1][j].empty == false) { //controlla la box accanto
 			sideCovered++; 
 			if(freeSide(i+1, j) == true) {
 				adjacentTile++;
@@ -228,7 +228,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(matrix.m[i-1][j].empty == false) {
+		if(m[i-1][j].empty == false) {
 			sideCovered++;
 			if(freeSide(i-1, j) == true) {
 				adjacentTile++;
@@ -238,7 +238,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(matrix.m[i][j+1].empty == false) {
+		if(m[i][j+1].empty == false) {
 			sideCovered++;
 			if(freeSide(i, j+1) == true) {
 				adjacentTile++;
@@ -249,7 +249,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(matrix.m[i][j-1].empty == false) {
+		if(m[i][j-1].empty == false) {
 			sideCovered++; 
 			if(freeSide(i, j-1) == true) {
 				adjacentTile++;
@@ -267,12 +267,12 @@ public class BoxMatrix {
 		}
 	}
 
-	public boolean checkBoard (BoxMatrix matrix, int nPlayer) {
+	public boolean checkBoard (int nPlayer) {
 		//int emptyBox = 0;
-		for(int i = 1; i <= matrix.nI; i++) {
-			for(int j = 1; j <= matrix.nJ; j++) {
-				if(matrix.m[i][j].empty == false) { //se la casella non è vuota controllo che si possa prendere
-					if(takeable(matrix, i, j) == true) {
+		for(int i = 1; i <= nI; i++) {
+			for(int j = 1; j <= nJ; j++) {
+				if(m[i][j].empty == false) { //se la casella non è vuota controllo che si possa prendere
+					if(takeable(i, j) == true) {
 						return false; //se anche solo una casella è prendibile e ne ha una accanto allora torno false
 					}
 				}
