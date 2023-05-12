@@ -184,4 +184,24 @@ public class BoxMatrix {
 		
 		return removedTiles;
 	}
+
+	public void fillBoard (BoxMatrix matrix) {
+		for(int i = 1; i <= matrix.nI; i++) {
+			for(int j = 1; j <= matrix.nJ; j++) {
+				if(matrix.m[i][j].fillable == true && matrix.m[i][j].empty == false) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
+					int UPPER_BOUND = 6;
+					int LOWER_BOUND = 1;
+					Random rand = new Random();
+					
+					int color = rand.nextInt(LOWER_BOUND, UPPER_BOUND); 	//estraggo un numero tra 1 e 6
+					
+					Tile newTile = new Tile(i, j, color); //creo la nuova tile
+					
+					matrix.m[i][j].fillBox(newTile); //inserisco la tile nel box
+				}
+			}
+		}
+		
+	}
+	
 }
