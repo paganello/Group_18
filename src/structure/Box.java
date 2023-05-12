@@ -3,7 +3,7 @@ package structure;
 public class Box {
 	
 	private boolean fillable;
-	private boolean empty;
+	private boolean full;
 	private Tile tile;
 	private int i;
 	private int j;
@@ -11,14 +11,14 @@ public class Box {
 	public Box(int i, int j, boolean fillable) {
 		this.i = i;
 		this.j = j;
-		this.empty = false;
+		this.full = false;
 		this.fillable = fillable;
 	}
 	
 	public void fillBox(Tile tile) {
 		if(fillable) {
 			this.tile = tile;
-			this.empty = true;
+			this.full = true;
 		}
 	}
 	
@@ -30,7 +30,7 @@ public class Box {
 	public Tile getTile() {
 		return this.tile;
 	}
-	
+
 	public void setTile(Tile t) {
 		this.tile = t;
 	}
@@ -43,8 +43,8 @@ public class Box {
 		this.fillable = d;
 	}
 	
-	public boolean isEmpty() {
-		return this.empty;
+	public boolean isFull() {
+		return this.full;
 	}
 	
 	public int getI() {

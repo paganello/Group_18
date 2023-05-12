@@ -61,6 +61,9 @@ public class BoxMatrix {
 	}
 	
 	
+	/*
+	 * Metodo che modifica lo stato dell'attributo fillable dati array di coordinate e il nuovo valore di fillable
+	 * */
 	public void modFillableByArrayMaps(int[] iMap, int[] jMap, boolean fillable) {
 		for(int i = 0; i < iMap.length; i++) {
 			this.m[iMap[i]-1][jMap[i]-1].setFillable(fillable);
@@ -68,6 +71,9 @@ public class BoxMatrix {
 	}
 	
 	
+	/*
+	 * Metodi di print (pincipalmente usati in debug)
+	 * */
 	public void printTileFillable(int i, int j) {	//temporaneo, stampa il val di fillable
 		System.out.print(this.m[i][j].isFillable() + " ");
 	}
@@ -76,13 +82,16 @@ public class BoxMatrix {
 	}
 	
 	
+	/*
+	 * Metedo che inserisce una tile nella shelf del player
+	 * */
 	public void putTileIn(Tile tile, int c, int player) {
 		
 		int j = c - 1;
 		switch (j) {
 		case 0:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
 					this.m[i][j].setTile(tile);
 					this.m[i][j].getTile().setOwner(player);
 					this.m[i][j].getTile().setI(i);
@@ -93,7 +102,7 @@ public class BoxMatrix {
 			
 		case 1:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
 					this.m[i][j].setTile(tile);
 					this.m[i][j].getTile().setOwner(player);
 					this.m[i][j].getTile().setI(i); 
@@ -104,7 +113,7 @@ public class BoxMatrix {
 			
 		case 2:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
 					this.m[i][j].setTile(tile);
 					this.m[i][j].getTile().setOwner(player);
 					this.m[i][j].getTile().setI(i); 
@@ -115,7 +124,7 @@ public class BoxMatrix {
 			
 		case 3:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
 					this.m[i][j].setTile(tile);
 					this.m[i][j].getTile().setOwner(player);
 					this.m[i][j].getTile().setI(i); 
@@ -126,7 +135,7 @@ public class BoxMatrix {
 			
 		case 4:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
 					this.m[i][j].setTile(tile);
 					this.m[i][j].getTile().setOwner(player);
 					this.m[i][j].getTile().setI(i); 
@@ -143,16 +152,16 @@ public class BoxMatrix {
 	
 	/*
 	 * Method freeSide checks if the input tile has at least a free side in the board 
-	 */
+	 * */
 	public boolean freeSide (int i, int j) {
 		
-		if(m[i][j+1].isEmpty() || !m[i][j+1].isFillable())
+		if(!m[i][j+1].isFull() || !m[i][j+1].isFillable())
 			return true;
-		if(m[i][j-1].isEmpty() || !m[i][j-1].isFillable())
+		if(!m[i][j-1].isFull() || !m[i][j-1].isFillable())
 			return true;
-		if(m[i+1][j].isEmpty() || !m[i+1][j].isFillable())
+		if(!m[i+1][j].isFull() || !m[i+1][j].isFillable())
 			return true;
-		if(m[i-1][j].isEmpty() || !m[i-1][j].isFillable())
+		if(!m[i-1][j].isFull() || !m[i-1][j].isFillable())
 			return true;
 		
 		return false;
@@ -186,11 +195,15 @@ public class BoxMatrix {
 		sc.close();
 		return removedTiles;
 	}
-
+	
+	
+	/*
+	 * Metodo che riempie la board in modo randomico
+	 * */
 	public void fillBoard () {
 		for(int i = 1; i <= nI; i++) {
 			for(int j = 1; j <= nJ; j++) {
-				if(m[i][j].isFillable() == true && m[i][j].isEmpty() == false) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
+				if(m[i][j].isFillable() == true && !m[i][j].isFull()) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
 					int UPPER_BOUND = 6;
 					int LOWER_BOUND = 1;
 					Random rand = new Random();
@@ -213,13 +226,13 @@ public class BoxMatrix {
 		int sideUncovered = 0;
 		int adjacentTile = 0;
 		/* 
-		 * vanno verificate che le caselle intorno a quelle piene non siano vuote,
+		 * vanno verificate che le caselle intorno a quelle piene siano piene,
 		 *  basta che 1 tile sia prendibile per tornare falso, affinchè 1 tile sia
 		 *  prendibile deve avere almeno un lato scoperto ma non può averli tutti scoperti
 		 *  ma non devo verificare i lati coperti devo verificare che abbia un lato in comune
 		 *  con un altra tile
 		 */
-		if(m[i+1][j].isEmpty() == false) { //controlla la box accanto
+		if(m[i+1][j].isFull()) { //controlla la box accanto
 			sideCovered++; 
 			if(freeSide(i+1, j) == true) {
 				adjacentTile++;
@@ -230,7 +243,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(m[i-1][j].isEmpty() == false) {
+		if(m[i-1][j].isFull()) {
 			sideCovered++;
 			if(freeSide(i-1, j) == true) {
 				adjacentTile++;
@@ -240,7 +253,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(m[i][j+1].isEmpty() == false) {
+		if(m[i][j+1].isFull()) {
 			sideCovered++;
 			if(freeSide(i, j+1) == true) {
 				adjacentTile++;
@@ -251,7 +264,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(m[i][j-1].isEmpty() == false) {
+		if(m[i][j-1].isFull()) {
 			sideCovered++; 
 			if(freeSide(i, j-1) == true) {
 				adjacentTile++;
@@ -275,7 +288,7 @@ public class BoxMatrix {
 		//int emptyBox = 0;
 		for(int i = 1; i <= nI; i++) {
 			for(int j = 1; j <= nJ; j++) {
-				if(m[i][j].isEmpty() == false) { //se la casella non è vuota controllo che si possa prendere
+				if(m[i][j].isFull()) { //se la casella e' piena controllo che si possa prendere
 					if(takeable(i, j) == true) {
 						return false; //se anche solo una casella è prendibile e ne ha una accanto allora torno false
 					}
