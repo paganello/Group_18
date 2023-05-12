@@ -264,5 +264,25 @@ public class BoxMatrix {
 			return false;
 		}
 	}
+
+	public boolean checkBoard (BoxMatrix matrix, int nPlayer) {
+		//int emptyBox = 0;
+		for(int i = 1; i <= matrix.nI; i++) {
+			for(int j = 1; j <= matrix.nJ; j++) {
+				if(matrix.m[i][j].empty == false) { //se la casella non è vuota controllo che si possa prendere
+					if(takeable(matrix, i, j) == true) {
+						return false; //se anche solo una casella è prendibile e ne ha una accanto allora torno false
+					}
+				}
+				/*else if(matrix.m[i][j].empty == true) {
+					emptyBox++;
+				}*/
+			}
+		}
+		/*if(nPlayer == 2 && emptyBox == 28 || nPlayer == 3 && emptyBox == 36 || nPlayer == 4 && emptyBox == 42) {
+			return true;	//se la board è vuota torno true
+		}*/
+		return true;
+	}
 	
 }
