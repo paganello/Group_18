@@ -8,6 +8,10 @@ public class BoxMatrix {
 	private int nI;	//numero max di righe
 	private int nJ;	//numero max di colonne
 	
+	
+	/*
+	 * COSTRUTTORE
+	 * */
 	public BoxMatrix(int i, int j) {	//costruttore matrice, Funziona!
 		
 		/*
@@ -118,6 +122,10 @@ public class BoxMatrix {
 	}
 
 	
+	
+	/*
+	 * Metodo che serve per rimuovere tiles dalla board
+	 * */
 	public Tile [] removeTilesFromBoard (int i, int j) {
 		/*nel main
 		 * System.out.println("Inserisci le coordinate della prima tessera che vuoi prendere dal tabellone.");
@@ -170,18 +178,20 @@ public class BoxMatrix {
 	}
 
 	
-	
+	/* 
+	 * 	Metodo di verifica delle caselle (box).
+	 * 
+	 * 	vanno verificate che le caselle intorno a quelle piene siano piene,
+	 *  basta che 1 tile sia prendibile per tornare falso, affinchè 1 tile sia
+	 *  prendibile deve avere almeno un lato scoperto ma non può averli tutti scoperti,
+	 *  non devo verificare i lati, coperti devo verificare che abbia un lato in comune
+	 *  con un altra tile.
+	 */
 	public boolean takeable(int i, int j) {
 		int sideCovered = 0;
 		int sideUncovered = 0;
 		int adjacentTile = 0;
-		/* 
-		 * vanno verificate che le caselle intorno a quelle piene siano piene,
-		 *  basta che 1 tile sia prendibile per tornare falso, affinchè 1 tile sia
-		 *  prendibile deve avere almeno un lato scoperto ma non può averli tutti scoperti
-		 *  ma non devo verificare i lati coperti devo verificare che abbia un lato in comune
-		 *  con un altra tile
-		 */
+
 		if(m[i+1][j].isFull()) { //controlla la box accanto
 			sideCovered++; 
 			if(freeSide(i+1, j) == true) {
@@ -233,7 +243,9 @@ public class BoxMatrix {
 	}
 	
 	
-
+	/*
+	 * Metodo di verifica se la board e' da rifillare di tiles
+	 * */
 	public boolean checkBoard (int nPlayer) {
 		//int emptyBox = 0;
 		for(int i = 1; i <= nI; i++) {

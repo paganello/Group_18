@@ -1,7 +1,5 @@
 package goals;
-import java.util.Iterator;
 import java.util.Random;
-import main.*;
 import structure.*;
 
 

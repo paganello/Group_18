@@ -241,8 +241,8 @@ public class Privgoal {
 		
 		int k = 0;
 		
-		for (int i = 0; i < playerShelf.getI(); i++) {
-			for (int j = 0; j < playerShelf.getJ(); j++) {
+		for (int i = 0; i < playerShelf.getNI(); i++) {
+			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(i == iMap[k] && j == jMap[k]) {
 					if (playerShelf.getMatrix(i, j).getTile().getColor() == colorMap[k]) {
 						k++;
@@ -255,6 +255,7 @@ public class Privgoal {
 		return k;
 	}
 
+	
 	/*
 	 * Metodo PRIVATO usato da verify per la computazione dei punti 
 	 * */

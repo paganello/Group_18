@@ -8,6 +8,10 @@ public class Box {
 	private int i;
 	private int j;
 	
+	
+	/*
+	 * COSTRUTTORE
+	 * */
 	public Box(int i, int j, boolean fillable) {
 		this.i = i;
 		this.j = j;
@@ -15,8 +19,12 @@ public class Box {
 		this.fillable = fillable;
 	}
 	
+	
+	/*
+	 * Metodo che presa una tile la assegna alla box e aggiorna il volare di full (false -> true)
+	 * */
 	public void fillBox(Tile tile) {
-		if(fillable) {
+		if(this.fillable) {
 			this.tile = tile;
 			this.full = true;
 		}
