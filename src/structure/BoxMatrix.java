@@ -1,5 +1,6 @@
 package structure;
 import java.util.Scanner;
+import java.util.Random;
 
 public class BoxMatrix {
 	//dichiarazione variabili
@@ -182,6 +183,7 @@ public class BoxMatrix {
 		default:
 		}
 		
+		sc.close();
 		return removedTiles;
 	}
 
