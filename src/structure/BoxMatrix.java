@@ -48,7 +48,7 @@ public class BoxMatrix {
 	/*
 	 * Getter nI
 	 * */
-	public int getI(){
+	public int getNI(){
 		return this.nI;
 	}
 	
@@ -56,23 +56,23 @@ public class BoxMatrix {
 	/*
 	 * Getter nJ
 	 * */
-	public int getJ(){
+	public int getNJ(){
 		return this.nJ;
 	}
 	
 	
 	public void modFillableByArrayMaps(int[] iMap, int[] jMap, boolean fillable) {
 		for(int i = 0; i < iMap.length; i++) {
-			this.m[iMap[i]-1][jMap[i]-1].fillable = fillable;
+			this.m[iMap[i]-1][jMap[i]-1].setFillable(fillable);
 		}
 	}
 	
 	
 	public void printTileFillable(int i, int j) {	//temporaneo, stampa il val di fillable
-		System.out.print(this.m[i][j].fillable + " ");
+		System.out.print(this.m[i][j].isFillable() + " ");
 	}
 	public void printTileColor(int i, int j) {	//temporaneo, stampa il val di color
-		System.out.print(this.m[i][j].tile.getColor() + " ");
+		System.out.print(this.m[i][j].getTile().getColor() + " ");
 	}
 	
 	
@@ -82,55 +82,55 @@ public class BoxMatrix {
 		switch (j) {
 		case 0:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
-					this.m[i][j].tile = tile;
-					this.m[i][j].tile.owner = player;
-					this.m[i][j].tile.i = i;
-					this.m[i][j].tile.j = j;
+				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+					this.m[i][j].setTile(tile);
+					this.m[i][j].getTile().setOwner(player);
+					this.m[i][j].getTile().setI(i);
+					this.m[i][j].getTile().setJ(j);
 				}
 			}
 			break;
 			
 		case 1:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
-					this.m[i][j].tile = tile;
-					this.m[i][j].tile.owner = player;
-					this.m[i][j].tile.i = i; 
-					this.m[i][j].tile.j = j;
+				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+					this.m[i][j].setTile(tile);
+					this.m[i][j].getTile().setOwner(player);
+					this.m[i][j].getTile().setI(i); 
+					this.m[i][j].getTile().setJ(j);
 				}
 			}
 			break;
 			
 		case 2:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
-					this.m[i][j].tile = tile;
-					this.m[i][j].tile.owner = player;
-					this.m[i][j].tile.i = i; 
-					this.m[i][j].tile.j = j;
+				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+					this.m[i][j].setTile(tile);
+					this.m[i][j].getTile().setOwner(player);
+					this.m[i][j].getTile().setI(i); 
+					this.m[i][j].getTile().setJ(j);
 				}
 			}
 			break;
 			
 		case 3:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
-					this.m[i][j].tile = tile;
-					this.m[i][j].tile.owner = player;
-					this.m[i][j].tile.i = i; 
-					this.m[i][j].tile.j = j;
+				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+					this.m[i][j].setTile(tile);
+					this.m[i][j].getTile().setOwner(player);
+					this.m[i][j].getTile().setI(i); 
+					this.m[i][j].getTile().setJ(j);
 				}
 			}
 			break;
 			
 		case 4:
 			for (int i = 0; i < this.nI; i++) {
-				if(this.m[i][j].empty && !this.m[i+1][j].empty) {
-					this.m[i][j].tile = tile;
-					this.m[i][j].tile.owner = player;
-					this.m[i][j].tile.i = i; 
-					this.m[i][j].tile.j = j;
+				if(this.m[i][j].isEmpty() && !this.m[i+1][j].isEmpty()) {
+					this.m[i][j].setTile(tile);
+					this.m[i][j].getTile().setOwner(player);
+					this.m[i][j].getTile().setI(i); 
+					this.m[i][j].getTile().setJ(j);
 				}
 			}
 			break;
@@ -146,13 +146,13 @@ public class BoxMatrix {
 	 */
 	public boolean freeSide (int i, int j) {
 		
-		if(m[i][j+1].empty || !m[i][j+1].fillable)
+		if(m[i][j+1].isEmpty() || !m[i][j+1].isFillable())
 			return true;
-		if(m[i][j-1].empty || !m[i][j-1].fillable)
+		if(m[i][j-1].isEmpty() || !m[i][j-1].isFillable())
 			return true;
-		if(m[i+1][j].empty || !m[i+1][j].fillable)
+		if(m[i+1][j].isEmpty() || !m[i+1][j].isFillable())
 			return true;
-		if(m[i-1][j].empty || !m[i-1][j].fillable)
+		if(m[i-1][j].isEmpty() || !m[i-1][j].isFillable())
 			return true;
 		
 		return false;
@@ -190,7 +190,7 @@ public class BoxMatrix {
 	public void fillBoard () {
 		for(int i = 1; i <= nI; i++) {
 			for(int j = 1; j <= nJ; j++) {
-				if(m[i][j].fillable == true && m[i][j].empty == false) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
+				if(m[i][j].isFillable() == true && m[i][j].isEmpty() == false) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
 					int UPPER_BOUND = 6;
 					int LOWER_BOUND = 1;
 					Random rand = new Random();
@@ -206,6 +206,8 @@ public class BoxMatrix {
 		
 	}
 
+	
+	
 	public boolean takeable(int i, int j) {
 		int sideCovered = 0;
 		int sideUncovered = 0;
@@ -217,7 +219,7 @@ public class BoxMatrix {
 		 *  ma non devo verificare i lati coperti devo verificare che abbia un lato in comune
 		 *  con un altra tile
 		 */
-		if(m[i+1][j].empty == false) { //controlla la box accanto
+		if(m[i+1][j].isEmpty() == false) { //controlla la box accanto
 			sideCovered++; 
 			if(freeSide(i+1, j) == true) {
 				adjacentTile++;
@@ -228,7 +230,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(m[i-1][j].empty == false) {
+		if(m[i-1][j].isEmpty() == false) {
 			sideCovered++;
 			if(freeSide(i-1, j) == true) {
 				adjacentTile++;
@@ -238,7 +240,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(m[i][j+1].empty == false) {
+		if(m[i][j+1].isEmpty() == false) {
 			sideCovered++;
 			if(freeSide(i, j+1) == true) {
 				adjacentTile++;
@@ -249,7 +251,7 @@ public class BoxMatrix {
 			sideUncovered++; 
 		}
 		
-		if(m[i][j-1].empty == false) {
+		if(m[i][j-1].isEmpty() == false) {
 			sideCovered++; 
 			if(freeSide(i, j-1) == true) {
 				adjacentTile++;
@@ -266,12 +268,14 @@ public class BoxMatrix {
 			return false;
 		}
 	}
+	
+	
 
 	public boolean checkBoard (int nPlayer) {
 		//int emptyBox = 0;
 		for(int i = 1; i <= nI; i++) {
 			for(int j = 1; j <= nJ; j++) {
-				if(m[i][j].empty == false) { //se la casella non è vuota controllo che si possa prendere
+				if(m[i][j].isEmpty() == false) { //se la casella non è vuota controllo che si possa prendere
 					if(takeable(i, j) == true) {
 						return false; //se anche solo una casella è prendibile e ne ha una accanto allora torno false
 					}
