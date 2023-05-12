@@ -203,5 +203,66 @@ public class BoxMatrix {
 		}
 		
 	}
+
+	public boolean takeable(BoxMatrix matrix, int i, int j) {
+		int sideCovered = 0;
+		int sideUncovered = 0;
+		int adjacentTile = 0;
+		/* 
+		 * vanno verificate che le caselle intorno a quelle piene non siano vuote,
+		 *  basta che 1 tile sia prendibile per tornare falso, affinchè 1 tile sia
+		 *  prendibile deve avere almeno un lato scoperto ma non può averli tutti scoperti
+		 *  ma non devo verificare i lati coperti devo verificare che abbia un lato in comune
+		 *  con un altra tile
+		 */
+		if(matrix.m[i+1][j].empty == false) { //controlla la box accanto
+			sideCovered++; 
+			if(freeSide(i+1, j) == true) {
+				adjacentTile++;
+			}
+			
+		}
+		else {
+			sideUncovered++; 
+		}
+		
+		if(matrix.m[i-1][j].empty == false) {
+			sideCovered++;
+			if(freeSide(i-1, j) == true) {
+				adjacentTile++;
+			}
+		}
+		else {
+			sideUncovered++; 
+		}
+		
+		if(matrix.m[i][j+1].empty == false) {
+			sideCovered++;
+			if(freeSide(i, j+1) == true) {
+				adjacentTile++;
+			}
+		}
+		
+		else {
+			sideUncovered++; 
+		}
+		
+		if(matrix.m[i][j-1].empty == false) {
+			sideCovered++; 
+			if(freeSide(i, j-1) == true) {
+				adjacentTile++;
+			}
+		}
+		else {
+			sideUncovered++;
+		}
+		
+		if(sideUncovered >= 1 && sideCovered >= 1 && adjacentTile >= 1) { //se la casella ha almeno un lato scoperto (quindi è prendibile) ed ha almeno un lato coperto (quindi ha una casella affianco) e questa a sua volta ha un lato libero segna la casella in questione come prendibile
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 }
