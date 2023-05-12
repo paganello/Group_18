@@ -84,68 +84,18 @@ public class BoxMatrix {
 	
 	/*
 	 * Metedo che inserisce una tile nella shelf del player
+	 * 
+	 * la j che viene fornita DEVE essere gia decrementate e adattandola alla gestione della matrice (che ricordiamo parire da riga zero e non da riga uno)
 	 * */
-	public void putTileIn(Tile tile, int c, int player) {
+	public void putTileIn(Tile tile, int j, int nPlayer) {
 		
-		int j = c - 1;
-		switch (j) {
-		case 0:
-			for (int i = 0; i < this.nI; i++) {
-				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
-					this.m[i][j].setTile(tile);
-					this.m[i][j].getTile().setOwner(player);
-					this.m[i][j].getTile().setI(i);
-					this.m[i][j].getTile().setJ(j);
-				}
-			}
-			break;
-			
-		case 1:
-			for (int i = 0; i < this.nI; i++) {
-				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
-					this.m[i][j].setTile(tile);
-					this.m[i][j].getTile().setOwner(player);
-					this.m[i][j].getTile().setI(i); 
-					this.m[i][j].getTile().setJ(j);
-				}
-			}
-			break;
-			
-		case 2:
-			for (int i = 0; i < this.nI; i++) {
-				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
-					this.m[i][j].setTile(tile);
-					this.m[i][j].getTile().setOwner(player);
-					this.m[i][j].getTile().setI(i); 
-					this.m[i][j].getTile().setJ(j);
-				}
-			}
-			break;
-			
-		case 3:
-			for (int i = 0; i < this.nI; i++) {
-				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
-					this.m[i][j].setTile(tile);
-					this.m[i][j].getTile().setOwner(player);
-					this.m[i][j].getTile().setI(i); 
-					this.m[i][j].getTile().setJ(j);
-				}
-			}
-			break;
-			
-		case 4:
-			for (int i = 0; i < this.nI; i++) {
-				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
-					this.m[i][j].setTile(tile);
-					this.m[i][j].getTile().setOwner(player);
-					this.m[i][j].getTile().setI(i); 
-					this.m[i][j].getTile().setJ(j);
-				}
-			}
-			break;
-
-		default:
-			break;
+		for (int i = 0; i < this.nI; i++) {
+			if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
+				this.m[i][j].setTile(tile);
+				this.m[i][j].getTile().setOwner(nPlayer);
+				this.m[i][j].getTile().setI(i);
+				this.m[i][j].getTile().setJ(j);
+			}	
 		}
 	}
 	
