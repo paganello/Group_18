@@ -31,14 +31,14 @@ public class Gengoal {
 	/*
 	 * Metodo che verifica il raggiungimento e assegna i relatvi punti per i goals generali.
 	 * */
-	public void verifyAndComputePoints(BoxMatrix shelf){
+	public void verifyAndComputePoints(BoxMatrix playerShelf){
 		//funzione che computa il numero di punti dei goal generici sempre validi, ritorna il valore in points	
 		
-		for (int i = 0; i < shelf.getNI(); i++) {
-			for (int j = 0; j < shelf.getNJ(); j++) {
-				if(shelf.getMatrix(i, j).isFull()) {
+		for (int i = 0; i < playerShelf.getNI(); i++) {
+			for (int j = 0; j < playerShelf.getNJ(); j++) {
+				if(playerShelf.getBox(i, j).isFull()) {
 					int k = 0;
-					k = shelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+					k = playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 					
 					if(k == 3) {
 						this.points = this.points + 2;
@@ -55,7 +55,7 @@ public class Gengoal {
 				}
 			}
 		}
-		shelf.setAllVerifiedTileAttribute(false);
+		playerShelf.setAllVerifiedTileAttribute(false);
 		
 	}
 	

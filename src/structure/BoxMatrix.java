@@ -44,7 +44,7 @@ public class BoxMatrix {
 	/*
 	 * Getter m
 	 * */
-	public Box getMatrix(int i, int j){
+	public Box getBox(int i, int j){
 		return this.m[i][j];
 	}
 	
