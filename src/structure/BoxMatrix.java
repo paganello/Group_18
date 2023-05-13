@@ -91,7 +91,7 @@ public class BoxMatrix {
 	 * 
 	 * la j che viene fornita DEVE essere gia decrementate e adattandola alla gestione della matrice (che ricordiamo parire da riga zero e non da riga uno)
 	 * */
-	public void putTileIn(Tile tile, int j, int nPlayer) {
+	public void putTileInPlayerShelf(Tile tile, int j, int nPlayer) {
 		
 		for (int i = 0; i < this.nI; i++) {
 			if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
@@ -246,7 +246,7 @@ public class BoxMatrix {
 	/*
 	 * Metodo di verifica se la board e' da rifillare di tiles
 	 * */
-	public boolean checkBoard (int nPlayer) {
+	public boolean checkIfBoardNeedToBeRefilled (int nPlayer) {
 		//int emptyBox = 0;
 		for(int i = 1; i <= nI; i++) {
 			for(int j = 1; j <= nJ; j++) {
@@ -270,7 +270,7 @@ public class BoxMatrix {
 	/*
 	 * Metedo PRIVATO che verifica se una determinata box esiste ed e' riempibile 
 	 * */
-	private boolean boxExistAndIsFilable(int i, int j) {
+	private boolean boxExistAndIsFillable(int i, int j) {
 		if(i >= 0 && i <= this.nI) {
 			if(j >= 0 && j <= this.nJ) {
 				if(m[i][j].isFillable()) {
@@ -279,5 +279,57 @@ public class BoxMatrix {
 			}
 		}
 		return false;
+	}
+	
+	
+	/*
+	 * Metodo ricorsivo che controlla che data una box esista almeno una tile nelle box adiacenti dello stesso colore.
+	 * */
+	public int countNumberOfAdjacentsTileswithSameColor(int i, int j, int k) {
+
+		if(boxExistAndIsFillable(i-1, j) && m[i-1][j].isFull() && !m[i][j].getTile().isVerified()){
+			if(m[i-1][j].getTile().getColor() == m[i][j].getTile().getColor()) {
+				k++;
+				i--;
+				countNumberOfAdjacentsTileswithSameColor(i, j, k);
+			}
+		}
+		if(boxExistAndIsFillable(i, j+1) && m[i][j+1].isFull() && !m[i][j].getTile().isVerified()){
+			if(m[i][j+1].getTile().getColor() == m[i][j].getTile().getColor()) {
+				k++;
+				j++;
+				countNumberOfAdjacentsTileswithSameColor(i, j, k);
+			}
+		}
+		if(boxExistAndIsFillable(i+1, j) && m[i+1][j].isFull() && !m[i][j].getTile().isVerified()){
+			if(m[i+1][j].getTile().getColor() == m[i][j].getTile().getColor()) {
+				k++;
+				i++;
+				countNumberOfAdjacentsTileswithSameColor(i, j, k);
+			}
+		}
+		if(boxExistAndIsFillable(i, j-1) && m[i][j-1].isFull() && !m[i][j].getTile().isVerified()){
+			if(m[i][j-1].getTile().getColor() == m[i][j].getTile().getColor()) {
+				k++;
+				j--;
+				countNumberOfAdjacentsTileswithSameColor(i, j, k);
+			}
+		}
+		return k;
+	}
+	
+	
+	/*
+	 * Metodo che setta tutti gli attributi verified di tutte le tile a un valore boleano specificato
+	 * */
+	public void setAllVerifiedTileAttribute(boolean b) {
+		
+		for (int i = 0; i < nI; i++) {
+			for (int j = 0; j < nJ; j++) {
+				if(m[i][j].isFillable()) {
+					m[i][j].getTile().setVerified(b);
+				}
+			}
+		}
 	}
 }
