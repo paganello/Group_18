@@ -266,4 +266,18 @@ public class BoxMatrix {
 		return true;
 	}
 	
+	
+	/*
+	 * Metedo PRIVATO che verifica se una determinata box esiste ed e' riempibile 
+	 * */
+	private boolean boxExistAndIsFilable(int i, int j) {
+		if(i >= 0 && i <= this.nI) {
+			if(j >= 0 && j <= this.nJ) {
+				if(m[i][j].isFillable()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
