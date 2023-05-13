@@ -285,34 +285,34 @@ public class BoxMatrix {
 	/*
 	 * Metodo ricorsivo che controlla che data una box esista almeno una tile nelle box adiacenti dello stesso colore.
 	 * */
-	public int countNumberOfAdjacentsTileswithSameColor(int i, int j, int k) {
+	public int countNumberOfAdjacentsTilesWithSameColor(int i, int j, int k) {
 
 		if(boxExistAndIsFillable(i-1, j) && m[i-1][j].isFull() && !m[i][j].getTile().isVerified()){
 			if(m[i-1][j].getTile().getColor() == m[i][j].getTile().getColor()) {
 				k++;
 				i--;
-				countNumberOfAdjacentsTileswithSameColor(i, j, k);
+				countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 			}
 		}
 		if(boxExistAndIsFillable(i, j+1) && m[i][j+1].isFull() && !m[i][j].getTile().isVerified()){
 			if(m[i][j+1].getTile().getColor() == m[i][j].getTile().getColor()) {
 				k++;
 				j++;
-				countNumberOfAdjacentsTileswithSameColor(i, j, k);
+				countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 			}
 		}
 		if(boxExistAndIsFillable(i+1, j) && m[i+1][j].isFull() && !m[i][j].getTile().isVerified()){
 			if(m[i+1][j].getTile().getColor() == m[i][j].getTile().getColor()) {
 				k++;
 				i++;
-				countNumberOfAdjacentsTileswithSameColor(i, j, k);
+				countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 			}
 		}
 		if(boxExistAndIsFillable(i, j-1) && m[i][j-1].isFull() && !m[i][j].getTile().isVerified()){
 			if(m[i][j-1].getTile().getColor() == m[i][j].getTile().getColor()) {
 				k++;
 				j--;
-				countNumberOfAdjacentsTileswithSameColor(i, j, k);
+				countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 			}
 		}
 		return k;

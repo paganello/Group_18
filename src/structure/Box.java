@@ -31,7 +31,6 @@ public class Box {
 	}
 	
 	
-	
 	/*
 	 * Getters and Setters
 	 * */

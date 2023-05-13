@@ -18,25 +18,27 @@ public class Tile {
 	private int i, j;
 	private boolean verified; //serve per i goal
 	
+	
+	/*
+	 * COSTRUTTORE
+	 * */
 	public Tile (int i, int j, int color) {
 		
-		this.setOwner(0);
-		this.setVerified(false);
-		this.setI(i);
-		this.setJ(j);
+		this.owner = 0;
+		this.verified = false;
+		this.i = i;
+		this.j = j;
 		this.color = color;
 	}
 	
+	
+	/*
+	 * Metotodo per la modifica dell'owner di una tile
+	 * */
 	public void changeTileOwner(int newOwner) {
 		this.setOwner(newOwner);
 	}
-	
-	public void changeTileCoordinates(int i, int j) {
-		this.setI(i);
-		this.setJ(j);
-	}
-	
-	
+		
 	
 	/*
 	 * Getters and Setters

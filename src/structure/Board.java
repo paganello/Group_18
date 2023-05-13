@@ -4,7 +4,11 @@ package structure;
 public class Board {
 
 	BoxMatrix matrix;
-		
+	
+	
+	/*
+	 * COSTRUTTORE
+	 * */
 	public Board(int nPlayers) {
 		
 		/*

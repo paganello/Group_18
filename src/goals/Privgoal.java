@@ -32,7 +32,7 @@ public class Privgoal {
 	/*
 	 * Metodo di verifica del goal privato
 	 * */
-	public void verify(BoxMatrix playerShelf) {  //da decidere se fare ritornare boolean o modificare il valore di State
+	public void verifyAndComputePoints(BoxMatrix playerShelf) {  //da decidere se fare ritornare boolean o modificare il valore di State
 		
 		int matches = 0;
 		switch (this.nGoal) {

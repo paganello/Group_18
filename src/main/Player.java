@@ -103,8 +103,8 @@ public class Player {
 	 * modifica direttamente l'attributo points di publicGoals.
 	 * */
 	public void computesFinalPoints() {
-		privateGoal.verify(shelf);
-		//genGoal.verify(shelf);
+		privateGoal.verifyAndComputePoints(shelf);
+		genGoal.verifyAndComputePoints(shelf);
 		this.points = publicGoals.getpoints() + privateGoal.getPoints() + genGoal.getPoints();
 	}
 	
