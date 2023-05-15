@@ -133,8 +133,11 @@ public class Pubgoal {
 					break;
 				
 				case 11:
-								
-					this.done[i] = false;				
+					if(isPubGoal_12_Done(playerShelf)) {
+						this.done[i] = true;
+					}					
+					this.done[i] = false;
+					break;
 				default:
 					this.done[i] = false;
 			}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
@@ -277,8 +280,8 @@ public class Pubgoal {
 	 * dello stesso colore che formano una "X"
 	 */
 	private boolean isPubGoal_11_Done (BoxMatrix playerShelf) {
-		for(int n=1; n<3; n++) {
-			for(int m=1; m<4;m++) {
+		for(int n=1; n<4; n++) {
+			for(int m=1; m<3;m++) {
 				if(playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m+1).getTile().getColor()
 						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m-1).getTile().getColor()
 						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m-1).getTile().getColor()
@@ -290,4 +293,46 @@ public class Pubgoal {
 		return false;
 	}
 	
+	/*
+	 * Metodo per la verifica del Common Goal nr.12
+	 * Verifica che le colonne della Shelf di un Player abbiano altezza crescente (da 1 a 5)
+	 * o decrescente (da 5 a 1) da sinistra verso destra
+	 */
+	private boolean isPubGoal_12_Done (BoxMatrix playerShelf) {
+		final int maxTiles=5;
+		int count, m, n;
+		boolean verify=false;
+		
+		//Altezza delle colonne decrescente da sinistra verso destra
+		for (m=0; m<4; m++) {
+			count=0;
+			for (n=0; n<5; n++) {
+				if (playerShelf.getBox(n, m).isFull())
+					count++;
+			}
+			if ((maxTiles-count)==m)
+				verify=true;
+			else
+				verify=false;			
+		}
+		if(verify)
+			return true;
+		
+		//Altezza delle colonne crescente da sinistra verso destra
+		for (m=0; m<4; m++) {
+			count=0;
+			for (n=0; n<5; n++) {
+				if (playerShelf.getBox(n, m).isFull())
+					count++;
+			}
+			if ((maxTiles-count)==(4-m))
+				verify=true;
+			else
+				verify=false;			
+		}
+		if (verify)
+			return true;
+		
+		return false;
+	}
 }
