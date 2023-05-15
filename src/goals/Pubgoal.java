@@ -126,13 +126,15 @@ public class Pubgoal {
 					this.done[i] = false;
 				
 				case 10:
-				
+					if(isPubGoal_11_Done(playerShelf)) {
+						this.done[i] = true;
+					}					
 					this.done[i] = false;
+					break;
 				
 				case 11:
-				
-					this.done[i] = false;
-				
+								
+					this.done[i] = false;				
 				default:
 					this.done[i] = false;
 			}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
@@ -268,5 +270,24 @@ public class Pubgoal {
 			return false;
 		}
 	}
-
+	
+	/*
+	 * Metodo per la verifica del Common Goal nr.11
+	 * Scorre la Shelf personale del giocatore e conrolla se ci sono 5 Tiles
+	 * dello stesso colore che formano una "X"
+	 */
+	private boolean isPubGoal_11_Done (BoxMatrix playerShelf) {
+		for(int n=1; n<3; n++) {
+			for(int m=1; m<4;m++) {
+				if(playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m+1).getTile().getColor()
+						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m-1).getTile().getColor()
+						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m-1).getTile().getColor()
+						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m+1).getTile().getColor()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 }
