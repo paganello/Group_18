@@ -126,7 +126,7 @@ public class BoxMatrix {
 	/*
 	 * Metodo che serve per rimuovere tiles dalla board
 	 * */
-	public Tile [] removeTilesFromBoard (int i, int j) {
+	public Tile [] removeTilesFromBoard (Board board, int i, int j) {
 		/*nel main
 		 * System.out.println("Inserisci le coordinate della prima tessera che vuoi prendere dal tabellone.");
 		Scanner sc=new Scanner (System.in);
@@ -137,19 +137,111 @@ public class BoxMatrix {
 		}while (!scatola.freeSide(nI, nJ));*/
 		Scanner sc=new Scanner (System.in);
 		Tile  removedTiles [] = new Tile [3];
+		//removedTiles [0] = tile[i][j];
 		int choice;
-		System.out.println("Che cosa vui fare?/n1-Prendi la casella a destra./n2-Prendi la casella a sinistra/n3-Prendi la casella in alto./n4-Prendi la casella in basso/n5-Prendi solo le caselle selezionate");
+		System.out.println("Che cosa vui fare?/n1-Prendi la casella a destra./n2-Prendi la casella a sinistra/n3-Prendi la casella in alto./n4-Prendi la casella in basso/n5-Prendi solo la casella selezionata");
 		choice=sc.nextInt();
 		switch (choice) {
 		case 1:
-			
+			if(m[i][j+1].isFull() && board.matrix.freeSide(i, j+1)) {
+				//removedTiles [1] = m[i][j+1];
+				System.out.println("Vuoi prendere anche una terza tessera?/n1-Si/n2-No");
+				choice=sc.nextInt();
+				switch (choice) {
+				case 1:
+					if(m[i][j+2].isFull() && board.matrix.freeSide(i, j+2)) {
+						//removedTiles [2] = m[i][j+2];
+					}
+					else {
+						System.out.println("Non è possibile prendere questa tessera.");
+					}
+					break;
+				case 2:
+					break;
+				}
+			}
+			else {
+				System.out.println("Non è possibile prendere questa tessera.");
+			}
+			break;
 		case 2:
+			if(m[i][j-1].isFull() && board.matrix.freeSide(i, j-1)) {
+				//removedTiles [1] = m[i][j-1];
+				System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
+				choice=sc.nextInt();
+				switch (choice) {
+				case 1:
+					if(m[i][j-2].isFull() && board.matrix.freeSide(i, j-2)) {
+						//removedTiles [2] = m[i][j-2];
+					}
+					else {
+						System.out.println("Non è possibile prendere questa tessera.");
+					}
+					break;
+				case 2:
+					break;
+				}
+			}
+			else {
+				System.out.println("Non è possibile prendere questa tessera.");
+			}
+			break;
 		case 3:
+			if(m[i+1][j].isFull() && board.matrix.freeSide(i+1, j)) {
+				//removedTiles [1] = m[i+1][j];
+				System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
+				choice=sc.nextInt();
+				switch (choice) {
+				case 1:
+					if(m[i+2][j].isFull() && board.matrix.freeSide(i+2, j)) {
+						//removedTiles [2] = m[i+2][j];
+					}
+					else {
+						System.out.println("Non è possibile prendere questa tessera.");
+					}
+					break;
+				case 2:
+					break;
+				}
+			}
+			else {
+				System.out.println("Non è possibile prendere questa tessera.");
+			}
+			break;
 		case 4:
-		case 5:
+			if(m[i-1][j].isFull() && board.matrix.freeSide(i-1, j)) {
+				//removedTiles [1] = m[i-1][j];
+				System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
+				choice=sc.nextInt();
+				switch (choice) {
+				case 1:
+					if(m[i-2][j].isFull() && board.matrix.freeSide(i-2, j)) {
+						//removedTiles [2] = m[i-2][j];
+					}
+					else {
+						System.out.println("Non è possibile prendere questa tessera.");
+					}
+					break;
+				case 2:
+					break;
+				}
+			}
+			else {
+				System.out.println("Non è possibile prendere questa tessera.");
+			}
+			break;
+		case 5: 
+			break;
 		default:
+			System.out.println("Alla scelta fatta non corrisponde alcuna azione.");
+			break;
 		}
 		
+		for(int c=0; c<2; c++) {
+			int y=removedTiles[c].getI();
+			int x=removedTiles[c].getJ();
+			//board.matrix.m[i][j].isFull()=false;   isFull deve essere public
+		}
 		sc.close();
 		return removedTiles;
 	}
