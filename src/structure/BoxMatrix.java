@@ -137,20 +137,20 @@ public class BoxMatrix {
 		}while (!scatola.freeSide(nI, nJ));*/
 		Scanner sc=new Scanner (System.in);
 		Tile  removedTiles [] = new Tile [3];
-		//removedTiles [0] = tile[i][j];
+		removedTiles [0] = board.matrix.getBox(i, j).getTile();
 		int choice;
 		System.out.println("Che cosa vui fare?/n1-Prendi la casella a destra./n2-Prendi la casella a sinistra/n3-Prendi la casella in alto./n4-Prendi la casella in basso/n5-Prendi solo la casella selezionata");
 		choice=sc.nextInt();
 		switch (choice) {
 		case 1:
 			if(m[i][j+1].isFull() && board.matrix.freeSide(i, j+1)) {
-				//removedTiles [1] = m[i][j+1];
+				removedTiles [1] = board.matrix.getBox(i, j+1).getTile();
 				System.out.println("Vuoi prendere anche una terza tessera?/n1-Si/n2-No");
 				choice=sc.nextInt();
 				switch (choice) {
 				case 1:
 					if(m[i][j+2].isFull() && board.matrix.freeSide(i, j+2)) {
-						//removedTiles [2] = m[i][j+2];
+						removedTiles [2] = board.matrix.getBox(i, j+2).getTile();
 					}
 					else {
 						System.out.println("Non è possibile prendere questa tessera.");
@@ -166,13 +166,13 @@ public class BoxMatrix {
 			break;
 		case 2:
 			if(m[i][j-1].isFull() && board.matrix.freeSide(i, j-1)) {
-				//removedTiles [1] = m[i][j-1];
+				removedTiles [1] = board.matrix.getBox(i, j-1).getTile();
 				System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				choice=sc.nextInt();
 				switch (choice) {
 				case 1:
 					if(m[i][j-2].isFull() && board.matrix.freeSide(i, j-2)) {
-						//removedTiles [2] = m[i][j-2];
+						removedTiles [2] = board.matrix.getBox(i, j-2).getTile();
 					}
 					else {
 						System.out.println("Non è possibile prendere questa tessera.");
@@ -188,13 +188,13 @@ public class BoxMatrix {
 			break;
 		case 3:
 			if(m[i+1][j].isFull() && board.matrix.freeSide(i+1, j)) {
-				//removedTiles [1] = m[i+1][j];
+				removedTiles [1] = board.matrix.getBox(i+1, j).getTile();
 				System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				choice=sc.nextInt();
 				switch (choice) {
 				case 1:
 					if(m[i+2][j].isFull() && board.matrix.freeSide(i+2, j)) {
-						//removedTiles [2] = m[i+2][j];
+						removedTiles [2] = board.matrix.getBox(i+2, j).getTile();
 					}
 					else {
 						System.out.println("Non è possibile prendere questa tessera.");
@@ -210,13 +210,13 @@ public class BoxMatrix {
 			break;
 		case 4:
 			if(m[i-1][j].isFull() && board.matrix.freeSide(i-1, j)) {
-				//removedTiles [1] = m[i-1][j];
+				removedTiles [1] = board.matrix.getBox(i-1, j).getTile();
 				System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				choice=sc.nextInt();
 				switch (choice) {
 				case 1:
 					if(m[i-2][j].isFull() && board.matrix.freeSide(i-2, j)) {
-						//removedTiles [2] = m[i-2][j];
+						removedTiles [2] = board.matrix.getBox(i-2, j).getTile();
 					}
 					else {
 						System.out.println("Non è possibile prendere questa tessera.");
@@ -240,7 +240,7 @@ public class BoxMatrix {
 		for(int c=0; c<2; c++) {
 			int y=removedTiles[c].getI();
 			int x=removedTiles[c].getJ();
-			//board.matrix.m[i][j].isFull()=false;   isFull deve essere public
+			//board.matrix.getBox(y, x).isFull()=false;
 		}
 		sc.close();
 		return removedTiles;
