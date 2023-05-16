@@ -90,11 +90,15 @@ public class Pubgoal {
 					this.done[i] = false;
 				
 				case 2:
-				
+					if(isPubGoal_3_Done(playerShelf)) {
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 				
 				case 3:
-				
+					if(isPubGoal_4_Done(playerShelf)) {
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 				
 				case 4:
@@ -202,6 +206,97 @@ public class Pubgoal {
 					return true;
 				}
 			}
+		}
+		return false;
+	}
+	
+
+	private boolean isPubGoal_3_Done(BoxMatrix playerShelf){
+		/*
+		 * Quattro gruppi separati formati ciascuno da quattro tessere adiacenti dello stesso tipo
+		 * quindi per ogni tessera verificare che ne abbia almeno 1 adicente dello steso tipo e passare a quella dopo, raggiunte le 4 adiacenti passare
+		 * a quelle dopo
+		 * quindi devo scorrere tutta la shelf, parto dalla prima tessera e guardo se ne ha una adiacente se ce l'ha passo a quella e vado avanti così fino a 4
+		 * poi devo scartare quelle appena conteggiate e passare alla tessera dopo, fare la stessa cosa fatta in precedenza e scartare quelle conteggiare e cosi via
+		 * se riesco a trovarne 4 per 4 volte allora torna vero 
+		 */
+		
+		int n = 0; 
+		
+		for (int i = 0; i < playerShelf.getNI(); i++) {
+			for (int j = 0; j < playerShelf.getNI(); j++) {
+				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
+					int k = 0;
+					k = playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+					
+					if(k == 4 ) {
+						n++;
+					}
+				}
+			}
+		}
+		playerShelf.setAllVerifiedTileAttribute(false);
+		if(n == 4) {
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean isPubGoal_4_Done(BoxMatrix playerShelf){
+		/*
+		 * Due gruppi separati di 4 tessere dello stesso tipo che formano un quadrato 2x2.
+		 * Le tessere dei due gruppi devono essere dello stesso tipo.
+		 * quindi posso fare una verifica per tipo, quindi passo il primo tipo, scorro tutta la shelf, verifico il tipo e che ne ha 3 adiacenti (per formare un quadrato...)
+		 * scarto quelle trovate e faccio la stessa cosa per lo stesso tipo, se ne trovo 2 allora passo al tipo successivo 
+		 */
+		
+		int n = 0;
+		int color = 1;
+		
+		for (int i = 0; i < playerShelf.getNI(); i++) {
+			for (int j = 0; j < playerShelf.getNI(); j++) {
+				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified() && playerShelf.getBox(i, j).getTile().getColor() == color && color <= 6) {
+					
+					boolean f = false;
+					
+					if (color == playerShelf.getBox(i, j + 1).getTile().getColor() && color == playerShelf.getBox(i + 1, j).getTile().getColor() && color == playerShelf.getBox(i + 1, j + 1).getTile().getColor()) {
+						playerShelf.getBox(i, j + 1).getTile().setVerified(true);
+						playerShelf.getBox(i + 1, j).getTile().setVerified(true);
+						playerShelf.getBox(i + 1, j + 1).getTile().setVerified(true);
+						f = true;
+					}
+					else if (color == playerShelf.getBox(i, j + 1).getTile().getColor() && color == playerShelf.getBox(i - 1, j).getTile().getColor() && color == playerShelf.getBox(i - 1, j + 1).getTile().getColor()) {
+						playerShelf.getBox(i, j + 1).getTile().setVerified(true);
+						playerShelf.getBox(i - 1, j).getTile().setVerified(true);
+						playerShelf.getBox(i - 1, j + 1).getTile().setVerified(true);
+						f = true;
+					}
+					else if (color == playerShelf.getBox(i, j - 1).getTile().getColor() && color == playerShelf.getBox(i - 1, j).getTile().getColor() && color == playerShelf.getBox(i - 1, j - 1).getTile().getColor()) {
+						playerShelf.getBox(i, j - 1).getTile().setVerified(true);
+						playerShelf.getBox(i - 1, j).getTile().setVerified(true);
+						playerShelf.getBox(i - 1, j - 1).getTile().setVerified(true);
+						f = true;
+					}
+					else if (color == playerShelf.getBox(i, j - 1).getTile().getColor() && color == playerShelf.getBox(i + 1, j).getTile().getColor() && color == playerShelf.getBox(i + 1, j - 1).getTile().getColor()) {
+						playerShelf.getBox(i, j - 1).getTile().setVerified(true);
+						playerShelf.getBox(i + 1, j).getTile().setVerified(true);
+						playerShelf.getBox(i + 1, j - 1).getTile().setVerified(true);
+						f = true;
+					}
+					
+					if(f == true ) {
+						n++;
+					}
+					else {
+						color++;
+						n = 0;
+					}
+				}
+			}
+		}
+		playerShelf.setAllVerifiedTileAttribute(false);
+		if(n == 2) {
+			return true;
 		}
 		return false;
 	}
