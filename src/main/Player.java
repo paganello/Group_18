@@ -7,7 +7,7 @@ import goals.Pubgoal;
 import structure.BoxMatrix;
 
 public class Player {
-	
+	public int number;
 	private String name;
 	private int points = 0;
 	private boolean chair;
@@ -19,13 +19,13 @@ public class Player {
 	/*
 	 * COSTRUTTORE
 	 * */
-	public Player (int nPlayer, int pGoal_1, int pGoal_2) {
+	public Player (int nPlayer, int pGoal_1) {
 		
 		System.out.println("Inserisci il nome del giocatore " + (nPlayer+1) + ": ");	//set name
 		Scanner sc = new Scanner(System.in);
 		this.name = sc.nextLine();
 		sc.close();
-		
+		this.number= nPlayer;
 		if(nPlayer == 1) {	//set chair
 			this.chair = true;
 		}else {
@@ -84,6 +84,24 @@ public class Player {
 		
 		this.publicGoals = publicGoal; 
 	}
+	public boolean isShelfFull() {
+		int verifier=0;
+		for (int i=0; i<6; i++) {
+			for(int j=0; j<5;j++) {
+				//if (shelf.boxMatrix.getBox.m[i][j].isFillable);//
+				verifier=0;
+				//else {
+					verifier=verifier*1;}
+				//}
+			}
+		if (verifier==0) {
+			return false;
+		}
+		else {return true;
+		}
+	}
+	
+	
 	
 	
 	/*

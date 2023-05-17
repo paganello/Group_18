@@ -3,7 +3,7 @@ package structure;
 
 public class Board {
 
-	BoxMatrix matrix;
+	public BoxMatrix matrix;
 	
 	
 	/*

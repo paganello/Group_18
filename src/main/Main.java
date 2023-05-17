@@ -2,7 +2,7 @@ package main;
 import java.util.*;
 import java.lang.*;
 import goals.*;
-import main.Player;
+import structure.*;
 public class Main {	
 	public static void main(String[] args) {
 		
@@ -30,33 +30,44 @@ public class Main {
 	ArrayList<Player> listaPlayer= new ArrayList<Player>();
 	
 	Scanner sc= new Scanner(System.in);
+		System.out.println ("Inserire il numero di giocatori"); //ottengo in input il numero di giocatori, che è
+		do {													//verificato alla fine di questo loop
+		playerNum= sc.nextInt();
+		if(playerNum<2 || playerNum>4) {
+			System.out.println("Per favore inserire solo valori tra 2 e 4");}(while playerNum<2||playerNum>4);
+			
+	stato= GameState.drawPhase;
+	
 	do {
 		
 		switch (stato) {
-			case drawPhase:
+			
+		case drawPhase:
 				Pubgoal obbPubblici=new Pubgoal(); //genero goal pubblici
-				
-				System.out.println ("Inserire il numero di giocatori"); //ottengo in input il numero di giocatori, che è
-				do {													//verificato alla fine di questo looè
-				playerNum= sc.nextInt();
-				if(playerNum<2 || playerNum>4) {
-					System.out.println("Per favore inserire solo valori tra 2 e 4");
-				}
 				else {
 					for(int contaPlayerLoop=0; contaPlayerLoop<playerNum; contaPlayerLoop++) {
-						Privgoal obb1= new Privgoal(); //genero due goal privati 
-						Privgoal obb2= new Privgoal();
-						listaPlayer.add(new Player((contaPlayerLoop+1),obb1.getGoalNumber(),obb2.getGoalNumber()));
+						Privgoal obb1= new Privgoal(); //genero due goal privati ;
+						listaPlayer.add(new Player((contaPlayerLoop+1),obb1.getGoalNumber()));
 						}
 					
 				}
 				
-				}
-				while(playerNum<2 && playerNum>4);
-			
+			Board tavolo= new Board(playerNum);
+				tavolo.matrix.fillBoard();
+				
+			/*
+			 * stampa della situazione attuale del tavolo*/
+
+				stato= GameState.turnStart;
+				
 				break;
-		
 			case turnStart:
+				for (int v=0; v<playerNum; v++) {
+				System.out("E' il turno di "+listaPlayer.get(v).getName);
+				//metodi per prelevare e depositare tiles
+				if(listaPlayer.get(v))
+				}
+				
 			
 				break;
 		
@@ -67,8 +78,12 @@ public class Main {
 			case endPhase:
 			
 				break;
+			default:
+				break;
+	}
+		
 	
-		}
+	
 		
 	}while(stato !=GameState.gameEnd); 
 		
