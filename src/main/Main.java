@@ -63,9 +63,11 @@ public class Main {
 				break;
 			case turnStart:
 				for (int v=0; v<playerNum; v++) {
-				System.out("E' il turno di "+listaPlayer.get(v).getName);
+				System.out("E' il turno di "+listaPlayer.get(v).getName());
 				//metodi per prelevare e depositare tiles
-				if(listaPlayer.get(v))
+				if(listaPlayer.get(v).isShelfFull()== true) {
+					stato= GameState.lastTurnStart;
+				}
 				}
 				
 			

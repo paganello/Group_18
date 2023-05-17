@@ -85,19 +85,20 @@ public class Player {
 		this.publicGoals = publicGoal; 
 	}
 	public boolean isShelfFull() {
-		int verifier=0;
+		int verifier=1;
 		for (int i=0; i<6; i++) {
 			for(int j=0; j<5;j++) {
-				//if (shelf.boxMatrix.getBox.m[i][j].isFillable);//
+				if (shelf.getBox(i,j).isFillable());
 				verifier=0;
-				//else {
+					{
 					verifier=verifier*1;}
-				//}
+				}
 			}
 		if (verifier==0) {
 			return false;
 		}
-		else {return true;
+		else {
+			return true;
 		}
 	}
 	
