@@ -10,7 +10,7 @@ public class Privgoal {
 	input il goal (del 12 possibili) lo vada a verificare mediante uno specifico script.*/
 	
 	private int nGoal;    // 1 - 12
-	private boolean done;[playerNum]
+	private boolean done;
 	private int points;
 	
 	
