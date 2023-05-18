@@ -240,7 +240,7 @@ public class BoxMatrix {
 		for(int c=0; c<2; c++) {
 			int y=removedTiles[c].getI();
 			int x=removedTiles[c].getJ();
-			//board.matrix.getBox(y, x).isFull()=false;
+			board.matrix.getBox(y, x).setFillable(false);
 		}
 		sc.close();
 		return removedTiles;

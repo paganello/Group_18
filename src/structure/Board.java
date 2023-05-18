@@ -57,4 +57,47 @@ public class Board {
 		}
 		this.matrix = matrix;
 	}
+	
+	/*
+	 * Metodo che stampa
+	 */
+	public void showTable (int i, int j) {
+		int n = this.matrix.getBox(i, j).getI();
+		int m = this.matrix.getBox(i, j).getJ();
+		System.out.print(" /t");
+		for (int k=0; k<m; m++) {
+			System.out.print(k + "/t");
+		}
+		System.out.println();
+		
+		for(int y=0; y<n; y++) {
+			System.out.print(y + "/t");
+			for (int x=0; x<m; x++) {
+				switch(this.matrix.getBox(y, x).getTile().getColor()) {
+				case 1:
+					System.out.print("G/t"); //G=verde
+					break;
+				case 2:
+					System.out.print("W/t"); //W=bianco
+				    break;
+				case 3:
+					System.out.print("Y/t"); //Y=giallo
+					break;
+				case 4:
+					System.out.print("B/t"); //B=blu
+					break;
+				case 5:
+					System.out.print("A/t"); //A=azzurro
+					break;
+				case 6:
+					System.out.print("P/t"); //P=rosa
+					break;
+				default:
+					System.out.print(" /t");
+					break;
+				}
+			}
+			System.out.println();
+		}
+    }
 }
