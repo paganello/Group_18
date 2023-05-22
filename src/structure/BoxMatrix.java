@@ -502,45 +502,50 @@ public class BoxMatrix {
 	}
 	
 	/*
-	 * Metodo che stampa una tabella
+	 * Metodo che stampa la tabella con relativi colori
 	 */
 	public void showTable () {
-		int n = this.nI;
-		int m = this.nJ;
-		System.out.print(" /t");
-		for (int k=0; k<m; m++) {
-			System.out.print(k + "/t");
+		int i = this.nI;
+		int j = this.nJ;
+		System.out.print(" \t");
+		for (int k=0; k < i; k++) {
+			System.out.print(k + "\t");
 		}
-		System.out.println();
+		System.out.println("\n");
 		
-		for(int y=0; y<n; y++) {
-			System.out.print(y + "/t");
-			for (int x=0; x<m; x++) {
-				switch(this.m[x][y].getTile().getColor()) {
-				case 1:
-					System.out.print(ANSI_GREEN+"G/t"+ANSI_RESET); //G=verde
-					break;
-				case 2:
-					System.out.print(ANSI_WHITE+"W/t"+ANSI_RESET); //W=bianco
-				    break;
-				case 3:
-					System.out.print(ANSI_YELLOW+"Y/t"+ANSI_RESET); //Y=giallo
-					break;
-				case 4:
-					System.out.print(ANSI_BLUE+"B/t"+ANSI_RESET); //B=blu
-					break;
-				case 5:
-					System.out.print(ANSI_CYAN+"C/t"+ANSI_RESET); //C=azzurro
-					break;
-				case 6:
-					System.out.print(ANSI_PINK+"P/t"+ANSI_RESET); //P=rosa
-					break;
-				default:
-					System.out.print(" /t");
-					break;
+		for(int y = 0; y < i; y++) {
+			System.out.print(y + "\t");
+			for (int x=0; x < j; x++) {
+				if(boxExistAndIsFillable(y, x)) {
+					switch(this.m[y][x].getTile().getColor()) {
+					case 1:
+						System.out.print(ANSI_GREEN+"G\t"+ANSI_RESET); //G=verde
+						break;
+					case 2:
+						System.out.print(ANSI_WHITE+"W\t"+ANSI_RESET); //W=bianco
+						break;
+					case 3:
+						System.out.print(ANSI_YELLOW+"Y\t"+ANSI_RESET); //Y=giallo
+						break;
+					case 4:
+						System.out.print(ANSI_BLUE+"B\t"+ANSI_RESET); //B=blu
+						break;
+					case 5:
+						System.out.print(ANSI_CYAN+"C\t"+ANSI_RESET); //C=azzurro
+						break;
+					case 6:
+						System.out.print(ANSI_PINK+"P\t"+ANSI_RESET); //P=rosa
+						break;
+					default:
+						System.out.print(" \t");
+						break;
+					}
+				}else{
+					System.out.print(" " + "\t");
 				}
+				
 			}
-			System.out.println();
+			System.out.println("\n\n");
 		}
     }
 }
