@@ -327,8 +327,8 @@ public class BoxMatrix {
 	 * Metodo che riempie la board in modo randomico
 	 * */
 	public void fillBoard () {
-		for(int i = 1; i <= nI; i++) {
-			for(int j = 1; j <= nJ; j++) {
+		for(int i = 1; i < nI; i++) {
+			for(int j = 1; j < nJ; j++) {
 				if(m[i][j].isFillable() == true && !m[i][j].isFull()) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
 					int UPPER_BOUND = 6;
 					int LOWER_BOUND = 1;
