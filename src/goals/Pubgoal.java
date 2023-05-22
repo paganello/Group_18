@@ -1,5 +1,4 @@
 package goals;
-import java.util.Random;
 import structure.*;
 
 
@@ -13,22 +12,18 @@ public class Pubgoal {
 	/*
 	 *COSTRUTTORE 
 	 */
-	public Pubgoal(){
+	public Pubgoal(int a, int b){
 		
-		int UPPER_BOUND = 11; //costante indicante il massimo numero estraibile	=> vanno da 0 a 11 = 12 goals
 		this.nGoals = new int[2];
+		
+		this.done = new boolean[2];
 		this.done[0] = false;	 // init a false
 		this.done[1] = false;
+		
 		this.points = 0;
 		
-		Random rand = new Random();
-		do {
-			this.nGoals[0] = rand.nextInt(UPPER_BOUND);		//questo metodo definisce solo la generazione degli obb. comuni, starà poi al main calcolare i punteggi in base
-			do{											//al numero di player e ordine conseguito.		
-				this.nGoals[1] = rand.nextInt(UPPER_BOUND);
-			}while(this.nGoals[0] == this.nGoals[1]);
-		}while(this.nGoals[0] < 0 && this.nGoals[1] < 0);
-		
+		this.nGoals[0] = a;
+		this.nGoals[1] = b;
 	}
 	
 	

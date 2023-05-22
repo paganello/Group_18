@@ -1,5 +1,4 @@
 package main;
-import java.util.Scanner;
 
 import goals.Gengoal;
 import goals.Privgoal;
@@ -19,18 +18,19 @@ public class Player {
 	/*
 	 * COSTRUTTORE
 	 * */
-	public Player (int nPlayer, int pGoal_1) {
+	public Player (int nPlayer, int[] PubGoalsNumbers, String playerName) {
 		
-		System.out.println("Inserisci il nome del giocatore " + (nPlayer+1) + ": ");	//set name
-		Scanner sc = new Scanner(System.in);
-		this.name = sc.nextLine();
-		sc.close();
-		this.number= nPlayer;
-		if(nPlayer == 1) {	//set chair
+		this.name = playerName;
+		
+		this.number = nPlayer;
+		
+		if(nPlayer == 0) {	//set chair
 			this.chair = true;
 		}else {
 			this.chair = false;
 		}
+		
+		this.publicGoals = new Pubgoal(PubGoalsNumbers[0], PubGoalsNumbers[1]);
 		
 		this.shelf = new BoxMatrix(6,5);	//creazione libreria del player 
 		
@@ -84,6 +84,8 @@ public class Player {
 		
 		this.publicGoals = publicGoal; 
 	}
+	
+	
 	public boolean isShelfFull() {
 		int verifier=1;
 		for (int i=0; i<6; i++) {
