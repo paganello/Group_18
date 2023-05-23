@@ -85,6 +85,10 @@ public class Player {
 		this.publicGoals = publicGoal; 
 	}
 	
+	public BoxMatrix getShelf() {
+		return this.shelf;
+	}
+	
 	
 	public boolean isShelfFull() {
 		int verifier=1;

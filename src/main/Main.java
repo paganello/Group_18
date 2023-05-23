@@ -18,7 +18,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		do {
 			
-			System.out.println ("Inserire il numero di giocatori: "); //ottengo in input il numero di giocatori, che è verificato alla fine di questo loop
+			System.out.print("Inserire il numero di giocatori: "); //ottengo in input il numero di giocatori, che è verificato alla fine di questo loop
 			playerNum = sc.nextInt();
 			sc.nextLine();
 			
@@ -39,7 +39,7 @@ public class Main {
 					int[] nGoals = randPubGoals();
 					
 					for(int i = 0; i < playerNum; i++) {
-						System.out.println ("Inserire il nome del giocatore " + (i+1) + ": ");
+						System.out.print("Inserire il nome del giocatore " + (i+1) + ": ");
 						if(sc.hasNextLine()) {
 							String playerName = sc.nextLine();
 							listaPlayer.add(new Player((i), nGoals, playerName));
@@ -47,10 +47,10 @@ public class Main {
 							System.out.println("Error (row 43): nextLine non found");
 						}
 					}
-					sc.close();
 					
 					Board tavolo= new Board(playerNum);
 					tavolo.matrix.fillBoard();
+					System.out.println(tavolo.matrix.getBox(0, 3).getTile().getColor());
 					
 					tavolo.matrix.showTable();			
 					/*
@@ -62,8 +62,19 @@ public class Main {
 						
 				case turnStart:
 					for (int v=0; v < listaPlayer.size(); v++) {
-						System.out.println("E' il turno di " + listaPlayer.get(v).getName());
+						System.out.println("E' il turno di " + listaPlayer.get(v).getName() + "\n");
+						
 						//metodi per prelevare e depositare tiles
+						System.out.print("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
+						int i = sc.nextInt();
+						sc.nextLine();
+						System.out.print("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
+						int j = sc.nextInt();
+						sc.nextLine();
+						
+						Tile[] t = new Tile[3];
+						//t = removeTilesFromBoard(listaPlayer.get(v).getShelf(), i, j);
+						
 						if(listaPlayer.get(v).isShelfFull() == true && stato == GameState.turnStart) {
 							stato = GameState.endPhase;
 							lastTurnPlayer = v;
