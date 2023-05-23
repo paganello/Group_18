@@ -341,8 +341,8 @@ public class BoxMatrix {
 	 * Metodo che riempie la board in modo randomico
 	 * */
 	public void fillBoard () {
-		for(int i = 1; i < nI; i++) {
-			for(int j = 1; j < nJ; j++) {
+		for(int i = 0; i < nI; i++) {
+			for(int j = 0; j < nJ; j++) {
 				if(m[i][j].isFillable() == true && !m[i][j].isFull()) {	//controllo che il box di coordinate (i,j) sia riempibile e vuoto
 					int UPPER_BOUND = 6;
 					int LOWER_BOUND = 1;
@@ -529,15 +529,15 @@ public class BoxMatrix {
 		int i = this.nI;
 		int j = this.nJ;
 		System.out.print(" \t");
-		for (int k=0; k < i; k++) {
+		for (int k = 0; k < i; k++) {
 			System.out.print(k + "\t");
 		}
 		System.out.println("\n");
 		
 		for(int y = 0; y < i; y++) {
 			System.out.print(y + "\t");
-			for (int x=0; x < j; x++) {
-				if(boxExistAndIsFillable(y, x)) {
+			for (int x = 0; x < j; x++) {
+				if(boxExistAndIsFillable(y, x) && this.m[y][x].isFull()) {
 					switch(this.m[y][x].getTile().getColor()) {
 					case 1:
 						System.out.print(ANSI_GREEN+"G\t"+ANSI_RESET); //G=verde
