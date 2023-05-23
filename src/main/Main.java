@@ -59,9 +59,14 @@ public class Main {
 					stato= GameState.turnStart; 
 				
 					break;
-						
+				
+				/*
+				 * Fase di gioco (un player alla volta)
+				 * */
 				case turnStart:
+					
 					for (int v=0; v < listaPlayer.size(); v++) {
+						
 						System.out.println("E' il turno di " + listaPlayer.get(v).getName() + "\n");
 						
 						//metodi per prelevare e depositare tiles
@@ -73,7 +78,7 @@ public class Main {
 						sc.nextLine();
 						
 						Tile[] t = new Tile[3];
-						//t = removeTilesFromBoard(listaPlayer.get(v).getShelf(), i, j);
+						t = listaPlayer.get(v).getShelf().removeTilesFromBoard(i, j);
 						
 						if(listaPlayer.get(v).isShelfFull() == true && stato == GameState.turnStart) {
 							stato = GameState.endPhase;
