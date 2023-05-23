@@ -359,47 +359,54 @@ public class BoxMatrix {
 		int sideCovered = 0;
 		int sideUncovered = 0;
 		int adjacentTile = 0;
-
-		if(m[i+1][j].isFull()) { //controlla la box accanto
-			sideCovered++; 
-			if(freeSide(i+1, j) == true) {
-				adjacentTile++;
-			}
+		
+		if(boxExistAndIsFillable(i+1, j)) {
+			if(m[i+1][j].isFull()) { //controlla la box accanto
+				sideCovered++; 
+				if(freeSide(i+1, j) == true) {
+					adjacentTile++;
+				}
 			
-		}
-		else {
-			sideUncovered++; 
-		}
-		
-		if(m[i-1][j].isFull()) {
-			sideCovered++;
-			if(freeSide(i-1, j) == true) {
-				adjacentTile++;
 			}
-		}
-		else {
-			sideUncovered++; 
-		}
-		
-		if(m[i][j+1].isFull()) {
-			sideCovered++;
-			if(freeSide(i, j+1) == true) {
-				adjacentTile++;
+			else {
+				sideUncovered++; 
 			}
 		}
 		
-		else {
-			sideUncovered++; 
-		}
-		
-		if(m[i][j-1].isFull()) {
-			sideCovered++; 
-			if(freeSide(i, j-1) == true) {
-				adjacentTile++;
+		if(boxExistAndIsFillable(i-1, j)) {
+			if(m[i-1][j].isFull()) {
+				sideCovered++;
+				if(freeSide(i-1, j) == true) {
+					adjacentTile++;
+				}
+			}
+			else {
+				sideUncovered++; 
 			}
 		}
-		else {
-			sideUncovered++;
+		
+		if(boxExistAndIsFillable(i, j+1)) {
+			if(m[i][j+1].isFull()) {
+				sideCovered++;
+				if(freeSide(i, j+1) == true) {
+					adjacentTile++;
+				}
+			}
+			else {
+				sideUncovered++; 
+			}
+		}
+		
+		if(boxExistAndIsFillable(i, j-1)) {
+			if(m[i][j-1].isFull()) {
+				sideCovered++; 
+				if(freeSide(i, j-1) == true) {
+					adjacentTile++;
+				}
+			}
+			else {
+				sideUncovered++;
+			}
 		}
 		
 		if(sideUncovered >= 1 && sideCovered >= 1 && adjacentTile >= 1) { //se la casella ha almeno un lato scoperto (quindi è prendibile) ed ha almeno un lato coperto (quindi ha una casella affianco) e questa a sua volta ha un lato libero segna la casella in questione come prendibile
