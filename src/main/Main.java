@@ -1,6 +1,5 @@
 package main;
 import java.util.*;
-import goals.*;
 import structure.*;
 
 
@@ -8,57 +7,76 @@ public class Main {
 	public static void main(String[] args) {
 		
 		GameState stato;
-		stato = GameState.drawPhase;
 	
 		int playerNum;
 		int lastTurnPlayer;
-		int contaUltimoTurno=0;
+		int contaUltimoTurno = 0;
 		
 		ArrayList<Player> listaPlayer= new ArrayList<Player>();
 	
-		Scanner sc= new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		do {
 			
-			System.out.println ("Inserire il numero di giocatori"); //ottengo in input il numero di giocatori, che è													//verificato alla fine di questo loop
-			playerNum= sc.nextInt();
-			if(playerNum < 2 || playerNum > 4) {
-				System.out.println("Per favore inserire solo valori tra 2 e 4");
-			}
+			System.out.print("Inserire il numero di giocatori: "); //ottengo in input il numero di giocatori, che è verificato alla fine di questo loop
+			playerNum = sc.nextInt();
+			sc.nextLine();
 			
+			if(playerNum < 2 || playerNum > 4) {
+				System.out.println("Per favore inserire solo valori tra 2 e 4!");
+			}
 		}while(playerNum < 2 || playerNum > 4);	
 		
-		stato = GameState.drawPhase;
-	
+		int[] nGoals = randPubGoals();
 		
+		for(int i = 0; i < playerNum; i++) {
+			System.out.print("Inserire il nome del giocatore " + (i+1) + ": ");
+			if(sc.hasNextLine()) {
+				String playerName = sc.nextLine();
+				listaPlayer.add(new Player((i), nGoals, playerName));
+			}else {
+				System.out.println("Error (row 43): nextLine non found");
+			}
+		}
+		
+		Board tavolo= new Board(playerNum);
+		tavolo.matrix.fillBoard();
+		System.out.println(tavolo.matrix.getBox(0, 3).getTile().getColor());
+		
+		tavolo.matrix.showTable();			
+		/*
+		 * stampa della situazione attuale del tavolo*/
+		
+		stato = GameState.turnStart;
 		
 		do {
 			switch (stato) {
-			
-				case drawPhase:
-					Pubgoal obbPubblici=new Pubgoal(); //genero goal pubblici
-					
-						for(int contaPlayerLoop=0; contaPlayerLoop < playerNum; contaPlayerLoop++) {
-							Privgoal obb1= new Privgoal(); //genero due goal privati ;
-							listaPlayer.add(new Player((contaPlayerLoop+1),obb1.getGoalNumber()));
-						}
-					
-						Board tavolo= new Board(playerNum);
-						tavolo.matrix.fillBoard();
-				
-						/*
-						 * stampa della situazione attuale del tavolo*/
-
-						stato= GameState.turnStart;
-				
-						break;
-						
+							
+				/*
+				 * Fase di gioco (un player alla volta)
+				 * */
 				case turnStart:
+					
 					for (int v=0; v < listaPlayer.size(); v++) {
-						System.out.println("E' il turno di "+listaPlayer.get(v).getName());
+						
+						System.out.println("E' il turno di " + listaPlayer.get(v).getName() + "\n");
+						
+						tavolo.matrix.showTable();
+						listaPlayer.get(v).getShelf().showTable();
 						//metodi per prelevare e depositare tiles
-						if(listaPlayer.get(v).isShelfFull()== true && stato==GameState.turnStart) {
-							stato= GameState.endPhase;
-							lastTurnPlayer=v;
+						System.out.print("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
+						int i = sc.nextInt();
+						sc.nextLine();
+						System.out.print("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
+						int j = sc.nextInt();
+						sc.nextLine();
+						
+						Tile[] t = new Tile[3];
+						t = tavolo.matrix.removeTilesFromBoard(i, j);
+						listaPlayer.get(v).getShelf().showTable();
+						
+						if(listaPlayer.get(v).isShelfFull() == true && stato == GameState.turnStart) {
+							stato = GameState.endPhase;
+							lastTurnPlayer = v;
 						}
 						listaPlayer.get(v).computePubGoals();
 					}
@@ -109,4 +127,19 @@ public class Main {
 		
 	
 	}	
+	
+	private static int[] randPubGoals() {
+		
+		int[] goals = new int[2];
+		
+		Random rand = new Random();
+		do {
+			goals[0] = rand.nextInt(11);		//questo metodo definisce solo la generazione degli obb. comuni, starà poi al main calcolare i punteggi in base
+			do{											//al numero di player e ordine conseguito.		
+				goals[1] = rand.nextInt(11);
+			}while(goals[0] == goals[1]);
+		}while(goals[0] < 0 && goals[1] < 0);
+		
+		return goals;
+	}
 }

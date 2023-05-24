@@ -38,11 +38,11 @@ public class Board {
 		
 		BoxMatrix matrix = new BoxMatrix(9,9);
 		
-		int[] iExceptMap = {1,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,4,6,7,7,7,7,8,8,8,8,8,8,9,9,9,9,9,9,9};  //array di coppie righe-colonne (coocrdinate) delle tiles da porre a 7
+		int[] iExceptMap = {1,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,4,6,7,7,7,7,8,8,8,8,8,8,9,9,9,9,9,9,9};  //array di coppie righe-colonne (coordinate) delle tiles da porre a non fillable
 		int[] jExceptMap = {1,2,3,6,7,8,9,1,2,3,7,8,9,1,2,8,9,1,9,1,2,8,9,1,2,3,7,8,9,1,2,3,4,7,8,9};
 		matrix.modFillableByArrayMaps(iExceptMap, jExceptMap, false);
 		
-		if(nPlayers <= 2) {
+		if(nPlayers == 2) {
 			
 			int[] iExceptTmpMap = {1,1,2,3,3,4,4,5,5,6,6,7,7,8,9,9};
 			int[] jExceptTmpMap = {4,5,6,3,7,2,9,1,9,1,8,3,7,4,5,6};
