@@ -1,4 +1,5 @@
 package goals;
+import ObiettiviPubblici.BoxMatrix;
 import structure.*;
 
 
@@ -117,11 +118,15 @@ public class Pubgoal {
 					this.done[i] = false;
 				
 				case 8:
-				
+					if(isPubGoal_9_Done(playerShelf)) {
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 				
 				case 9:
-				
+					if(isPubGoal_10_Done(playerShelf)) {
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 				
 				case 10:
@@ -363,6 +368,74 @@ public class Pubgoal {
 			return false;
 		}
 	}
+	
+	private boolean isPubGoal_09_Done (BoxMatrix playerShelf) {
+		
+		/*---------------------------------------------------- */
+		int conta = 0;
+		int incremento = 0;
+		int colonneDiverse = 0;
+		for(int j=0;j<5;j++) {	
+			for(int i=0;i<6;i++) {
+				for(int k=0;k<6;k++) {
+					if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
+						conta ++;
+					}				
+				}
+				if(conta==5)
+					incremento++;
+				conta = 0;
+			}
+			if(incremento == 6) {
+				colonneDiverse++;
+				System.out.println("Gli elementi della colonna " + (j+1) + " sono tutti diversi" );
+			}
+			incremento = 0;
+		}
+		
+		if(colonneDiverse==2) {
+			System.out.println("Punti Guadagnati");
+		}
+		
+		/*---------------------------------------------------- */
+		
+		
+		return false;
+	}
+
+	private boolean isPubGoal_10_Done (BoxMatrix playerShelf) {
+		/*---------------------------------------------------- */
+		
+		int conta = 0;
+		int incremento = 0;
+		int righeDiverse = 0;
+		for(int i=0; i<6;i++) {
+			for(int j=0;j<5;j++) {
+				for(int k=0;k<5;k++) {
+					if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
+						conta ++;
+					}
+				}
+				if(conta==4)
+					incremento++;
+				conta = 0;
+			}
+			if(incremento == 5) {
+				righeDiverse++;
+				System.out.println("Gli elementi della riga " + (i+1) + "sono tutti diversi");
+			}
+			incremento = 0;
+		}
+		
+		if(righeDiverse==2) {
+			System.out.println("Punti Guadagnati");
+		}
+		
+		/*---------------------------------------------------- */
+		
+		return false;
+	}
+	
 	
 	/*
 	 * Metodo per la verifica del Common Goal nr.11
