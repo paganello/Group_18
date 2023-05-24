@@ -16,6 +16,7 @@ public class Player {
 	private Gengoal genGoal;
 	private BoxMatrix shelf; 
 	
+	
 	/*
 	 * COSTRUTTORE
 	 * */
@@ -102,7 +103,18 @@ public class Player {
 		}
 	}
 	
-	
+	public BoxMatrix getShelf() {
+		return shelf;
+	}
+
+
+
+	public void setShelf(BoxMatrix shelf) {
+		this.shelf = shelf;
+	}
+
+
+
 	
 	
 	/*

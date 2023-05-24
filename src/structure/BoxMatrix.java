@@ -8,13 +8,14 @@ public class BoxMatrix {
 	private int nI;	//numero max di righe
 	private int nJ;	//numero max di colonne
 	
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PINK = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
+	//cambiamento colore testo
+	public static final String resetTextColor = "\u001B[0m";
+	public static final String textGreen = "\u001B[32m";
+	public static final String textYellow ="\u001B[33m";
+	public static final String textBlue = "\u001B[34m";
+	public static final String textPink = "\u001B[35m";
+	public static final String textCyan = "\u001B[36m";
+	public static final String textWhite = "\u001B[37m";  
 	
 	/*
 	 * COSTRUTTORE
@@ -518,22 +519,22 @@ public class BoxMatrix {
 			for (int x=0; x<m; x++) {
 				switch(this.m[x][y].getTile().getColor()) {
 				case 1:
-					System.out.print(ANSI_GREEN+"G/t"+ANSI_RESET); //G=verde
+					System.out.print(textGreen+"G/t"+resetTextColor); //G=verde
 					break;
 				case 2:
-					System.out.print(ANSI_WHITE+"W/t"+ANSI_RESET); //W=bianco
+					System.out.print(textWhite+"W/t"+resetTextColor); //W=bianco
 				    break;
 				case 3:
-					System.out.print(ANSI_YELLOW+"Y/t"+ANSI_RESET); //Y=giallo
+					System.out.print(textYellow+"Y/t"+resetTextColor); //Y=giallo
 					break;
 				case 4:
-					System.out.print(ANSI_BLUE+"B/t"+ANSI_RESET); //B=blu
+					System.out.print(textBlue+"B/t"+resetTextColor); //B=blu
 					break;
 				case 5:
-					System.out.print(ANSI_CYAN+"C/t"+ANSI_RESET); //C=azzurro
+					System.out.print(textCyan+"C/t"+resetTextColor); //C=azzurro
 					break;
 				case 6:
-					System.out.print(ANSI_PINK+"P/t"+ANSI_RESET); //P=rosa
+					System.out.print(textPink+"P/t"+resetTextColor); //P=rosa
 					break;
 				default:
 					System.out.print(" /t");
