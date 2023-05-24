@@ -40,9 +40,7 @@ public class Main {
 		
 		Board tavolo= new Board(playerNum);
 		tavolo.matrix.fillBoard();
-		System.out.println(tavolo.matrix.getBox(0, 3).getTile().getColor());
-		
-		tavolo.matrix.showTable();			
+			
 		/*
 		 * stampa della situazione attuale del tavolo*/
 		
@@ -61,7 +59,6 @@ public class Main {
 						System.out.println("E' il turno di " + listaPlayer.get(v).getName() + "\n");
 						
 						tavolo.matrix.showTable();
-						listaPlayer.get(v).getShelf().showTable();
 						//metodi per prelevare e depositare tiles
 						System.out.print("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
 						int i = sc.nextInt();
@@ -72,7 +69,15 @@ public class Main {
 						
 						Tile[] t = new Tile[3];
 						t = tavolo.matrix.removeTilesFromBoard(i, j);
+						
+						System.out.println("Ecco la tua libreria!");
 						listaPlayer.get(v).getShelf().showTable();
+					
+						System.out.print("\nInserisci la colonna dove vuoi inserire le tile selezionate: ");
+						j = sc.nextInt();
+						sc.nextLine();
+						listaPlayer.get(v).getShelf().putTilesInPlayerShelf(t, j, v);
+
 						
 						if(listaPlayer.get(v).isShelfFull() == true && stato == GameState.turnStart) {
 							stato = GameState.endPhase;

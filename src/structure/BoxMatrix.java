@@ -98,15 +98,18 @@ public class BoxMatrix {
 	 * 
 	 * la j che viene fornita DEVE essere gia decrementate e adattandola alla gestione della matrice (che ricordiamo parire da riga zero e non da riga uno)
 	 * */
-	public void putTileInPlayerShelf(Tile tile, int j, int nPlayer) {
+	public void putTilesInPlayerShelf(Tile[] tiles, int j, int nPlayer) {
 		
-		for (int i = 0; i < this.nI; i++) {
-			if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
-				this.m[i][j].setTile(tile);
-				this.m[i][j].getTile().setOwner(nPlayer);
-				this.m[i][j].getTile().setI(i);
-				this.m[i][j].getTile().setJ(j);
-			}	
+		for (int n = 0; n <= tiles.length; n++) {
+			for (int i = 0; i <= this.nI; i++) {
+				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
+					this.m[i][j].setTile(tiles[n]);
+					this.m[i][j].getTile().setOwner(nPlayer);
+					this.m[i][j].getTile().setI(i);
+					this.m[i][j].getTile().setJ(j);
+					break;
+				}	
+			}
 		}
 	}
 	
@@ -158,21 +161,31 @@ public class BoxMatrix {
 		}while (!scatola.freeSide(nI, nJ));*/
 		Scanner sc=new Scanner (System.in);
 		Tile  removedTiles [] = new Tile [3];
-		removedTiles [0] = this.getBox(i, j).getTile();
+		
+		if(this.boxExistAndIsFillable(i, j) && this.m[i][j].isFull()) {
+			
+			removedTiles [0] = this.getBox(i, j).getTile();
+		}
+		
 		int choice;
 		boolean tileExist;
 		
 		do {
-		    System.out.println("Che cosa vuoi fare?/n1-Prendi la casella a destra./n2-Prendi la casella a sinistra/n3-Prendi la casella in alto./n4-Prendi la casella in basso/n5-Prendi solo la casella selezionata");
+		    System.out.println("Che cosa vuoi fare?\n1-Prendi la casella a destra.\n2-Prendi la casella a sinistra\n3-Prendi la casella in alto.\n4-Prendi la casella in basso\n5-Prendi solo la casella selezionata");
 		    choice=sc.nextInt();
+		    sc.nextLine();
+		    
 		    switch (choice) {
 		    
 		    case 1:
+		    	
 			    if(this.boxExistAndIsFillable(i, j+1) && m[i][j+1].isFull() && this.freeSide(i, j+1)) {
 				    removedTiles [1] = this.getBox(i, j+1).getTile();
 				    do{
-				        System.out.println("Vuoi prendere anche una terza tessera?/n1-Si/n2-No");
+				        System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				        choice=sc.nextInt();
+				        sc.nextLine();
+				        
 				        switch (choice) {
 				    
 				        case 1:
@@ -180,15 +193,15 @@ public class BoxMatrix {
 						        removedTiles [2] = this.getBox(i, j+2).getTile();
 						        tileExist=true;
 					        }
-					    else {
-					    	System.out.println("Non è possibile prendere questa tessera.");
-					    	tileExist=false;
-					    }
-					    break;
+					        else {
+					        	System.out.println("Non è possibile prendere questa tessera.");
+					        	tileExist=false;
+					        }
+					        break;
 					    
 				        case 2:
 				        	tileExist=true;
-					       break;
+					    	break;
 					       
 				        default:
 					       System.out.println("Alla scelta fatta non corrisponde alcuna azione.");
@@ -196,21 +209,23 @@ public class BoxMatrix {
 					       break;
 				        } 
 				    } while (!tileExist);
-			    }
-			    
-			    else {
+				    
+			    }else {
 				    System.out.println("Non è possibile prendere questa tessera.");
 				    tileExist=false;
 			    }
-			break;
+			    break;
+			
 			
 		    case 2:
+		    	
 			    if(this.boxExistAndIsFillable(i, j-1) && m[i][j-1].isFull() && this.freeSide(i, j-1)) {
 				    removedTiles [1] = this.getBox(i, j-1).getTile();
 				    do {
 				        System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				        choice=sc.nextInt();
-				    
+				        sc.nextLine();
+				        
 				        switch (choice) {
 				        case 1:
 				    	    if(this.boxExistAndIsFillable(i, j-2) && m[i][j-2].isFull() && this.freeSide(i, j-2)) {
@@ -241,13 +256,16 @@ public class BoxMatrix {
 			    }
 			    break;
 			    
+			    
 		    case 3:
+		    	
 			    if(this.boxExistAndIsFillable(i+1, j) && m[i+1][j].isFull() && this.freeSide(i+1, j)) {
 				    removedTiles [1] = this.getBox(i+1, j).getTile();
 				    do {
 				        System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				        choice=sc.nextInt();
-				    
+				        sc.nextLine();
+				        
 				        switch (choice) {
 				        case 1:
 					        if(this.boxExistAndIsFillable(i+2, j) && m[i+2][j].isFull() && this.freeSide(i+2, j)) {
@@ -278,13 +296,16 @@ public class BoxMatrix {
 			    }
 			    break;
 			    
+			    
 		    case 4:
+		    	
 			    if(this.boxExistAndIsFillable(i-1, j) && m[i-1][j].isFull() && this.freeSide(i-1, j)) {
 				    removedTiles [1] = this.getBox(i-1, j).getTile();
 				    do {
 				    	System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				        choice=sc.nextInt();
-				    
+				        sc.nextLine();
+				        
 				        switch (choice) {
 				        case 1:
 					        if(this.boxExistAndIsFillable(i-2, j) && m[i-2][j].isFull() && this.freeSide(i-2, j)) {
@@ -327,12 +348,13 @@ public class BoxMatrix {
 		    
 		}while(!tileExist);
 		
-		for(int c=0; c<2; c++) {
-			int y=removedTiles[c].getI();
-			int x=removedTiles[c].getJ();
-			this.getBox(y, x).setFillable(false);
+		for(int c = 0; c < 3; c++) {
+			if(removedTiles[c] != null) {
+				int y = removedTiles[c].getI();
+				int x = removedTiles[c].getJ();
+				this.getBox(y, x).setFillable(false);
+			}
 		}
-		sc.close();
 		return removedTiles;
 	}
 	
