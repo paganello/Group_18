@@ -211,9 +211,9 @@ public class Pubgoal {
 
 	private boolean isPubGoal_2_Done(BoxMatrix playerShelf){
 	
-		if(playerShelf.getBox(0, 0).getTile().getColor() == playerShelf.getBox(0, 4).getTile().getColor()) {
-			if(playerShelf.getBox(0, 4).getTile().getColor() == playerShelf.getBox(5, 4).getTile().getColor()) {
-				if(playerShelf.getBox(5, 4).getTile().getColor() == playerShelf.getBox(5, 0).getTile().getColor()) {
+		if(playerShelf.getBox(0, 0).isFull() && playerShelf.getBox(0, 4).isFull() && playerShelf.getBox(0, 0).getTile().getColor() == playerShelf.getBox(0, 4).getTile().getColor()) {
+			if(playerShelf.getBox(5, 4).isFull() && playerShelf.getBox(0, 4).getTile().getColor() == playerShelf.getBox(5, 4).getTile().getColor()) {
+				if(playerShelf.getBox(5, 0).isFull() && playerShelf.getBox(5, 4).getTile().getColor() == playerShelf.getBox(5, 0).getTile().getColor()) {
 					return true;
 				}
 			}
@@ -235,7 +235,7 @@ public class Pubgoal {
 		int n = 0; 
 		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
-			for (int j = 0; j < playerShelf.getNI(); j++) {
+			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
 					int k = 0;
 					k = playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
@@ -265,7 +265,7 @@ public class Pubgoal {
 		int color = 1;
 		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
-			for (int j = 0; j < playerShelf.getNI(); j++) {
+			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified() && playerShelf.getBox(i, j).getTile().getColor() == color && color <= 6) {
 					
 					boolean f = false;
@@ -459,7 +459,9 @@ public class Pubgoal {
 				if(playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m+1).getTile().getColor()
 						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m-1).getTile().getColor()
 						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m-1).getTile().getColor()
-						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m+1).getTile().getColor()) {
+						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m+1).getTile().getColor()
+						&& playerShelf.getBox(n, m).isFull() && playerShelf.getBox(n+1, m+1).isFull() 
+						&& playerShelf.getBox(n-1, m-1).isFull() && playerShelf.getBox(n+1, m-1).isFull()&& playerShelf.getBox(n-1, m+1).isFull()) {
 					return true;
 				}
 			}
