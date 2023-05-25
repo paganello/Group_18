@@ -235,7 +235,7 @@ public class Pubgoal {
 		int n = 0; 
 		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
-			for (int j = 0; j < playerShelf.getNI(); j++) {
+			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
 					int k = 0;
 					k = playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
@@ -265,7 +265,7 @@ public class Pubgoal {
 		int color = 1;
 		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
-			for (int j = 0; j < playerShelf.getNI(); j++) {
+			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified() && playerShelf.getBox(i, j).getTile().getColor() == color && color <= 6) {
 					
 					boolean f = false;
