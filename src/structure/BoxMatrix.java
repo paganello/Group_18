@@ -109,7 +109,6 @@ public class BoxMatrix {
 						this.m[i][j].getTile().setI(i);
 						this.m[i][j].getTile().setJ(j);
 						i = this.nI;
-						System.out.println("done");
 					}	
 					//System.out.println(i);
 				}
@@ -167,6 +166,9 @@ public class BoxMatrix {
 		Scanner sc=new Scanner (System.in);
 		Tile  removedTiles [] = new Tile [3];
 		
+		
+		
+		
 		if(this.boxExistAndIsFillable(i, j) && this.m[i][j].isFull()) {
 			
 			removedTiles [0] = this.getBox(i, j).getTile();
@@ -188,9 +190,11 @@ public class BoxMatrix {
 			    if(this.boxExistAndIsFillable(i, j+1) && m[i][j+1].isFull() && this.freeSide(i, j+1)) {
 				    removedTiles [1] = this.getBox(i, j+1).getTile();
 				    do{
+				    	do {
 				        System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				        choice=sc.nextInt();
 				        sc.nextLine();
+				    	}while(choice<1||choice>2);
 				        
 				        switch (choice) {
 				    

@@ -62,17 +62,31 @@ public class Main {
 						//metodi per prelevare e depositare tiles
 						int i;
 						int j;
-					do {
-						do{
-						i = sc.nextInt();
-						sc.nextLine();
-						}while(i<1||i>9);
 						do {
-						System.out.print("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
-						j = sc.nextInt();
-						sc.nextLine();
-						}while(j<1||j>9);
-					}while(tavolo.matrix.getBox(i,j).isFillable()&& tavolo.matrix.getBox(i,j).isFull());
+							do{
+								System.out.print("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
+								i = sc.nextInt();
+								sc.nextLine();
+								if(i<1||i>9) {
+									System.out.println("Riga non valida!");
+								}
+							}while(i<1||i>9);
+							
+							do {
+								System.out.print("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
+								j = sc.nextInt();
+								sc.nextLine();
+								if(j<1||j>9) {
+									System.out.println("Casella non valida!");
+								}
+							}while(j<1||j>9);
+							
+							if(!tavolo.matrix.getBox(i-1,j-1).isFillable() && !tavolo.matrix.getBox(i-1,j-1).isFull()) {
+								System.out.println("La casella selezioanta non contiene una tessera!");
+							}
+							
+						}while(!tavolo.matrix.getBox(i-1,j-1).isFillable() && !tavolo.matrix.getBox(i-1,j-1).isFull());
+						
 						Tile[] t = new Tile[3];
 						t = tavolo.matrix.removeTilesFromBoard(i-1, j-1);	//decremento in quanto gli array vanno da 0 a 8 e non da 1 a 9
 						
@@ -153,6 +167,8 @@ public class Main {
 			}while(goals[0] == goals[1]);
 		}while(goals[0] < 0 && goals[1] < 0);
 		
+		System.out.println("goal 1: " + goals[0]);
+		System.out.println("goal 2: " + goals[1]);
 		return goals;
 	}
 }
