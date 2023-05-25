@@ -53,12 +53,19 @@ public class Main {
 				 * Fase di gioco (un player alla volta)
 				 * */
 				case turnStart:
-					
+
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
 						System.out.println("E' il turno di " + listaPlayer.get(v).getName() + "\n");
 						
 						tavolo.matrix.showTable();
+						
+					/*
+					 * 
+					 * listaPlayer.get(v).debugFillShelf();
+					 * //questo metodo consente di riempiere immediatamente la shelf a piacimento.
+					 * 
+					 */
 						//metodi per prelevare e depositare tiles
 						int i;
 						int j;

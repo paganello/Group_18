@@ -510,3 +510,4 @@ public class Pubgoal {
 		return false;
 	}
 }
+
