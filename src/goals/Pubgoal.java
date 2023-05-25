@@ -459,7 +459,9 @@ public class Pubgoal {
 				if(playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m+1).getTile().getColor()
 						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m-1).getTile().getColor()
 						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m-1).getTile().getColor()
-						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m+1).getTile().getColor()) {
+						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m+1).getTile().getColor()
+						&& playerShelf.getBox(n, m).isFull() && playerShelf.getBox(n+1, m+1).isFull() 
+						&& playerShelf.getBox(n-1, m-1).isFull() && playerShelf.getBox(n+1, m-1).isFull()&& playerShelf.getBox(n-1, m+1).isFull()) {
 					return true;
 				}
 			}
