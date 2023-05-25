@@ -1,5 +1,4 @@
 package goals;
-import ObiettiviPubblici.BoxMatrix;
 import structure.*;
 
 
@@ -78,56 +77,66 @@ public class Pubgoal {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					break;
 				
 				case 1:
 					if(isPubGoal_2_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					break;
 				
 				case 2:
 					if(isPubGoal_3_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					break;
 				
 				case 3:
 					if(isPubGoal_4_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					break;
 				
 				case 4:
 				
 					this.done[i] = false;
+					break;
 				
 				case 5:
 					if(isPubGoal_6_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					break;
 				
 				case 6:
 					if(isPubGoal_7_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					break;
 				
 				case 7:
 				
 					this.done[i] = false;
+					break;
 				
 				case 8:
 					if(isPubGoal_9_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					break;
 				
 				case 9:
 					if(isPubGoal_10_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					break;
 				
 				case 10:
 					if(isPubGoal_11_Done(playerShelf)) {
@@ -142,8 +151,10 @@ public class Pubgoal {
 					}					
 					this.done[i] = false;
 					break;
+					
 				default:
 					this.done[i] = false;
+					break;
 			}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
 			// il grosso dell'algoritmo per verificare i goal publici.
 		}		
@@ -369,7 +380,7 @@ public class Pubgoal {
 		}
 	}
 	
-	private boolean isPubGoal_09_Done (BoxMatrix playerShelf) {
+	private boolean isPubGoal_9_Done (BoxMatrix playerShelf) {
 		
 		/*---------------------------------------------------- */
 		int conta = 0;
