@@ -320,7 +320,7 @@ public class Pubgoal {
 			while(c < 7) {
 				for (int m=0; m<6;m++) {
 					for(int n=0; n<5; n++) {
-						if(playerShelf.getBox(m, n).getTile().getColor() == c) {
+						if(playerShelf.getBox(m, n).isFull()&& playerShelf.getBox(m, n).getTile().getColor() == c) {
 							counter++;
 						}
 					}
@@ -350,20 +350,20 @@ public class Pubgoal {
 		int verifier=1;
 		int c=0;
 			while(c<2) {
-				if(playerShelf.getBox(1, 1+c).getTile().getColor() == playerShelf.getBox(2, 2+c).getTile().getColor())
-					if(playerShelf.getBox(2, 2+c).getTile().getColor() == playerShelf.getBox(3, 3+c).getTile().getColor())
-						if(playerShelf.getBox(3, 3+c).getTile().getColor() == playerShelf.getBox(4, 4+c).getTile().getColor())
-							if(playerShelf.getBox(4, 4+c).getTile().getColor() == playerShelf.getBox(5, 5+c).getTile().getColor()) {
+				if(playerShelf.getBox(1, 1+c).isFull() && playerShelf.getBox(2, 2+c).isFull() && playerShelf.getBox(1, 1+c).getTile().getColor() == playerShelf.getBox(2, 2+c).getTile().getColor())
+					if(playerShelf.getBox(2, 2+c).isFull() && playerShelf.getBox(3, 3+c).isFull() && playerShelf.getBox(2, 2+c).getTile().getColor() == playerShelf.getBox(3, 3+c).getTile().getColor())
+						if(playerShelf.getBox(3, 3+c).isFull() && playerShelf.getBox(4, 4+c).isFull() && playerShelf.getBox(3, 3+c).getTile().getColor() == playerShelf.getBox(4, 4+c).getTile().getColor())
+							if(playerShelf.getBox(4, 4+c).isFull() && playerShelf.getBox(5, 5+c).isFull() && playerShelf.getBox(4, 4+c).getTile().getColor() == playerShelf.getBox(5, 5+c).getTile().getColor()) {
 									verifier=0;
 								}
 								else {
 									verifier=verifier*1;
 								}
 				
-			if(playerShelf.getBox(1, 6-c).getTile().getColor() == playerShelf.getBox(2, 5-c).getTile().getColor())
-				if(playerShelf.getBox(2, 5-c).getTile().getColor() == playerShelf.getBox(3, 4-c).getTile().getColor())
-					if(playerShelf.getBox(3, 4-c).getTile().getColor() == playerShelf.getBox(4, 3-c).getTile().getColor())
-						if(playerShelf.getBox(4, 3-c).getTile().getColor() == playerShelf.getBox(5, 2-c).getTile().getColor()) {
+			if(playerShelf.getBox(1, 6-c).isFull() && playerShelf.getBox(2, 5-c).isFull() && playerShelf.getBox(1, 6-c).getTile().getColor() == playerShelf.getBox(2, 5-c).getTile().getColor())
+				if(playerShelf.getBox(2, 5-c).isFull() && playerShelf.getBox(3, 4-c).isFull() && playerShelf.getBox(2, 5-c).getTile().getColor() == playerShelf.getBox(3, 4-c).getTile().getColor())
+					if(playerShelf.getBox(3, 4-c).isFull() && playerShelf.getBox(4, 3-c).isFull() && playerShelf.getBox(3, 4-c).getTile().getColor() == playerShelf.getBox(4, 3-c).getTile().getColor())
+						if(playerShelf.getBox(4, 3-c).isFull() && playerShelf.getBox(5, 2-c).isFull() && playerShelf.getBox(4, 3-c).getTile().getColor() == playerShelf.getBox(5, 2-c).getTile().getColor()) {
 								verifier=0;
 						     }
 							else {
