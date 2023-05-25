@@ -60,13 +60,19 @@ public class Main {
 						
 						tavolo.matrix.showTable();
 						//metodi per prelevare e depositare tiles
-						System.out.print("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
-						int i = sc.nextInt();
+						int i;
+						int j;
+					do {
+						do{
+						i = sc.nextInt();
 						sc.nextLine();
+						}while(i<1||i>9);
+						do {
 						System.out.print("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
-						int j = sc.nextInt();
+						j = sc.nextInt();
 						sc.nextLine();
-						
+						}while(j<1||j>9);
+					}while(tavolo.matrix.getBox(i,j).isFillable()&& tavolo.matrix.getBox(i,j).isFull());
 						Tile[] t = new Tile[3];
 						t = tavolo.matrix.removeTilesFromBoard(i-1, j-1);	//decremento in quanto gli array vanno da 0 a 8 e non da 1 a 9
 						
