@@ -3,7 +3,8 @@ package main;
 import goals.Gengoal;
 import goals.Privgoal;
 import goals.Pubgoal;
-import structure.BoxMatrix;
+import structure.*;
+import java.util.*;
 
 public class Player {
 	public int number;
@@ -140,5 +141,17 @@ public class Player {
 		genGoal.verifyAndComputePoints(shelf);
 		this.points = publicGoals.getpoints() + privateGoal.getPoints() + genGoal.getPoints();
 	}
-	
+	public void debugFillShelf() {
+		Scanner sc= new Scanner(System.in);
+		int c;
+		for (int i=0; i<6; i++) {
+			for (int j=0; j<5; j++) {
+				System.out.println("Inserire la tile alla posizione "+(i+1)+" "+(j+1));
+				c= sc.nextInt();
+				Tile tessera= new Tile(i,j,c);
+				this.shelf.getBox(i,j).fillBox(tessera);
+			}
+		
+		}
+	}
 }
