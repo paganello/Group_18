@@ -100,17 +100,22 @@ public class BoxMatrix {
 	 * */
 	public void putTilesInPlayerShelf(Tile[] tiles, int j, int nPlayer) {
 		
-		for (int n = 0; n <= tiles.length; n++) {
-			for (int i = 0; i <= this.nI; i++) {
-				if(!this.m[i][j].isFull() && this.m[i+1][j].isFull()) {
-					this.m[i][j].setTile(tiles[n]);
-					this.m[i][j].getTile().setOwner(nPlayer);
-					this.m[i][j].getTile().setI(i);
-					this.m[i][j].getTile().setJ(j);
-					break;
-				}	
+		for (int n = 0; n < tiles.length; n++) {
+			if(tiles[n] != null) {
+				for (int i = 0; i < this.nI; i++) {
+					if(!this.m[i][j].isFull() && boxExistAndIsFillable(i+1, j) && this.m[i+1][j].isFull() || (i+1) == this.nI && !this.m[i][j].isFull()) {
+						this.m[i][j].fillBox(tiles[n]);
+						this.m[i][j].getTile().setOwner(nPlayer);
+						this.m[i][j].getTile().setI(i);
+						this.m[i][j].getTile().setJ(j);
+						i = this.nI;
+						System.out.println("done");
+					}	
+					//System.out.println(i);
+				}
 			}
 		}
+		
 	}
 	
 	
@@ -482,8 +487,8 @@ public class BoxMatrix {
 	 * Metedo PRIVATO che verifica se una determinata box esiste ed e' riempibile 
 	 * */
 	private boolean boxExistAndIsFillable(int i, int j) {
-		if(i >= 0 && i <= this.nI) {
-			if(j >= 0 && j <= this.nJ) {
+		if(i >= 0 && i < this.nI) {
+			if(j >= 0 && j < this.nJ) {
 				if(m[i][j].isFillable()) {
 					return true;
 				}
@@ -551,13 +556,13 @@ public class BoxMatrix {
 		int i = this.nI;
 		int j = this.nJ;
 		System.out.print(" \t");
-		for (int k = 0; k < i; k++) {
-			System.out.print(k + "\t");
+		for (int k = 0; k < j; k++) {
+			System.out.print(k+1 + "\t");
 		}
 		System.out.println("\n");
 		
 		for(int y = 0; y < i; y++) {
-			System.out.print(y + "\t");
+			System.out.print(y+1 + "\t");
 			for (int x = 0; x < j; x++) {
 				if(boxExistAndIsFillable(y, x) && this.m[y][x].isFull()) {
 					switch(this.m[y][x].getTile().getColor()) {

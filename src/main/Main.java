@@ -68,7 +68,7 @@ public class Main {
 						sc.nextLine();
 						
 						Tile[] t = new Tile[3];
-						t = tavolo.matrix.removeTilesFromBoard(i, j);
+						t = tavolo.matrix.removeTilesFromBoard(i-1, j-1);	//decremento in quanto gli array vanno da 0 a 8 e non da 1 a 9
 						
 						System.out.println("Ecco la tua libreria!");
 						listaPlayer.get(v).getShelf().showTable();
@@ -76,7 +76,9 @@ public class Main {
 						System.out.print("\nInserisci la colonna dove vuoi inserire le tile selezionate: ");
 						j = sc.nextInt();
 						sc.nextLine();
-						listaPlayer.get(v).getShelf().putTilesInPlayerShelf(t, j, v);
+						listaPlayer.get(v).getShelf().putTilesInPlayerShelf(t, j-1, v); //decremento in quanto l'array va da 0 a 8 e non da 1 a 9
+						
+						listaPlayer.get(v).getShelf().showTable();
 
 						
 						if(listaPlayer.get(v).isShelfFull() == true && stato == GameState.turnStart) {
