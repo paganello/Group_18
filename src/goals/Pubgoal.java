@@ -381,17 +381,18 @@ public class Pubgoal {
 	}
 	
 	private boolean isPubGoal_9_Done (BoxMatrix playerShelf) {
-		
-		/*---------------------------------------------------- */
+
 		int conta = 0;
 		int incremento = 0;
 		int colonneDiverse = 0;
 		for(int j=0;j<5;j++) {	
 			for(int i=0;i<6;i++) {
 				for(int k=0;k<6;k++) {
-					if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
-						conta ++;
-					}				
+					if(playerShelf.getBox(i,j).getTile()!=null){
+						   if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
+								conta ++;
+							}
+					}
 				}
 				if(conta==5)
 					incremento++;
@@ -408,14 +409,11 @@ public class Pubgoal {
 			System.out.println("Punti Guadagnati");
 		}
 		
-		/*---------------------------------------------------- */
-		
-		
 		return false;
 	}
 
 	private boolean isPubGoal_10_Done (BoxMatrix playerShelf) {
-		/*---------------------------------------------------- */
+
 		
 		int conta = 0;
 		int incremento = 0;
@@ -423,8 +421,10 @@ public class Pubgoal {
 		for(int i=0; i<6;i++) {
 			for(int j=0;j<5;j++) {
 				for(int k=0;k<5;k++) {
-					if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
-						conta ++;
+					if(playerShelf.getBox(i,j).getTile()!=null){
+						   if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
+								conta ++;
+							}
 					}
 				}
 				if(conta==4)
@@ -441,8 +441,6 @@ public class Pubgoal {
 		if(righeDiverse==2) {
 			System.out.println("Punti Guadagnati");
 		}
-		
-		/*---------------------------------------------------- */
 		
 		return false;
 	}
