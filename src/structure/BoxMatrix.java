@@ -171,10 +171,11 @@ public class BoxMatrix {
 		boolean tileExist;
 		
 		do {
+			do {
 		    System.out.println("Che cosa vuoi fare?\n1-Prendi la casella a destra.\n2-Prendi la casella a sinistra\n3-Prendi la casella in alto.\n4-Prendi la casella in basso\n5-Prendi solo la casella selezionata");
 		    choice=sc.nextInt();
 		    sc.nextLine();
-		    
+			}while(choice<1||choice>5);
 		    switch (choice) {
 		    
 		    case 1:
@@ -262,10 +263,11 @@ public class BoxMatrix {
 			    if(this.boxExistAndIsFillable(i+1, j) && m[i+1][j].isFull() && this.freeSide(i+1, j)) {
 				    removedTiles [1] = this.getBox(i+1, j).getTile();
 				    do {
+				    do {
 				        System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				        choice=sc.nextInt();
 				        sc.nextLine();
-				        
+				    }while(choice<1||choice>2);
 				        switch (choice) {
 				        case 1:
 					        if(this.boxExistAndIsFillable(i+2, j) && m[i+2][j].isFull() && this.freeSide(i+2, j)) {
@@ -287,6 +289,7 @@ public class BoxMatrix {
 					        tileExist=false;
 					        break;
 				        }
+				     
 				    }while (!tileExist);
 			    }
 			    
