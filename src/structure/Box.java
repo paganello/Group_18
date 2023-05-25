@@ -54,6 +54,10 @@ public class Box {
 		return this.full;
 	}
 	
+	public void setFull(boolean d) {
+		this.full = d;
+	}
+	
 	public int getI() {
 		return this.i;
 	}
