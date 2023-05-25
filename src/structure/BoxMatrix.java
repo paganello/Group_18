@@ -547,7 +547,7 @@ public class BoxMatrix {
 		
 		for (int i = 0; i < nI; i++) {
 			for (int j = 0; j < nJ; j++) {
-				if(m[i][j].isFillable()) {
+				if(m[i][j].isFull()) {
 					m[i][j].getTile().setVerified(b);
 				}
 			}
