@@ -88,11 +88,14 @@ public class Main {
 								}
 							}while(j<1||j>9);
 							
-							if(!tavolo.matrix.getBox(i-1,j-1).isFillable() && !tavolo.matrix.getBox(i-1,j-1).isFull()) {
+							if(!tavolo.matrix.getBox(i-1,j-1).isFillable() || !tavolo.matrix.getBox(i-1,j-1).isFull()) {
 								System.out.println("La casella selezioanta non contiene una tessera!");
 							}
 							
-						}while(!tavolo.matrix.getBox(i-1,j-1).isFillable() && !tavolo.matrix.getBox(i-1,j-1).isFull());
+							if (!tavolo.matrix.freeSide(i, j))
+								System.out.println("La casella selezionata contiene una tessera che ha tutti i lati occupati.");
+							
+						}while(!tavolo.matrix.getBox(i-1,j-1).isFillable() || !tavolo.matrix.getBox(i-1,j-1).isFull() || !tavolo.matrix.freeSide(i, j));
 						
 						Tile[] t = new Tile[3];
 						t = tavolo.matrix.removeTilesFromBoard(i-1, j-1);	//decremento in quanto gli array vanno da 0 a 8 e non da 1 a 9
