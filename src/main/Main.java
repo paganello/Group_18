@@ -77,7 +77,7 @@ public class Main {
 								j = sc.nextInt();
 								sc.nextLine();
 								if(j<1||j>9) {
-									System.out.println("Casella non valida!");
+									System.out.println("Colonna non valida!");
 								}
 							}while(j<1||j>9);
 							
@@ -105,6 +105,7 @@ public class Main {
 							stato = GameState.endPhase;
 							lastTurnPlayer = v;
 						}
+						
 						listaPlayer.get(v).computePubGoals();
 					}
 					break;
