@@ -184,7 +184,7 @@ public class Main {
 				goals[1] = rand.nextInt(11);
 			}while(goals[0] == goals[1]);
 		}while(goals[0] < 0 && goals[1] < 0);
-		*/ goals[0] = 2; goals[1] = 3;
+		*/goals[0] = 2; goals[1] = 3;
 		System.out.println("goal 1: " + goals[0]);
 		System.out.println("goal 2: " + goals[1]);
 		return goals;
