@@ -53,19 +53,33 @@ public class Main {
 				 * Fase di gioco (un player alla volta)
 				 * */
 				case turnStart:
+					
+					//SCRIPT DI DEBUG
+					BoxMatrix m = new BoxMatrix(6, 5);
+					m.fillBoard();
+					listaPlayer.get(0).setShelf(m);
+					listaPlayer.get(0).getShelf().showTable();
+					
+					int[] c = new int[2];
+					
+					System.out.println("\n1) quale goal vuoi verificare?");
+					c[0] = sc.nextInt();
+					sc.nextLine();
+					
+					System.out.println("\n2) quale goal vuoi verificare?");
+					c[1] = sc.nextInt();
+					sc.nextLine();
+					
+					listaPlayer.get(0).getPublicGoals().verify(listaPlayer.get(0).getShelf(), c);
+					
 
+/*					
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
 						System.out.println("E' il turno di " + listaPlayer.get(v).getName() + "\n");
 						
 						tavolo.matrix.showTable();
 						
-					/*
-					 * 
-					 * listaPlayer.get(v).debugFillShelf();
-					 * //questo metodo consente di riempiere immediatamente la shelf a piacimento.
-					 * 
-					 */
 						//metodi per prelevare e depositare tiles
 						int i;
 						int j;
@@ -74,19 +88,19 @@ public class Main {
 								System.out.print("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
 								i = sc.nextInt();
 								sc.nextLine();
-								if(i<1||i>9) {
+								if(i < 1 || i > 9) {
 									System.out.println("Riga non valida!");
 								}
-							}while(i<1||i>9);
+							}while(i < 1 || i > 9);
 							
 							do {
 								System.out.print("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
 								j = sc.nextInt();
 								sc.nextLine();
-								if(j<1||j>9) {
+								if(j < 1 || j > 9) {
 									System.out.println("Colonna non valida!");
 								}
-							}while(j<1||j>9);
+							}while(j < 1 || j > 9);
 							
 							if(!tavolo.matrix.getBox(i-1,j-1).isFillable() || !tavolo.matrix.getBox(i-1,j-1).isFull()) {
 								System.out.println("La casella selezioanta non contiene una tessera!");
@@ -126,6 +140,7 @@ public class Main {
 						listaPlayer.get(v).computePubGoals();
 					}
 					break;
+*/
 		
 				case endPhase:
 					

@@ -521,32 +521,43 @@ public class BoxMatrix {
 	 * */
 	public int countNumberOfAdjacentsTilesWithSameColor(int i, int j, int k) {
 
-		if(boxExistAndIsFillable(i-1, j) && m[i-1][j].isFull() && !m[i][j].getTile().isVerified()){
+		
+		m[i][j].getTile().setVerified(true);
+		//System.out.println(i + " " + j);
+		if(boxExistAndIsFillable(i-1, j) && m[i-1][j].isFull() && !m[i-1][j].getTile().isVerified()){
 			if(m[i-1][j].getTile().getColor() == m[i][j].getTile().getColor()) {
+				//m[i][j].getTile().setVerified(true);
 				k++;
 				i--;
-				countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+				//System.out.println(k);
+				k = countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 			}
 		}
-		if(boxExistAndIsFillable(i, j+1) && m[i][j+1].isFull() && !m[i][j].getTile().isVerified()){
+		if(boxExistAndIsFillable(i, j+1) && m[i][j+1].isFull() && !m[i][j+1].getTile().isVerified()){
 			if(m[i][j+1].getTile().getColor() == m[i][j].getTile().getColor()) {
+				//m[i][j].getTile().setVerified(true);
 				k++;
 				j++;
-				countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+				//System.out.println(k);
+				k = countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 			}
 		}
-		if(boxExistAndIsFillable(i+1, j) && m[i+1][j].isFull() && !m[i][j].getTile().isVerified()){
+		if(boxExistAndIsFillable(i+1, j) && m[i+1][j].isFull() && !m[i+1][j].getTile().isVerified()){
 			if(m[i+1][j].getTile().getColor() == m[i][j].getTile().getColor()) {
+				//m[i][j].getTile().setVerified(true);
 				k++;
 				i++;
-				countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+				//System.out.println(k);
+				k =countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 			}
 		}
-		if(boxExistAndIsFillable(i, j-1) && m[i][j-1].isFull() && !m[i][j].getTile().isVerified()){
+		if(boxExistAndIsFillable(i, j-1) && m[i][j-1].isFull() && !m[i][j-1].getTile().isVerified()){
 			if(m[i][j-1].getTile().getColor() == m[i][j].getTile().getColor()) {
+				//m[i][j].getTile().setVerified(true);
 				k++;
 				j--;
-				countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+				//System.out.println(k);
+				k = countNumberOfAdjacentsTilesWithSameColor(i, j, k);
 			}
 		}
 		return k;
@@ -614,4 +625,5 @@ public class BoxMatrix {
 			System.out.println("\n\n");
 		}
     }
+	
 }

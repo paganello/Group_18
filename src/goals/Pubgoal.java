@@ -160,6 +160,109 @@ public class Pubgoal {
 		}		
 	}
 	
+	//METEODO DI DEBUG DEI GOALS
+	public void verify(BoxMatrix playerShelf, int[] c) {
+		
+		for (int i = 0; i < 2; i++) {
+			switch (c[i]) {
+				case 0:
+					if(isPubGoal_1_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+					break;
+				
+				case 1:
+					if(isPubGoal_2_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+					break;
+				
+				case 2:
+					if(isPubGoal_3_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+					break;
+				
+				case 3:
+					if(isPubGoal_4_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+					break;
+				
+				case 4:
+				
+					this.done[i] = false;
+					break;
+				
+				case 5:
+					if(isPubGoal_6_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+					break;
+				
+				case 6:
+					if(isPubGoal_7_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+					break;
+				
+				case 7:
+				
+					this.done[i] = false;
+					break;
+				
+				case 8:
+					if(isPubGoal_9_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+					break;
+				
+				case 9:
+					if(isPubGoal_10_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
+					this.done[i] = false;
+					break;
+				
+				case 10:
+					if(isPubGoal_11_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}					
+					this.done[i] = false;
+					break;
+				
+				case 11:
+					if(isPubGoal_12_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}					
+					this.done[i] = false;
+					break;
+					
+				default:
+					this.done[i] = false;
+					break;
+			}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
+			// il grosso dell'algoritmo per verificare i goal publici.
+		}		
+	}
+	
 	
 	/*
 	 * Metodo di asseganzione dei punti (viene aggiornato l'attributo "points") in base al raggiungimento dei singoli goals pubblici.
@@ -191,11 +294,12 @@ public class Pubgoal {
 		int n = 0; 
 		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
-			for (int j = 0; j < playerShelf.getNI(); j++) {
+			for (int j = 0; j < playerShelf.getNJ(); j++) {
+				System.out.print("I = " + i + "  J = " + j + "  ");
 				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
-					int k = 0;
+					int k = 1;
 					k = playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
-					
+					System.out.println("K = " + k);
 					if(k == 2 ) {
 						n++;
 					}
@@ -203,6 +307,7 @@ public class Pubgoal {
 			}
 		}
 		playerShelf.setAllVerifiedTileAttribute(false);
+		System.out.println(n);
 		if(n == 6) {
 			return true;
 		}

@@ -141,6 +141,8 @@ public class Player {
 		genGoal.verifyAndComputePoints(shelf);
 		this.points = publicGoals.getpoints() + privateGoal.getPoints() + genGoal.getPoints();
 	}
+	
+	
 	public void debugFillShelf() {
 		Scanner sc= new Scanner(System.in);
 		int c;
