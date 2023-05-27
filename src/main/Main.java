@@ -192,14 +192,14 @@ public class Main {
 		
 		int[] goals = new int[2];
 		
-		/*Random rand = new Random();
+		Random rand = new Random();
 		do {
 			goals[0] = rand.nextInt(11);		//questo metodo definisce solo la generazione degli obb. comuni, starà poi al main calcolare i punteggi in base
 			do{											//al numero di player e ordine conseguito.		
 				goals[1] = rand.nextInt(11);
 			}while(goals[0] == goals[1]);
 		}while(goals[0] < 0 && goals[1] < 0);
-		*/goals[0] = 2; goals[1] = 3;
+		/*goals[0] = 2; goals[1] = 3;*/
 		System.out.println("goal 1: " + goals[0]);
 		System.out.println("goal 2: " + goals[1]);
 		return goals;
