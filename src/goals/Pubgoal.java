@@ -295,11 +295,16 @@ public class Pubgoal {
 		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
 			for (int j = 0; j < playerShelf.getNJ(); j++) {
-				System.out.print("I = " + i + "  J = " + j + "  ");
+				//System.out.print("I = " + i + "  J = " + j + "  ");
 				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
-					int k = 1;
-					k = playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
-					System.out.println("K = " + k);
+					
+					int k = 0;
+					for (int l = 0; l < 4; l++) {
+						int a = 0;
+						k = k + playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, a);
+					}
+					k = k + 1;
+					//System.out.println("K = " + k);
 					if(k == 2 ) {
 						n++;
 					}
