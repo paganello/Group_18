@@ -176,8 +176,8 @@ public class Main {
 	private static int[] randPubGoals() {
 		
 		int[] goals = new int[2];
-		/*
-		Random rand = new Random();
+		
+		/*Random rand = new Random();
 		do {
 			goals[0] = rand.nextInt(11);		//questo metodo definisce solo la generazione degli obb. comuni, starà poi al main calcolare i punteggi in base
 			do{											//al numero di player e ordine conseguito.		
