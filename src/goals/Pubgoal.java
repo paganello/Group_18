@@ -198,6 +198,7 @@ public class Pubgoal {
 					break;
 				
 				case 4:
+					
 				
 					this.done[i] = false;
 					break;
@@ -421,9 +422,66 @@ public class Pubgoal {
 		}
 		return false;
 	}
+	
+	
+	private boolean isPubGoal_5_Done(BoxMatrix playerShelf) {
+		int conta_diversi = 0;
+		int max_uguali = 0;
+		int verifica_punto = 0;
+		int colonne_diverse = 0;
+		for(int j=0;j<5;j++) {	
+			for(int i=0;i<6;i++) {				
+				for(int k=0;k<6;k++) {
+					//System.out.println("Confronto: " + BoxMatrix[i][j].getColore() +"["+i+"]"+"["+j+"]" + " con " + BoxMatrix[i][k].getColore()+"["+i+"]"+"["+k+"]" );
+					if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
+						conta_diversi++;
+					else
+						max_uguali++;	
+				}
+					if(conta_diversi==4 && max_uguali==2)	
+						verifica_punto+= 1;
+					if(conta_diversi==3 && max_uguali==3)	
+						verifica_punto+= 2;
+					if(conta_diversi==5 && max_uguali==1)
+						verifica_punto+= 0;					
+					if(conta_diversi==2 && max_uguali==4)
+						verifica_punto+= 3;
+					
+
+					
+					conta_diversi=0;
+					max_uguali=0;
+					
+			}
+			switch(verifica_punto) {
+				case 6:
+					//System.err.println("La colonna " +"["+j+"]" + " soddisfa le condizioni");
+					colonne_diverse++;
+					break;
+				case 8:
+					//System.err.println("La colonna " +"["+j+"]" + " soddisfa le condizioni");
+					colonne_diverse++;
+					break;
+				case 12:
+					//System.err.println("La colonna " +"["+j+"]" + " soddisfa le condizioni");
+					colonne_diverse++;
+					break;
+					
+			}
+			verifica_punto=0;
+			
+		}		
+		if(colonne_diverse==3)
+			return true;
+	}
+	return false;
+	
+	
+	}
 
 	
 	private boolean isPubGoal_6_Done(BoxMatrix playerShelf) {
+		
 		int counter=0;
 		int c=1;
 		int verifier=1;
