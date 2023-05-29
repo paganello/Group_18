@@ -101,7 +101,7 @@ public class Pubgoal {
 					break;
 				
 				case 4:
-				
+					
 					this.done[i] = false;
 					break;
 				
