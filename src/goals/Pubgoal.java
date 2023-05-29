@@ -74,86 +74,122 @@ public class Pubgoal {
 			switch (this.nGoals[i]) {
 				case 0:		//verificato
 					if(isPubGoal_1_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 1:		//verificato
 					if(isPubGoal_2_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 2:		//verificato
 					if(isPubGoal_3_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 3:		//verificato
 					if(isPubGoal_4_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 4:
 					if(isPubGoal_5_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 5:		//verificato
 					if(isPubGoal_6_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 6:		//verificato
 					if(isPubGoal_7_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 7:
 					if(isPubGoal_8_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 8:
 					if(isPubGoal_9_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 9:		
 					if(isPubGoal_10_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 10:	//verificato
 					if(isPubGoal_11_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
-					}					
-					this.done[i] = false;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+					}
 					break;
 				
 				case 11:	//verificato
 					if(isPubGoal_12_Done(playerShelf)) {
+						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
-					}					
-					this.done[i] = false;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+					}
 					break;
 					
 				default:
@@ -173,105 +209,120 @@ public class Pubgoal {
 					if(isPubGoal_1_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 1:		//verificato
 					if(isPubGoal_2_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 2:
 					if(isPubGoal_3_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 3:
 					if(isPubGoal_4_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 4:
 					if(isPubGoal_4_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 5:
 					if(isPubGoal_6_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 6:
 					if(isPubGoal_7_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 7:
 					if(isPubGoal_8_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
 					break;
 				
 				case 8:
 					if(isPubGoal_9_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 9:
 					if(isPubGoal_10_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
 					}
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 10:
 					if(isPubGoal_11_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
-					}					
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
+					}
 					break;
 				
 				case 11:
 					if(isPubGoal_12_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
-					}					
-					this.done[i] = false;
-					System.out.println("Goal " + (c[i]+1) + " non verificato");
+					}else {
+						this.done[i] = false;
+						System.out.println("Goal " + (c[i]+1) + " non verificato");
+					}
 					break;
 					
 				default:
@@ -331,7 +382,7 @@ public class Pubgoal {
 			}
 		}
 		playerShelf.setAllVerifiedTileAttribute(false);
-		System.out.println(n);
+		//System.out.println(n);
 		if(n == 6) {
 			return true;
 		}
@@ -395,7 +446,7 @@ public class Pubgoal {
 			}
 		}
 		playerShelf.setAllVerifiedTileAttribute(false);
-		System.out.println(n);
+		//System.out.println(n);
 		if(n == 4) {
 			return true;
 		}
@@ -410,59 +461,45 @@ public class Pubgoal {
 		 * scarto quelle trovate e faccio la stessa cosa per lo stesso tipo, se ne trovo 2 allora passo al tipo successivo 
 		 */
 		
-		int n = 0;
-		int color = 1;
+		int n = 0; 
+		int tmpColorMem = 0;
 		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
 			for (int j = 0; j < playerShelf.getNJ(); j++) {
-				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified() && playerShelf.getBox(i, j).getTile().getColor() == color && color <= 6) {
+				//System.out.print("I = " + i + "  J = " + j + "  ");
+				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
 					
-					boolean f = false;
-					
-					if(i < playerShelf.getNI() -1 && j < playerShelf.getNJ() -1) {
-						if (color == playerShelf.getBox(i, j + 1).getTile().getColor() && color == playerShelf.getBox(i + 1, j).getTile().getColor() && color == playerShelf.getBox(i + 1, j + 1).getTile().getColor()) {
-							playerShelf.getBox(i, j + 1).getTile().setVerified(true);
-							playerShelf.getBox(i + 1, j).getTile().setVerified(true);
-							playerShelf.getBox(i + 1, j + 1).getTile().setVerified(true);
-							f = true;
+					int k = 0;
+					for (int l = 0; l < 4; l++) {
+						int a = 0;
+						k = k + playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, a);
+					}
+					k = k + 1;
+					System.out.println("K = " + k);
+					if(k == 4 ) {
+						if(playerShelf.getBox(i, j).isFull() && playerShelf.boxExistAndIsFillable(i, j+1) && playerShelf.getBox(i, j+1).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i, j+1).getTile().getColor() && tmpColorMem == playerShelf.getBox(i, j).getTile().getColor()) {
+							if(playerShelf.boxExistAndIsFillable(i+1, j) && playerShelf.getBox(i+1, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+1, j).getTile().getColor()) {
+								if(playerShelf.boxExistAndIsFillable(i+1, j+1) && playerShelf.getBox(i+1, j+1).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+1, j+1).getTile().getColor()) {
+									n++;
+								}
+							}
 						}
-					}
-					else if(i > 1 && j < playerShelf.getNJ() -1) {
-						if (color == playerShelf.getBox(i, j + 1).getTile().getColor() && color == playerShelf.getBox(i - 1, j).getTile().getColor() && color == playerShelf.getBox(i - 1, j + 1).getTile().getColor()) {
-							playerShelf.getBox(i, j + 1).getTile().setVerified(true);
-							playerShelf.getBox(i - 1, j).getTile().setVerified(true);
-							playerShelf.getBox(i - 1, j + 1).getTile().setVerified(true);
-							f = true;
+						
+						if(tmpColorMem == 0 && playerShelf.getBox(i, j).isFull() && playerShelf.boxExistAndIsFillable(i, j+1) && playerShelf.getBox(i, j+1).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i, j+1).getTile().getColor()) {
+							if(playerShelf.boxExistAndIsFillable(i+1, j) && playerShelf.getBox(i+1, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+1, j).getTile().getColor()) {
+								if(playerShelf.boxExistAndIsFillable(i+1, j+1) && playerShelf.getBox(i+1, j+1).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+1, j+1).getTile().getColor()) {
+									n++;
+									tmpColorMem = playerShelf.getBox(i, j).getTile().getColor();
+								}
+							}
 						}
-					}
-					else if(i > 1 && j > 1) {
-						if (color == playerShelf.getBox(i, j - 1).getTile().getColor() && color == playerShelf.getBox(i - 1, j).getTile().getColor() && color == playerShelf.getBox(i - 1, j - 1).getTile().getColor()) {
-							playerShelf.getBox(i, j - 1).getTile().setVerified(true);
-							playerShelf.getBox(i - 1, j).getTile().setVerified(true);
-							playerShelf.getBox(i - 1, j - 1).getTile().setVerified(true);
-							f = true;
-						}
-					}
-					else if(i  < playerShelf.getNI() -1 && j > 1) {
-						if (color == playerShelf.getBox(i, j - 1).getTile().getColor() && color == playerShelf.getBox(i + 1, j).getTile().getColor() && color == playerShelf.getBox(i + 1, j - 1).getTile().getColor()) {
-							playerShelf.getBox(i, j - 1).getTile().setVerified(true);
-							playerShelf.getBox(i + 1, j).getTile().setVerified(true);
-							playerShelf.getBox(i + 1, j - 1).getTile().setVerified(true);
-							f = true;
-						}
-					}
-					
-					if(f == true ) {
-						n++;
-					}
-					else {
-						color++;
-						n = 0;
+						System.out.println("N = " + n);
 					}
 				}
 			}
 		}
 		playerShelf.setAllVerifiedTileAttribute(false);
+		//System.out.println(n);
 		if(n == 2) {
 			return true;
 		}
