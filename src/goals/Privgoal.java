@@ -244,7 +244,7 @@ public class Privgoal {
 		for (int i = 0; i < playerShelf.getNI(); i++) {
 			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(i == iMap[k] && j == jMap[k]) {
-					if (playerShelf.getBox(i, j).getTile().getColor() == colorMap[k]) {
+					if (playerShelf.getBox(i, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == colorMap[k]) {
 						k++;
 					}else {
 						return k;

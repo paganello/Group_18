@@ -101,7 +101,9 @@ public class Pubgoal {
 					break;
 				
 				case 4:
-				
+					if(isPubGoal_5_Done(playerShelf)) {
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 					break;
 				
@@ -120,7 +122,9 @@ public class Pubgoal {
 					break;
 				
 				case 7:
-				
+					if(isPubGoal_8_Done(playerShelf)) {
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 					break;
 				
@@ -201,7 +205,10 @@ public class Pubgoal {
 					break;
 				
 				case 4:
-				
+					if(isPubGoal_4_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 					break;
 				
@@ -224,7 +231,10 @@ public class Pubgoal {
 					break;
 				
 				case 7:
-				
+					if(isPubGoal_8_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 					break;
 				
@@ -450,38 +460,89 @@ public class Pubgoal {
 		}
 		return false;
 	}
+	
+	
+	private boolean isPubGoal_5_Done(BoxMatrix playerShelf) {
+		int conta_diversi = 0;
+		int max_uguali = 0;
+		int verifica_punto = 0;
+		int colonne_diverse = 0;
+		for(int j=0;j<5;j++) {	
+			for(int i=0;i<6;i++) {				
+				for(int k=0;k<6;k++) {
+					//System.out.println("Confronto: " + BoxMatrix[i][j].getColore() +"["+i+"]"+"["+j+"]" + " con " + BoxMatrix[i][k].getColore()+"["+i+"]"+"["+k+"]" );
+					if(playerShelf.getBox(i,j).getTile!=null) {
+						if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
+							conta_diversi++;
+						else
+							max_uguali++;
+					}
+				}
+					if(conta_diversi==4 && max_uguali==2)	
+						verifica_punto+= 1;
+					if(conta_diversi==3 && max_uguali==3)	
+						verifica_punto+= 2;
+					if(conta_diversi==5 && max_uguali==1)
+						verifica_punto+= 0;					
+					if(conta_diversi==2 && max_uguali==4)
+						verifica_punto+= 3;
+					
+
+					
+					conta_diversi=0;
+					max_uguali=0;
+					
+			}
+			switch(verifica_punto) {
+				case 6:
+					//System.err.println("La colonna " +"["+j+"]" + " soddisfa le condizioni");
+					colonne_diverse++;
+					break;
+				case 8:
+					//System.err.println("La colonna " +"["+j+"]" + " soddisfa le condizioni");
+					colonne_diverse++;
+					break;
+				case 12:
+					//System.err.println("La colonna " +"["+j+"]" + " soddisfa le condizioni");
+					colonne_diverse++;
+					break;
+					
+			}
+			verifica_punto=0;
+			
+		}		
+		
+		if(colonne_diverse==3)
+			return true;
+	
+	return false;
+
+	}
 
 	
 	private boolean isPubGoal_6_Done(BoxMatrix playerShelf) {
+		
 		int counter=0;
 		int c=1;
-		int verifier=1;
-			while(c < 7) {
-				for (int m=0; m<6;m++) {
-					for(int n=0; n<5; n++) {
-						if(playerShelf.getBox(m, n).isFull()&& playerShelf.getBox(m, n).getTile().getColor() == c) {
-							counter++;
-						}
-					}
+		
+		for (int m=0; m<6;m++) {
+			for(int n=0; n<5; n++) {
+				if(playerShelf.getBox(m, n).isFull() && playerShelf.getBox(m, n).getTile().getColor() == c) {
+					counter++;
 				}
-				if (counter>6) {
-					verifier=0;
-				}
-				else if(counter<7 && c<7) {
-					counter=0;
-					c++;
-				}
-				else if(counter<7 && c>6) {
-					verifier= verifier*1;
-				}
-			};
+			}
+		}
 			
-		if (verifier== 0) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		if (counter == 8) {
+				return true;
+			}
+				
+		else if(counter < 8 && c < 7) {
+				counter=0;
+				c++;
+			}
+		
+		return false;
 	}
 
 	
@@ -518,6 +579,53 @@ public class Pubgoal {
 			return false;
 		}
 	}
+	
+	private boolean isPubGoal_8_Done(BoxMatrix playerShelf) {
+		int conta_diversi = 0;
+		int max_uguali = 0;
+		int verifica_punto = 0;
+		int righe_diverse = 0;
+		for(int i=0;i<6;i++) {	
+			for(int j=0;j<5;j++) {				
+				for(int k=0;k<5;k++) {
+					//System.out.println("Confronto: " + BoxMatrix[i][j].getColore() +"["+i+"]"+"["+j+"]" + " con " + BoxMatrix[i][k].getColore()+"["+i+"]"+"["+k+"]" );
+					if(playerShelf.getBox(i,j).getTile!=null) {
+						if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
+							conta_diversi++;
+						else
+							max_uguali++;
+					}
+				}
+					if(conta_diversi==4 && max_uguali==1)	//Al massimo esiste una piastrella diversa
+						verifica_punto+= 1;
+					if(conta_diversi==2 && max_uguali==3)	//Al massimo esistono 3 piastrelle diverse
+						verifica_punto+= 2;
+					if(conta_diversi==3 && max_uguali==2)
+						verifica_punto+= 0;
+					
+					conta_diversi=0;
+					max_uguali=0;
+					
+			}
+			switch(verifica_punto) {
+				case 1:
+					//System.err.println("La riga " +"["+i+"]" + " soddisfa le condizioni");
+					righe_diverse++;
+					break;
+				case 8:
+					//System.err.println("La riga " +"["+i+"]" + " soddisfa le condizioni");
+					righe_diverse++;
+					break;
+			}
+			verifica_punto=0;
+			
+		}		
+		if(righe_diverse==4)
+			return true;
+		
+		return false;
+	}	
+	
 	
 	private boolean isPubGoal_9_Done (BoxMatrix playerShelf) {
 
