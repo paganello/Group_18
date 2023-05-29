@@ -101,7 +101,9 @@ public class Pubgoal {
 					break;
 				
 				case 4:
-					
+					if(isPubGoal_5_Done(playerShelf)) {
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 					break;
 				
@@ -120,7 +122,9 @@ public class Pubgoal {
 					break;
 				
 				case 7:
-				
+					if(isPubGoal_8_Done(playerShelf)) {
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 					break;
 				
@@ -198,8 +202,10 @@ public class Pubgoal {
 					break;
 				
 				case 4:
-					
-				
+					if(isPubGoal_4_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 					break;
 				
@@ -220,7 +226,10 @@ public class Pubgoal {
 					break;
 				
 				case 7:
-				
+					if(isPubGoal_8_Done(playerShelf)) {
+						System.out.println("Goal " + (c[i]+1) + " verificato");
+						this.done[i] = true;
+					}
 					this.done[i] = false;
 					break;
 				
