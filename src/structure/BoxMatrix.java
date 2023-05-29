@@ -528,36 +528,32 @@ public class BoxMatrix {
 			if(m[i-1][j].getTile().getColor() == m[i][j].getTile().getColor()) {
 				//m[i][j].getTile().setVerified(true);
 				k++;
-				i--;
 				//System.out.println(k);
-				k = countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+				k = countNumberOfAdjacentsTilesWithSameColor((i-1), j, k);
 			}
 		}
 		if(boxExistAndIsFillable(i, j+1) && m[i][j+1].isFull() && !m[i][j+1].getTile().isVerified()){
 			if(m[i][j+1].getTile().getColor() == m[i][j].getTile().getColor()) {
 				//m[i][j].getTile().setVerified(true);
 				k++;
-				j++;
 				//System.out.println(k);
-				k = countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+				k = countNumberOfAdjacentsTilesWithSameColor(i, (j+1), k);
 			}
 		}
 		if(boxExistAndIsFillable(i+1, j) && m[i+1][j].isFull() && !m[i+1][j].getTile().isVerified()){
 			if(m[i+1][j].getTile().getColor() == m[i][j].getTile().getColor()) {
 				//m[i][j].getTile().setVerified(true);
 				k++;
-				i++;
 				//System.out.println(k);
-				k =countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+				k =countNumberOfAdjacentsTilesWithSameColor((i+1), j, k);
 			}
 		}
 		if(boxExistAndIsFillable(i, j-1) && m[i][j-1].isFull() && !m[i][j-1].getTile().isVerified()){
 			if(m[i][j-1].getTile().getColor() == m[i][j].getTile().getColor()) {
 				//m[i][j].getTile().setVerified(true);
 				k++;
-				j--;
 				//System.out.println(k);
-				k = countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+				k = countNumberOfAdjacentsTilesWithSameColor(i, (j-1), k);
 			}
 		}
 		return k;
