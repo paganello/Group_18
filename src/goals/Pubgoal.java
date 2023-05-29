@@ -72,14 +72,14 @@ public class Pubgoal {
 		
 		for (int i = 0; i < 2; i++) {
 			switch (this.nGoals[i]) {
-				case 0://verificato
+				case 0:
 					if(isPubGoal_1_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
 					break;
 				
-				case 1://verificato
+				case 1:
 					if(isPubGoal_2_Done(playerShelf)) {
 						this.done[i] = true;
 					}
@@ -107,14 +107,14 @@ public class Pubgoal {
 					this.done[i] = false;
 					break;
 				
-				case 5://verificato
+				case 5:
 					if(isPubGoal_6_Done(playerShelf)) {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
 					break;
 				
-				case 6://verificato
+				case 6:
 					if(isPubGoal_7_Done(playerShelf)) {
 						this.done[i] = true;
 					}
@@ -142,14 +142,14 @@ public class Pubgoal {
 					this.done[i] = false;
 					break;
 				
-				case 10://verificato
+				case 10:
 					if(isPubGoal_11_Done(playerShelf)) {
 						this.done[i] = true;
 					}					
 					this.done[i] = false;
 					break;
 				
-				case 11://verificato
+				case 11:
 					if(isPubGoal_12_Done(playerShelf)) {
 						this.done[i] = true;
 					}					
@@ -233,7 +233,7 @@ public class Pubgoal {
 					this.done[i] = false;
 					break;
 				
-				case 8://verificato
+				case 8:
 					if(isPubGoal_9_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
@@ -241,7 +241,7 @@ public class Pubgoal {
 					this.done[i] = false;
 					break;
 				
-				case 9://verificato
+				case 9:
 					if(isPubGoal_10_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
@@ -389,37 +389,30 @@ public class Pubgoal {
 				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified() && playerShelf.getBox(i, j).getTile().getColor() == color && color <= 6) {
 					
 					boolean f = false;
-					if(i < playerShelf.getNI() -1 && j < playerShelf.getNJ() -1) {
-						if (color == playerShelf.getBox(i, j + 1).getTile().getColor() && color == playerShelf.getBox(i + 1, j).getTile().getColor() && color == playerShelf.getBox(i + 1, j + 1).getTile().getColor()) {
-							playerShelf.getBox(i, j + 1).getTile().setVerified(true);
-							playerShelf.getBox(i + 1, j).getTile().setVerified(true);
-							playerShelf.getBox(i + 1, j + 1).getTile().setVerified(true);
-							f = true;
-						}
+					
+					if (color == playerShelf.getBox(i, j + 1).getTile().getColor() && color == playerShelf.getBox(i + 1, j).getTile().getColor() && color == playerShelf.getBox(i + 1, j + 1).getTile().getColor()) {
+						playerShelf.getBox(i, j + 1).getTile().setVerified(true);
+						playerShelf.getBox(i + 1, j).getTile().setVerified(true);
+						playerShelf.getBox(i + 1, j + 1).getTile().setVerified(true);
+						f = true;
 					}
-					else if(i > 1 && j < playerShelf.getNJ() -1) {
-						if (color == playerShelf.getBox(i, j + 1).getTile().getColor() && color == playerShelf.getBox(i - 1, j).getTile().getColor() && color == playerShelf.getBox(i - 1, j + 1).getTile().getColor()) {
-							playerShelf.getBox(i, j + 1).getTile().setVerified(true);
-							playerShelf.getBox(i - 1, j).getTile().setVerified(true);
-							playerShelf.getBox(i - 1, j + 1).getTile().setVerified(true);
-							f = true;
-						}
+					else if (color == playerShelf.getBox(i, j + 1).getTile().getColor() && color == playerShelf.getBox(i - 1, j).getTile().getColor() && color == playerShelf.getBox(i - 1, j + 1).getTile().getColor()) {
+						playerShelf.getBox(i, j + 1).getTile().setVerified(true);
+						playerShelf.getBox(i - 1, j).getTile().setVerified(true);
+						playerShelf.getBox(i - 1, j + 1).getTile().setVerified(true);
+						f = true;
 					}
-					else if(i > 1 && j > 1) {
-						if (color == playerShelf.getBox(i, j - 1).getTile().getColor() && color == playerShelf.getBox(i - 1, j).getTile().getColor() && color == playerShelf.getBox(i - 1, j - 1).getTile().getColor()) {
-							playerShelf.getBox(i, j - 1).getTile().setVerified(true);
-							playerShelf.getBox(i - 1, j).getTile().setVerified(true);
-							playerShelf.getBox(i - 1, j - 1).getTile().setVerified(true);
-							f = true;
-						}
+					else if (color == playerShelf.getBox(i, j - 1).getTile().getColor() && color == playerShelf.getBox(i - 1, j).getTile().getColor() && color == playerShelf.getBox(i - 1, j - 1).getTile().getColor()) {
+						playerShelf.getBox(i, j - 1).getTile().setVerified(true);
+						playerShelf.getBox(i - 1, j).getTile().setVerified(true);
+						playerShelf.getBox(i - 1, j - 1).getTile().setVerified(true);
+						f = true;
 					}
-					else if(i  < playerShelf.getNI() -1 && j > 1) {
-						if (color == playerShelf.getBox(i, j - 1).getTile().getColor() && color == playerShelf.getBox(i + 1, j).getTile().getColor() && color == playerShelf.getBox(i + 1, j - 1).getTile().getColor()) {
-							playerShelf.getBox(i, j - 1).getTile().setVerified(true);
-							playerShelf.getBox(i + 1, j).getTile().setVerified(true);
-							playerShelf.getBox(i + 1, j - 1).getTile().setVerified(true);
-							f = true;
-						}
+					else if (color == playerShelf.getBox(i, j - 1).getTile().getColor() && color == playerShelf.getBox(i + 1, j).getTile().getColor() && color == playerShelf.getBox(i + 1, j - 1).getTile().getColor()) {
+						playerShelf.getBox(i, j - 1).getTile().setVerified(true);
+						playerShelf.getBox(i + 1, j).getTile().setVerified(true);
+						playerShelf.getBox(i + 1, j - 1).getTile().setVerified(true);
+						f = true;
 					}
 					
 					if(f == true ) {
@@ -449,7 +442,7 @@ public class Pubgoal {
 			for(int i=0;i<6;i++) {				
 				for(int k=0;k<6;k++) {
 					//System.out.println("Confronto: " + BoxMatrix[i][j].getColore() +"["+i+"]"+"["+j+"]" + " con " + BoxMatrix[i][k].getColore()+"["+i+"]"+"["+k+"]" );
-					if(playerShelf.getBox(i,j).getTile()!=null) {
+					if(playerShelf.getBox(i,j).getTile!=null) {
 						if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
 							conta_diversi++;
 						else
@@ -502,33 +495,25 @@ public class Pubgoal {
 		
 		int counter=0;
 		int c=1;
-		int verifier=1;
-			while(c < 7) {
-				for (int m=0; m<6;m++) {
-					for(int n=0; n<5; n++) {
-						if(playerShelf.getBox(m, n).isFull()&& playerShelf.getBox(m, n).getTile().getColor() == c) {
-							counter++;
-						}
-					}
+		
+		for (int m=0; m<6;m++) {
+			for(int n=0; n<5; n++) {
+				if(playerShelf.getBox(m, n).isFull() && playerShelf.getBox(m, n).getTile().getColor() == c) {
+					counter++;
 				}
-				if (counter>6) {
-					verifier=0;
-				}
-				else if(counter<7 && c<7) {
-					counter=0;
-					c++;
-				}
-				else if(counter<7 && c>6) {
-					verifier= verifier*1;
-				}
-			};
+			}
+		}
 			
-		if (verifier== 0) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		if (counter == 8) {
+				return true;
+			}
+				
+		else if(counter < 8 && c < 7) {
+				counter=0;
+				c++;
+			}
+		
+		return false;
 	}
 
 	
@@ -536,20 +521,20 @@ public class Pubgoal {
 		int verifier=1;
 		int c=0;
 			while(c<2) {
-				if(playerShelf.getBox(1+c,1).isFull() && playerShelf.getBox(2+c,2).isFull() && playerShelf.getBox( 1+c,1).getTile().getColor() == playerShelf.getBox(2,2+c).getTile().getColor())
-					if(playerShelf.getBox(2+c,2).isFull() && playerShelf.getBox(3+c,3).isFull() && playerShelf.getBox(2+c,2).getTile().getColor() == playerShelf.getBox(3+c,3).getTile().getColor())
-						if(playerShelf.getBox(3+c,3).isFull() && playerShelf.getBox(3+c, 4).isFull() && playerShelf.getBox(3+c,3).getTile().getColor() == playerShelf.getBox(4+c,4).getTile().getColor())
-							if(playerShelf.getBox(4+c,4).isFull() && playerShelf.getBox(5+c,5).isFull() && playerShelf.getBox(4+c,4).getTile().getColor() == playerShelf.getBox(5+c,5).getTile().getColor()) {
+				if(playerShelf.getBox(1, 1+c).isFull() && playerShelf.getBox(2, 2+c).isFull() && playerShelf.getBox(1, 1+c).getTile().getColor() == playerShelf.getBox(2, 2+c).getTile().getColor())
+					if(playerShelf.getBox(2, 2+c).isFull() && playerShelf.getBox(3, 3+c).isFull() && playerShelf.getBox(2, 2+c).getTile().getColor() == playerShelf.getBox(3, 3+c).getTile().getColor())
+						if(playerShelf.getBox(3, 3+c).isFull() && playerShelf.getBox(4, 4+c).isFull() && playerShelf.getBox(3, 3+c).getTile().getColor() == playerShelf.getBox(4, 4+c).getTile().getColor())
+							if(playerShelf.getBox(4, 4+c).isFull() && playerShelf.getBox(5, 5+c).isFull() && playerShelf.getBox(4, 4+c).getTile().getColor() == playerShelf.getBox(5, 5+c).getTile().getColor()) {
 									verifier=0;
 								}
 								else {
 									verifier=verifier*1;
 								}
 				
-			if(playerShelf.getBox(5-c,1).isFull() && playerShelf.getBox(4-c,2).isFull() && playerShelf.getBox(5-c,1).getTile().getColor() == playerShelf.getBox(4-c,2).getTile().getColor())
-				if(playerShelf.getBox(4-c,2).isFull() && playerShelf.getBox(3-c,3 ).isFull() && playerShelf.getBox(4-c, 2).getTile().getColor() == playerShelf.getBox(3-c,3).getTile().getColor())
-					if(playerShelf.getBox(3-c,3).isFull() && playerShelf.getBox(2-c,4).isFull() && playerShelf.getBox(3-c,3).getTile().getColor() == playerShelf.getBox(2-c,4).getTile().getColor())
-						if(playerShelf.getBox(2-c,4).isFull() && playerShelf.getBox(1-c,5).isFull() && playerShelf.getBox(2-c,4).getTile().getColor() == playerShelf.getBox(1-c,5).getTile().getColor()) {
+			if(playerShelf.getBox(1, 6-c).isFull() && playerShelf.getBox(2, 5-c).isFull() && playerShelf.getBox(1, 6-c).getTile().getColor() == playerShelf.getBox(2, 5-c).getTile().getColor())
+				if(playerShelf.getBox(2, 5-c).isFull() && playerShelf.getBox(3, 4-c).isFull() && playerShelf.getBox(2, 5-c).getTile().getColor() == playerShelf.getBox(3, 4-c).getTile().getColor())
+					if(playerShelf.getBox(3, 4-c).isFull() && playerShelf.getBox(4, 3-c).isFull() && playerShelf.getBox(3, 4-c).getTile().getColor() == playerShelf.getBox(4, 3-c).getTile().getColor())
+						if(playerShelf.getBox(4, 3-c).isFull() && playerShelf.getBox(5, 2-c).isFull() && playerShelf.getBox(4, 3-c).getTile().getColor() == playerShelf.getBox(5, 2-c).getTile().getColor()) {
 								verifier=0;
 						     }
 							else {
@@ -575,7 +560,7 @@ public class Pubgoal {
 			for(int j=0;j<5;j++) {				
 				for(int k=0;k<5;k++) {
 					//System.out.println("Confronto: " + BoxMatrix[i][j].getColore() +"["+i+"]"+"["+j+"]" + " con " + BoxMatrix[i][k].getColore()+"["+i+"]"+"["+k+"]" );
-					if(playerShelf.getBox(i,j).getTile()!=null) {
+					if(playerShelf.getBox(i,j).getTile!=null) {
 						if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
 							conta_diversi++;
 						else
