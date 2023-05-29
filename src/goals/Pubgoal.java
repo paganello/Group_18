@@ -512,20 +512,16 @@ public class Pubgoal {
 	private boolean isPubGoal_5_Done(BoxMatrix playerShelf) {	//da sistemare
 
 		int col_counter = 0;
-		
 		int[] col_colors = new int[3];
 		
 		for (int j = 0; j < 5; j++) {
-			
 			for (int i = 0; i < col_colors.length; i++) {
 				col_colors[i] = 0;
 			}
 			
 			for (int i = 0; i < 6; i++) {
-				
 				System.out.println(col_colors[0] + " " + col_colors[1] + " " + col_colors[2]);
 				if(playerShelf.getBox(i, j).isFull()) {
-					
 					if(col_colors[0] == 0) {
 						col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
 						
@@ -542,13 +538,35 @@ public class Pubgoal {
 								
 								if(col_colors[0] != 0 && col_colors[1] != 0 && col_colors[0] == col_colors[1]) {
 									col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
-									
+									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
+										break;
+									}else {
+										if(i == 5) {
+											col_counter++;
+											System.out.println("CC = " + col_counter);
+										}
+									}
 								}else if(col_colors[1] != 0 && col_colors[2] != 0 && col_colors[1] == col_colors[2]) {
 									col_colors[1] = playerShelf.getBox(i, j).getTile().getColor();
+									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
+										break;
+									}else {
+										if(i == 5) {
+											col_counter++;
+											System.out.println("CC = " + col_counter);
+										}
+									}
 									
 								}else if(col_colors[0] != 0 && col_colors[2] != 0 && col_colors[0] == col_colors[2]) {
 									col_colors[2] = playerShelf.getBox(i, j).getTile().getColor();
-									
+									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
+										break;
+									}else {
+										if(i == 5) {
+											col_counter++;
+											System.out.println("CC = " + col_counter);
+										}
+									}
 								}else{
 									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
 										break;
@@ -653,17 +671,17 @@ public class Pubgoal {
 	
 	private boolean isPubGoal_8_Done(BoxMatrix playerShelf) {
 		
-int col_counter = 0;
+		int col_counter = 0;
 		
 		int[] col_colors = new int[3];
 		
-		for (int j = 0; j < 5; j++) {
+		for (int i = 0; i < 6; i++) {
 			
-			for (int i = 0; i < col_colors.length; i++) {
-				col_colors[i] = 0;
+			for (int j = 0; j < col_colors.length; j++) {
+				col_colors[j] = 0;
 			}
 			
-			for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 5; j++) {
 				
 				System.out.println(col_colors[0] + " " + col_colors[1] + " " + col_colors[2]);
 				if(playerShelf.getBox(i, j).isFull()) {
@@ -684,25 +702,46 @@ int col_counter = 0;
 								
 								if(col_colors[0] != 0 && col_colors[1] != 0 && col_colors[0] == col_colors[1]) {
 									col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
-									
+									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
+										break;
+									}else {
+										if(j == 4) {
+											col_counter++;
+											System.out.println("CC = " + col_counter);
+										}
+									}
 								}else if(col_colors[1] != 0 && col_colors[2] != 0 && col_colors[1] == col_colors[2]) {
 									col_colors[1] = playerShelf.getBox(i, j).getTile().getColor();
-									
+									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
+										break;
+									}else {
+										if(j == 4) {
+											col_counter++;
+											System.out.println("CC = " + col_counter);
+										}
+									}
 								}else if(col_colors[0] != 0 && col_colors[2] != 0 && col_colors[0] == col_colors[2]) {
 									col_colors[2] = playerShelf.getBox(i, j).getTile().getColor();
-									
+									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
+										break;
+									}else {
+										if(j == 4) {
+											col_counter++;
+											System.out.println("CC = " + col_counter);
+										}
+									}
 								}else{
 									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
 										break;
 									}else {
-										if(i == 5) {
+										if(j == 4) {
 											col_counter++;
 											System.out.println("CC = " + col_counter);
 										}
 									}
 								}
 							}else {
-								if(i == 5) {
+								if(j == 4) {
 									col_counter++;
 									System.out.println("CC = " + col_counter);
 								}
@@ -719,51 +758,8 @@ int col_counter = 0;
 		if (col_counter <= 3) {
 			return true;
 		}
-		return false; 
-		/*int conta_diversi = 0;
-		int max_uguali = 0;
-		int verifica_punto = 0;
-		int righe_diverse = 0;
-		for(int i=0;i<6;i++) {	
-			for(int j=0;j<5;j++) {				
-				for(int k=0;k<5;k++) {
-					//System.out.println("Confronto: " + BoxMatrix[i][j].getColore() +"["+i+"]"+"["+j+"]" + " con " + BoxMatrix[i][k].getColore()+"["+i+"]"+"["+k+"]" );
-					if(playerShelf.getBox(i,j).getTile() != null) {
-						if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
-							conta_diversi++;
-						else
-							max_uguali++;
-					}
-				}
-					if(conta_diversi==4 && max_uguali==1)	//Al massimo esiste una piastrella diversa
-						verifica_punto+= 1;
-					if(conta_diversi==2 && max_uguali==3)	//Al massimo esistono 3 piastrelle diverse
-						verifica_punto+= 2;
-					if(conta_diversi==3 && max_uguali==2)
-						verifica_punto+= 0;
-					
-					conta_diversi=0;
-					max_uguali=0;
-					
-			}
-			switch(verifica_punto) {
-				case 1:
-					//System.err.println("La riga " +"["+i+"]" + " soddisfa le condizioni");
-					righe_diverse++;
-					break;
-				case 8:
-					//System.err.println("La riga " +"["+i+"]" + " soddisfa le condizioni");
-					righe_diverse++;
-					break;
-			}
-			verifica_punto=0;
-			
-		}		
-		if(righe_diverse==4)
-			return true;
-		
-		return false;*/
-	}	
+		return false;
+	}
 	
 	
 	private boolean isPubGoal_9_Done (BoxMatrix playerShelf) {
@@ -800,6 +796,8 @@ int col_counter = 0;
 	}
 
 	private boolean isPubGoal_10_Done (BoxMatrix playerShelf) {
+
+		
 		int conta = 0;
 		int incremento = 0;
 		int righeDiverse = 0;
@@ -899,4 +897,5 @@ int col_counter = 0;
 		return false;
 	}
 }
+
 
