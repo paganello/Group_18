@@ -433,10 +433,12 @@ public class Pubgoal {
 			for(int i=0;i<6;i++) {				
 				for(int k=0;k<6;k++) {
 					//System.out.println("Confronto: " + BoxMatrix[i][j].getColore() +"["+i+"]"+"["+j+"]" + " con " + BoxMatrix[i][k].getColore()+"["+i+"]"+"["+k+"]" );
-					if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
-						conta_diversi++;
-					else
-						max_uguali++;	
+					if(playerShelf.getBox(i,j).getTile!=null) {
+						if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
+							conta_diversi++;
+						else
+							max_uguali++;
+					}
 				}
 					if(conta_diversi==4 && max_uguali==2)	
 						verifica_punto+= 1;
@@ -471,12 +473,12 @@ public class Pubgoal {
 			verifica_punto=0;
 			
 		}		
+		
 		if(colonne_diverse==3)
 			return true;
-	}
+	
 	return false;
-	
-	
+
 	}
 
 	
@@ -547,6 +549,53 @@ public class Pubgoal {
 			return false;
 		}
 	}
+	
+	private boolean isPubGoal_8_Done(BoxMatrix playerShelf) {
+		int conta_diversi = 0;
+		int max_uguali = 0;
+		int verifica_punto = 0;
+		int righe_diverse = 0;
+		for(int i=0;i<6;i++) {	
+			for(int j=0;j<5;j++) {				
+				for(int k=0;k<5;k++) {
+					//System.out.println("Confronto: " + BoxMatrix[i][j].getColore() +"["+i+"]"+"["+j+"]" + " con " + BoxMatrix[i][k].getColore()+"["+i+"]"+"["+k+"]" );
+					if(playerShelf.getBox(i,j).getTile!=null) {
+						if(playerShelf.getBox(i, j).getTile().getColor()!=playerShelf.getBox(k, j).getTile().getColor())				
+							conta_diversi++;
+						else
+							max_uguali++;
+					}
+				}
+					if(conta_diversi==4 && max_uguali==1)	//Al massimo esiste una piastrella diversa
+						verifica_punto+= 1;
+					if(conta_diversi==2 && max_uguali==3)	//Al massimo esistono 3 piastrelle diverse
+						verifica_punto+= 2;
+					if(conta_diversi==3 && max_uguali==2)
+						verifica_punto+= 0;
+					
+					conta_diversi=0;
+					max_uguali=0;
+					
+			}
+			switch(verifica_punto) {
+				case 1:
+					//System.err.println("La riga " +"["+i+"]" + " soddisfa le condizioni");
+					righe_diverse++;
+					break;
+				case 8:
+					//System.err.println("La riga " +"["+i+"]" + " soddisfa le condizioni");
+					righe_diverse++;
+					break;
+			}
+			verifica_punto=0;
+			
+		}		
+		if(righe_diverse==4)
+			return true;
+		
+		return false;
+	}	
+	
 	
 	private boolean isPubGoal_9_Done (BoxMatrix playerShelf) {
 
