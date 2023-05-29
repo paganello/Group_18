@@ -114,7 +114,7 @@ public class Pubgoal {
 					}
 					break;
 				
-				case 4:
+				case 4:		//verificato
 					if(isPubGoal_5_Done(playerShelf)) {
 						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
@@ -164,7 +164,7 @@ public class Pubgoal {
 					}
 					break;
 				
-				case 9:		
+				case 9:		//verificato
 					if(isPubGoal_10_Done(playerShelf)) {
 						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
@@ -174,7 +174,7 @@ public class Pubgoal {
 					}
 					break;
 				
-				case 10:	//verificato
+				case 10:	//
 					if(isPubGoal_11_Done(playerShelf)) {
 						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
@@ -184,7 +184,7 @@ public class Pubgoal {
 					}
 					break;
 				
-				case 11:	//verificato
+				case 11:	//
 					if(isPubGoal_12_Done(playerShelf)) {
 						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
 						this.done[i] = true;
@@ -642,7 +642,75 @@ public class Pubgoal {
 	}
 	
 	private boolean isPubGoal_8_Done(BoxMatrix playerShelf) {
-		int conta_diversi = 0;
+		
+int col_counter = 0;
+		
+		int[] col_colors = new int[3];
+		
+		for (int j = 0; j < 5; j++) {
+			
+			for (int i = 0; i < col_colors.length; i++) {
+				col_colors[i] = 0;
+			}
+			
+			for (int i = 0; i < 6; i++) {
+				
+				System.out.println(col_colors[0] + " " + col_colors[1] + " " + col_colors[2]);
+				if(playerShelf.getBox(i, j).isFull()) {
+					
+					if(col_colors[0] == 0) {
+						col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
+						
+					}else if(col_colors[1] == 0) {
+						col_colors[1] = playerShelf.getBox(i, j).getTile().getColor();
+						
+					}else if(col_colors[2] == 0) {
+						col_colors[2] = playerShelf.getBox(i, j).getTile().getColor();
+						
+					}else {
+						
+						if(col_colors[0] != 0 && col_colors[1] != 0 && col_colors[2] != 0) {	
+							if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
+								
+								if(col_colors[0] != 0 && col_colors[1] != 0 && col_colors[0] == col_colors[1]) {
+									col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
+									
+								}else if(col_colors[1] != 0 && col_colors[2] != 0 && col_colors[1] == col_colors[2]) {
+									col_colors[1] = playerShelf.getBox(i, j).getTile().getColor();
+									
+								}else if(col_colors[0] != 0 && col_colors[2] != 0 && col_colors[0] == col_colors[2]) {
+									col_colors[2] = playerShelf.getBox(i, j).getTile().getColor();
+									
+								}else{
+									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
+										break;
+									}else {
+										if(i == 5) {
+											col_counter++;
+											System.out.println("CC = " + col_counter);
+										}
+									}
+								}
+							}else {
+								if(i == 5) {
+									col_counter++;
+									System.out.println("CC = " + col_counter);
+								}
+							}
+						}
+					}
+				}else {
+					break;
+				}
+			}
+			
+		}
+		
+		if (col_counter <= 3) {
+			return true;
+		}
+		return false; 
+		/*int conta_diversi = 0;
 		int max_uguali = 0;
 		int verifica_punto = 0;
 		int righe_diverse = 0;
@@ -684,7 +752,7 @@ public class Pubgoal {
 		if(righe_diverse==4)
 			return true;
 		
-		return false;
+		return false;*/
 	}	
 	
 	
@@ -697,9 +765,9 @@ public class Pubgoal {
 			for(int i=0;i<6;i++) {
 				for(int k=0;k<6;k++) {
 					if(playerShelf.getBox(i,j).getTile()!=null){
-						   if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
-								conta ++;
-							}
+						if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
+							conta ++;
+						}
 					}
 				}
 				if(conta==5)
@@ -713,8 +781,9 @@ public class Pubgoal {
 			incremento = 0;
 		}
 		
-		if(colonneDiverse==2) {
+		if(colonneDiverse >= 2) {
 			System.out.println("Punti Guadagnati");
+			return true;
 		}
 		
 		return false;
@@ -726,28 +795,32 @@ public class Pubgoal {
 		int conta = 0;
 		int incremento = 0;
 		int righeDiverse = 0;
-		for(int i=0; i<6;i++) {
-			for(int j=0;j<5;j++) {
-				for(int k=0;k<5;k++) {
+		for(int i = 0; i < 6; i++) {
+			for(int j = 0; j < 5; j++) {
+				for(int k = 0; k < 5; k++) {
 					if(playerShelf.getBox(i,j).getTile()!=null){
-						   if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
-								conta ++;
-							}
+						if(!(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(i, k).getTile().getColor())) {
+							conta ++;
+							//System.out.println("inLine: "+conta);
+						}
 					}
 				}
+				//System.out.println("outLine: "+conta);
 				if(conta==4)
 					incremento++;
+					//System.out.println("INC: "+incremento);
 				conta = 0;
 			}
 			if(incremento == 5) {
 				righeDiverse++;
-				System.out.println("Gli elementi della riga " + (i+1) + "sono tutti diversi");
+				System.out.println("Gli elementi della riga " + (i+1) + " sono tutti diversi");
 			}
 			incremento = 0;
 		}
 		
-		if(righeDiverse==2) {
+		if(righeDiverse >= 2) {
 			System.out.println("Punti Guadagnati");
+			return true;
 		}
 		
 		return false;
