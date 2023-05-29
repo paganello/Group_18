@@ -363,7 +363,7 @@ public class Pubgoal {
 						k = k + playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, a);
 					}
 					k = k + 1;
-					System.out.println("K = " + k);
+					//System.out.println("K = " + k);
 					if(k == 4 ) {
 						if(playerShelf.getBox(i, j).isFull() && playerShelf.boxExistAndIsFillable(i+1, j) && playerShelf.getBox(i+1, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+1, j).getTile().getColor()) {
 							if(playerShelf.boxExistAndIsFillable(i+2, j) && playerShelf.getBox(i+2, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+2, j).getTile().getColor()) {
@@ -380,7 +380,7 @@ public class Pubgoal {
 							}
 						}
 					}
-					System.out.println("N = " + n);
+					//System.out.println("N = " + n);
 				}
 			}
 		}
@@ -390,35 +390,6 @@ public class Pubgoal {
 			return true;
 		}
 		return false;
-		/*
-		for (int i = 0; i < playerShelf.getNI(); i++) {
-			for (int j = 0; j < playerShelf.getNJ(); j++) {
-				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
-					
-					int k = 0;
-					int s = 1;
-					if(playerShelf.countNumberOfAdjacentsTilesOnSameLineWithSameColor(i, j, s) == 4) {
-						for (int l = 0; l < 4; l++) {
-							int a = 0;
-							k = k + playerShelf.countNumberOfAdjacentsTilesOnSameLineWithSameColor(i, j, a);
-						}
-						k = k + 1;
-					}
-					
-					System.out.println("k = "+ k);
-					
-					if(k == 4 ) {
-						n++;
-					}
-					System.out.println(n);
-				}
-			}
-		}
-		playerShelf.setAllVerifiedTileAttribute(false);
-		if(n == 4) {
-			return true;
-		}
-		return false;*/
 	}
 	
 	private boolean isPubGoal_4_Done(BoxMatrix playerShelf){
