@@ -165,20 +165,22 @@ public class Pubgoal {
 		
 		for (int i = 0; i < 2; i++) {
 			switch (c[i]) {
-				case 0:
+				case 0:		//verificato
 					if(isPubGoal_1_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
-				case 1:
+				case 1:		//verificato
 					if(isPubGoal_2_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 2:
@@ -187,6 +189,7 @@ public class Pubgoal {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 3:
@@ -208,6 +211,7 @@ public class Pubgoal {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 6:
@@ -216,6 +220,7 @@ public class Pubgoal {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 7:
@@ -229,6 +234,7 @@ public class Pubgoal {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 9:
@@ -237,6 +243,7 @@ public class Pubgoal {
 						this.done[i] = true;
 					}
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 10:
@@ -245,6 +252,7 @@ public class Pubgoal {
 						this.done[i] = true;
 					}					
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 				
 				case 11:
@@ -253,6 +261,7 @@ public class Pubgoal {
 						this.done[i] = true;
 					}					
 					this.done[i] = false;
+					System.out.println("Goal " + (c[i]+1) + " non verificato");
 					break;
 					
 				default:
@@ -343,16 +352,65 @@ public class Pubgoal {
 		 */
 		
 		int n = 0; 
-		
+		for (int i = 0; i < playerShelf.getNI(); i++) {
+			for (int j = 0; j < playerShelf.getNJ(); j++) {
+				//System.out.print("I = " + i + "  J = " + j + "  ");
+				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
+					
+					int k = 0;
+					for (int l = 0; l < 4; l++) {
+						int a = 0;
+						k = k + playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, a);
+					}
+					k = k + 1;
+					System.out.println("K = " + k);
+					if(k == 4 ) {
+						if(playerShelf.getBox(i, j).isFull() && playerShelf.boxExistAndIsFillable(i+1, j) && playerShelf.getBox(i+1, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+1, j).getTile().getColor()) {
+							if(playerShelf.boxExistAndIsFillable(i+2, j) && playerShelf.getBox(i+2, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+2, j).getTile().getColor()) {
+								if(playerShelf.boxExistAndIsFillable(i+3, j) && playerShelf.getBox(i+3, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i+3, j).getTile().getColor()) {
+									n++;
+								}
+							}
+						}
+						if(playerShelf.getBox(i, j).isFull() && playerShelf.boxExistAndIsFillable(i, j+1) && playerShelf.getBox(i, j+1).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i, j+1).getTile().getColor()) {
+							if(playerShelf.boxExistAndIsFillable(i, j+2) && playerShelf.getBox(i, j+2).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i, j+2).getTile().getColor()) {
+								if(playerShelf.boxExistAndIsFillable(i, j+3) && playerShelf.getBox(i, j+3).isFull() && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox(i, j+3).getTile().getColor()) {
+									n++;
+								}
+							}
+						}
+					}
+					System.out.println("N = " + n);
+				}
+			}
+		}
+		playerShelf.setAllVerifiedTileAttribute(false);
+		System.out.println(n);
+		if(n == 4) {
+			return true;
+		}
+		return false;
+		/*
 		for (int i = 0; i < playerShelf.getNI(); i++) {
 			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(playerShelf.getBox(i, j).isFull() && !playerShelf.getBox(i, j).getTile().isVerified()) {
+					
 					int k = 0;
-					k = playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+					int s = 1;
+					if(playerShelf.countNumberOfAdjacentsTilesOnSameLineWithSameColor(i, j, s) == 4) {
+						for (int l = 0; l < 4; l++) {
+							int a = 0;
+							k = k + playerShelf.countNumberOfAdjacentsTilesOnSameLineWithSameColor(i, j, a);
+						}
+						k = k + 1;
+					}
+					
+					System.out.println("k = "+ k);
 					
 					if(k == 4 ) {
 						n++;
 					}
+					System.out.println(n);
 				}
 			}
 		}
@@ -360,7 +418,7 @@ public class Pubgoal {
 		if(n == 4) {
 			return true;
 		}
-		return false;
+		return false;*/
 	}
 	
 	private boolean isPubGoal_4_Done(BoxMatrix playerShelf){

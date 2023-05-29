@@ -58,6 +58,20 @@ public class Main {
 					BoxMatrix m = new BoxMatrix(6, 5);
 					m.fillBoard();
 					listaPlayer.get(0).setShelf(m);
+					
+					listaPlayer.get(0).getShelf().getBox(1, 0).getTile().setColor(1);
+					listaPlayer.get(0).getShelf().getBox(2, 0).getTile().setColor(1);
+					listaPlayer.get(0).getShelf().getBox(3, 0).getTile().setColor(1);
+					listaPlayer.get(0).getShelf().getBox(4, 0).getTile().setColor(1);
+					listaPlayer.get(0).getShelf().getBox(0, 1).getTile().setColor(2);
+					listaPlayer.get(0).getShelf().getBox(0, 2).getTile().setColor(2);
+					listaPlayer.get(0).getShelf().getBox(0, 3).getTile().setColor(2);
+					listaPlayer.get(0).getShelf().getBox(0, 4).getTile().setColor(2);
+					listaPlayer.get(0).getShelf().getBox(2, 1).getTile().setColor(3);
+					listaPlayer.get(0).getShelf().getBox(2, 2).getTile().setColor(3);
+					listaPlayer.get(0).getShelf().getBox(2, 3).getTile().setColor(3);
+					listaPlayer.get(0).getShelf().getBox(2, 4).getTile().setColor(3);
+					
 					listaPlayer.get(0).getShelf().showTable();
 					
 					int[] c = new int[2];

@@ -502,9 +502,9 @@ public class BoxMatrix {
 	
 	
 	/*
-	 * Metedo PRIVATO che verifica se una determinata box esiste ed e' riempibile 
+	 * Metedo che verifica se una determinata box esiste ed e' riempibile 
 	 * */
-	private boolean boxExistAndIsFillable(int i, int j) {
+	public boolean boxExistAndIsFillable(int i, int j) {
 		if(i >= 0 && i < this.nI) {
 			if(j >= 0 && j < this.nJ) {
 				if(m[i][j].isFillable()) {
@@ -562,6 +562,8 @@ public class BoxMatrix {
 		}
 		return k;
 	}
+	
+
 	
 	
 	/*

@@ -79,6 +79,11 @@ public class Tile {
 		this.i = i;
 	}
 
+	/* Setter di debug
+	 * */
+	public void setColor(int i) {
+		this.color = i;
+	}
 	
 	
 }
