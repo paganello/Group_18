@@ -233,7 +233,7 @@ public class Pubgoal {
 					this.done[i] = false;
 					break;
 				
-				case 8:
+				case 8://verificato
 					if(isPubGoal_9_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
@@ -241,7 +241,7 @@ public class Pubgoal {
 					this.done[i] = false;
 					break;
 				
-				case 9:
+				case 9://verificato
 					if(isPubGoal_10_Done(playerShelf)) {
 						System.out.println("Goal " + (c[i]+1) + " verificato");
 						this.done[i] = true;
