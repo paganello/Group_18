@@ -218,8 +218,66 @@ public class Main {
 			}while(goals[0] == goals[1]);
 		}while(goals[0] < 0 && goals[1] < 0);
 		/*goals[0] = 2; goals[1] = 3;*/
-		System.out.println("goal 1: " + goals[0]);
-		System.out.println("goal 2: " + goals[1]);
+		System.out.print("PRIMO OBIETTIVO: ");
+		showPubGoal (goals[0]);
+		System.out.print("SECONDO OBIETTIVO: ");
+		showPubGoal (goals[1]);
 		return goals;
 	}
+	
+	
+	/*
+	 * Metodo che stampa gli obiettivi comuni che sono stati randdomicamente selezionati
+	 */
+	private static void showPubGoal (int PubGoal) {
+		System.out.print("Avere nella propria libreria ");
+		switch (PubGoal) {
+		case 0:
+			System.out.println("sei gruppi separati formati ciascuno da due tessere adiacenti dello stesso tipo "
+					+ " (le tessere di un gruppo possono essere diverse da quelle di un altro gruppo).");
+			break;
+		case 1:
+			System.out.println("quattro tessere dello stesso tipo ai quattro angoli.");
+			break;
+		case 2:
+			System.out.println("quattro gruppi separati formati ciascuno da quattro tessere adiacenti dello stesso"
+					+ "tipo (le tessere di un gruppo possono essere diverse da quelle di un altro gruppo).");
+			break;
+		case 3:
+			System.out.println("due gruppi separati di 4 tessere dello stesso tipo che formano un quadrato 2x2 "
+					+ "(le tessere dei due gruppi devono esseredello stesso tipo).");
+			break;
+		case 4:
+			System.out.println("Tre colonne formate ciascuna da 6 tessere di uno, due o tre tipi differenti "
+					+ "(colonne diverse possono avere combinazioni diverse di tipi di tessere).");
+			break;
+		case 5:
+			System.out.println("otto tessere dello stesso tipo (non ci sono restrizioni sulla posizione di queste tessere).");
+			break;
+		case 6:
+			System.out.println("cinque tessere dello stesso tipo che formano una diagonale.");
+			break;
+		case 7:
+			System.out.println("quattro righe formate ciascuna da 5 tessere di uno, due o tre tipi differenti "
+					+ "(righe diverse possono avere combinazioni diverse di tipi di tessere).");
+			break;
+		case 8:
+			System.out.println("due colonne formate ciascuna da 6 diversi tipi di tessere.");
+			break;
+		case 9:
+			System.out.println("due righe formate ciascuna da 5 diversi tipi di tessere.");
+			break;
+		case 10:
+			System.out.println("cinque tessere dello stesso tipo che formano una X.");
+			break;
+		case 11:
+			System.out.println("cinque colonne di altezza crescente o decrescente (a partire dalla prima colonna "
+					+ "a sinistra o a destra, ogni colonna successiva deve essere formata da una tessera in più; "
+					+ "le tessere possono essere di qualsiasi tipo).");
+			break;
+		default:
+			System.out.println("Obiettivo non trovato");
+			break;
+		}
+    }
 }
