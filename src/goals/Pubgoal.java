@@ -592,37 +592,47 @@ public class Pubgoal {
 
 	
 	private boolean isPubGoal_7_Done(BoxMatrix playerShelf) {
-		int verifier=1;
-		int c=0;
-			while(c<2) {
-				if(playerShelf.getBox(1+c,1).isFull() && playerShelf.getBox(2+c,2).isFull() && playerShelf.getBox( 1+c,1).getTile().getColor() == playerShelf.getBox(2,2+c).getTile().getColor())
-					if(playerShelf.getBox(2+c,2).isFull() && playerShelf.getBox(3+c,3).isFull() && playerShelf.getBox(2+c,2).getTile().getColor() == playerShelf.getBox(3+c,3).getTile().getColor())
-						if(playerShelf.getBox(3+c,3).isFull() && playerShelf.getBox(3+c, 4).isFull() && playerShelf.getBox(3+c,3).getTile().getColor() == playerShelf.getBox(4+c,4).getTile().getColor())
-							if(playerShelf.getBox(4+c,4).isFull() && playerShelf.getBox(5+c,5).isFull() && playerShelf.getBox(4+c,4).getTile().getColor() == playerShelf.getBox(5+c,5).getTile().getColor()) {
-									verifier=0;
-								}
-								else {
-									verifier=verifier*1;
-								}
-				
-				if(playerShelf.getBox(5-c,1).isFull() && playerShelf.getBox(4-c,2).isFull() && playerShelf.getBox(5-c,1).getTile().getColor() == playerShelf.getBox(4-c,2).getTile().getColor())
-					if(playerShelf.getBox(4-c,2).isFull() && playerShelf.getBox(3-c,3 ).isFull() && playerShelf.getBox(4-c, 2).getTile().getColor() == playerShelf.getBox(3-c,3).getTile().getColor())
-						if(playerShelf.getBox(3-c,3).isFull() && playerShelf.getBox(2-c,4).isFull() && playerShelf.getBox(3-c,3).getTile().getColor() == playerShelf.getBox(2-c,4).getTile().getColor())
-							if(playerShelf.getBox(2-c,4).isFull() && playerShelf.getBox(1-c,5).isFull() && playerShelf.getBox(2-c,4).getTile().getColor() == playerShelf.getBox(1-c,5).getTile().getColor()) {
-								verifier=0;
-						     }
-							else {
-								verifier=verifier*1;
-							}
-				c++;
-			}
-
-		if(verifier==0) {
-			return true;	
-		}
-		else {
-			return false;
-		}
+	    if (playerShelf.getBox(0, 0).isFull() && playerShelf.getBox(1, 1).isFull() && playerShelf.getBox(2, 2).isFull()
+	    		&& playerShelf.getBox(3, 3).isFull() && playerShelf.getBox(4, 4).isFull()) {
+	    	if(playerShelf.getBox(0, 0).getTile().getColor() == playerShelf.getBox(1, 1).getTile().getColor()
+	    			&& playerShelf.getBox(0, 0).getTile().getColor() == playerShelf.getBox(2, 2).getTile().getColor()
+	    			&& playerShelf.getBox(0, 0).getTile().getColor() == playerShelf.getBox(3, 3).getTile().getColor()
+	    			&& playerShelf.getBox(0, 0).getTile().getColor() == playerShelf.getBox(4, 4).getTile().getColor()){
+	    		return true;
+	    	}
+	    }
+	    
+	    if (playerShelf.getBox(1, 0).isFull() && playerShelf.getBox(2, 1).isFull() && playerShelf.getBox(3, 2).isFull()
+	    		&& playerShelf.getBox(4, 3).isFull() && playerShelf.getBox(5, 4).isFull()) {
+	    	if(playerShelf.getBox(1, 0).getTile().getColor() == playerShelf.getBox(2, 1).getTile().getColor()
+	    			&& playerShelf.getBox(1, 0).getTile().getColor() == playerShelf.getBox(3, 2).getTile().getColor()
+	    			&& playerShelf.getBox(1, 0).getTile().getColor() == playerShelf.getBox(4, 3).getTile().getColor()
+	    			&& playerShelf.getBox(1, 0).getTile().getColor() == playerShelf.getBox(5, 4).getTile().getColor()){
+	    		return true;
+	    	}
+	    }
+	    
+	    if (playerShelf.getBox(4, 0).isFull() && playerShelf.getBox(3, 1).isFull() && playerShelf.getBox(2, 2).isFull()
+	    		&& playerShelf.getBox(1, 3).isFull() && playerShelf.getBox(0, 4).isFull()) {
+	    	if(playerShelf.getBox(4, 0).getTile().getColor() == playerShelf.getBox(3, 1).getTile().getColor()
+	    			&& playerShelf.getBox(4, 0).getTile().getColor() == playerShelf.getBox(2, 2).getTile().getColor()
+	    			&& playerShelf.getBox(4, 0).getTile().getColor() == playerShelf.getBox(1, 3).getTile().getColor()
+	    			&& playerShelf.getBox(4, 0).getTile().getColor() == playerShelf.getBox(0, 4).getTile().getColor()){
+	    		return true;
+	    	}
+	    }
+	    
+	    if (playerShelf.getBox(1, 4).isFull() && playerShelf.getBox(2, 3).isFull() && playerShelf.getBox(3, 2).isFull()
+	    		&& playerShelf.getBox(4, 1).isFull() && playerShelf.getBox(5, 0).isFull()) {
+	    	if(playerShelf.getBox(1, 4).getTile().getColor() == playerShelf.getBox(2, 3).getTile().getColor()
+	    			&& playerShelf.getBox(1, 4).getTile().getColor() == playerShelf.getBox(3, 2).getTile().getColor()
+	    			&& playerShelf.getBox(1, 4).getTile().getColor() == playerShelf.getBox(4, 1).getTile().getColor()
+	    			&& playerShelf.getBox(1, 4).getTile().getColor() == playerShelf.getBox(5, 0).getTile().getColor()){
+	    		return true;
+	    	}
+	    }
+	    
+		return false;
 	}
 	
 	private boolean isPubGoal_8_Done(BoxMatrix playerShelf) {
