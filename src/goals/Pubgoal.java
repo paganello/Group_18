@@ -5,9 +5,10 @@ import structure.*;
 public class Pubgoal {
 	private int[] nGoals;
 	private boolean[] done;
+	private boolean[] goalPointsJustAssigned;
 	private int points;
 	static int[] scoreTilesGoal1 = {8,6,6,4,4,2,2,2,2}; //array delle tessere che assegnano i punti
-	static int[] scoreTilesGoal2 = {8,6,6,4,4,2,2,2,2};
+	static int[] scoreTilesGoal2 = {8,6,6,4,4,2,2,2,2};	//array delle tessere che assegnano i punti
 	
 	/*
 	 *COSTRUTTORE 
@@ -19,6 +20,8 @@ public class Pubgoal {
 		this.done = new boolean[2];
 		this.done[0] = false;	 // init a false
 		this.done[1] = false;
+		this.goalPointsJustAssigned[0] = false;	 // init a false
+		this.goalPointsJustAssigned[1] = false;
 		
 		this.points = 0;
 		
@@ -342,34 +345,39 @@ public class Pubgoal {
 	 * */
 	public void computePoints() {
 		for (int i = 0; i < 2; i++) {
-			if(done[i]) {
+			if(done[i] && !goalPointsJustAssigned[i]) {
 				if(i == 0) {
 					int j = 0;
 					while(scoreTilesGoal1[j] == 0) {
-						j++;
-						if(j > 9) {
-							System.out.println("Tessere punteggio terminate!");
+						if(j >= 8) {
 							break;
 						}
+						j++;
 					}
 					
 					if(scoreTilesGoal1[j] != 0) {
 						this.points = this.points + scoreTilesGoal1[j];
 						scoreTilesGoal1[j] = 0;
+						goalPointsJustAssigned[i] = true;
+					}else {
+						System.out.println("Tessere punteggio terminate!");
 					}
+					
 				}else if(i == 1) {
 					int j = 0;
 					while(scoreTilesGoal2[j] == 0) {
-						j++;
-						if(j > 9) {
-							System.out.println("Tessere punteggio terminate!");
+						if(j >= 8) {
 							break;
 						}
+						j++;
 					}
 					
 					if(scoreTilesGoal2[j] != 0) {
 						this.points = this.points + scoreTilesGoal2[j];
 						scoreTilesGoal2[j] = 0;
+						goalPointsJustAssigned[i] = true;
+					}else {
+						System.out.println("Tessere punteggio terminate!");
 					}
 				}
 			}
