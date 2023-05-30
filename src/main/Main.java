@@ -80,7 +80,9 @@ public class Main {
 				 * Fase di gioco (un player alla volta)
 				 * */
 				case turnStart:
-					
+					if(tavolo.matrix.checkIfBoardNeedToBeRefilled(playerNum)) {
+						tavolo.matrix.fillBoard();
+					}
 					/* CODICE DI DEBUG
 					 * 				
 					BoxMatrix m = new BoxMatrix(6, 5);
