@@ -1,6 +1,4 @@
 package goals;
-import java.util.Iterator;
-
 import structure.*;
 
 
@@ -8,8 +6,8 @@ public class Pubgoal {
 	private int[] nGoals;
 	private boolean[] done;
 	private int points;
-	static int[] scoreTiles = {8,6,6,4,4,2,2,2,2}; //array delle tessere che assegnano i punti
-	
+	static int[] scoreTilesGoal1 = {8,6,6,4,4,2,2,2,2}; //array delle tessere che assegnano i punti
+	static int[] scoreTilesGoal2 = {8,6,6,4,4,2,2,2,2};
 	
 	/*
 	 *COSTRUTTORE 
@@ -73,133 +71,136 @@ public class Pubgoal {
 	public void verify(BoxMatrix playerShelf) {
 		
 		for (int i = 0; i < 2; i++) {
-			switch (this.nGoals[i]) {
-				case 0:		//verificato
-					if(isPubGoal_1_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+			if(!this.done[i]) {
 				
-				case 1:		//verificato
-					if(isPubGoal_2_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+				switch (this.nGoals[i]) {
+					case 0:		//verificato
+						if(isPubGoal_1_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 2:		//verificato
-					if(isPubGoal_3_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 1:		//verificato
+						if(isPubGoal_2_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 3:		//verificato
-					if(isPubGoal_4_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 2:		//verificato
+						if(isPubGoal_3_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 4:		//verificato
-					if(isPubGoal_5_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 3:		//verificato
+						if(isPubGoal_4_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 5:		//verificato
-					if(isPubGoal_6_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 4:		//verificato
+						if(isPubGoal_5_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 6:		//verificato
-					if(isPubGoal_7_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 5:		//verificato
+						if(isPubGoal_6_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 7:
-					if(isPubGoal_8_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 6:		//verificato
+						if(isPubGoal_7_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}	
+						break;
 				
-				case 8:
-					if(isPubGoal_9_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 7:
+						if(isPubGoal_8_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 9:		//verificato
-					if(isPubGoal_10_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 8:
+						if(isPubGoal_9_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 10:	//
-					if(isPubGoal_11_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 9:		//verificato
+						if(isPubGoal_10_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 				
-				case 11:	//
-					if(isPubGoal_12_Done(playerShelf)) {
-						System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
-						this.done[i] = true;
-					}else {
-						this.done[i] = false;
-						System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
-					}
-					break;
+					case 10:	//verificato
+						if(isPubGoal_11_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
+				
+					case 11:	//
+						if(isPubGoal_12_Done(playerShelf)) {
+							System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							this.done[i] = true;
+						}else {
+							this.done[i] = false;
+							System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+						}
+						break;
 					
-				default:
-					this.done[i] = false;
-					break;
-			}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
+					default:
+						this.done[i] = false;
+						break;
+				}//ogni case contiene il metodo per verificare il goal in questione, è qui che viene scritto
 			// il grosso dell'algoritmo per verificare i goal publici.
-		}		
+			}		
+		}	
 	}
 	
 	//METEODO DI DEBUG DEI GOALS
@@ -342,14 +343,34 @@ public class Pubgoal {
 	public void computePoints() {
 		for (int i = 0; i < 2; i++) {
 			if(done[i]) {
-				int j = 0;
-				while(scoreTiles[j] == 0) {
-					j++;
-				}
-				
-				if(scoreTiles[j] != 0) {
-					this.points = this.points + scoreTiles[j];
-					scoreTiles[j] = 0;
+				if(i == 0) {
+					int j = 0;
+					while(scoreTilesGoal1[j] == 0) {
+						j++;
+						if(j > 9) {
+							System.out.println("Tessere punteggio terminate!");
+							break;
+						}
+					}
+					
+					if(scoreTilesGoal1[j] != 0) {
+						this.points = this.points + scoreTilesGoal1[j];
+						scoreTilesGoal1[j] = 0;
+					}
+				}else if(i == 1) {
+					int j = 0;
+					while(scoreTilesGoal2[j] == 0) {
+						j++;
+						if(j > 9) {
+							System.out.println("Tessere punteggio terminate!");
+							break;
+						}
+					}
+					
+					if(scoreTilesGoal2[j] != 0) {
+						this.points = this.points + scoreTilesGoal2[j];
+						scoreTilesGoal2[j] = 0;
+					}
 				}
 			}
 		}		
