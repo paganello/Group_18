@@ -53,13 +53,13 @@ public class Main {
 		System.out.println();
 		int[] nGoals = randPubGoals();
 		System.out.println();
-		
 		for(int i = 0; i < playerNum; i++) {
 			System.out.print("Inserire il nome del giocatore " + (i+1) + ": ");
 			
 			if(sc.hasNextLine()) {
 				String playerName = sc.nextLine();
-				listaPlayer.add(new Player((i), nGoals, playerName));
+				listaPlayer.add(new Player((i), nGoals, playerName,i+1));
+
 			}else {
 				System.out.println("Error (row 43): nextLine non found");
 			}
@@ -172,7 +172,8 @@ public class Main {
 						
 						if(listaPlayer.get(v).isShelfFull() == true && stato == GameState.turnStart) {
 							stato = GameState.endPhase;
-							lastTurnPlayer = v;
+							listaPlayer.get(v).endPhaseBonus();
+							
 						}
 						
 						listaPlayer.get(v).computePubGoals();
@@ -200,6 +201,24 @@ public class Main {
 							i++;
 						}
 					}
+					int contaSpareggio=1; //conteggio dei giocatori in situazione di parità per il primo posto
+					for(int i=1; i<listaPlayer.size()-1;i++) {
+						if(listaPlayer.get(i).getPoints()==listaPlayer.get(0).getPoints()) {
+							contaSpareggio++;
+						}
+					}
+					isNotSorted=true;
+					while(isNotSorted) {
+						for (int i=0; i<contaSpareggio; i++) {
+						if(listaPlayer.get(i+1).getOrder()<listaPlayer.get(i).getOrder()) {//bubble sort per order
+							 tmp = listaPlayer.get(i);
+								listaPlayer.set(i, listaPlayer.get(i+1));
+								listaPlayer.set(i, tmp);
+								isNotSorted = true;
+						}
+					}
+					}
+					
 					
 					System.out.println("*--------------------- CLASSIFICA -------------------------*");
 					System.out.println("il giocatore che ha vinto la partita e': " + listaPlayer.get(0).getName() + "\n");
@@ -207,6 +226,7 @@ public class Main {
 					for (int i = 0; i < listaPlayer.size(); i++) {
 						System.out.println((i+1) + listaPlayer.get(i).getName() + " -> " + listaPlayer.get(i).getPoints() + " punti.");
 					}
+					
 					stato = GameState.gameEnd;
 					
 					break;

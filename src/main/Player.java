@@ -15,16 +15,19 @@ public class Player {
 	private Pubgoal publicGoals;
 	private Gengoal genGoal;
 	private BoxMatrix shelf; 
+	private int orderPlayer;//l'ordine nel quale i gicoatori vengono costruiti nel main e nel quale giocano; necessario per lo spareggio
 	
 	
 	/*
 	 * COSTRUTTORE
 	 * */
-	public Player (int nPlayer, int[] PubGoalsNumbers, String playerName) {
+	public Player (int nPlayer, int[] PubGoalsNumbers, String playerName,int orderPlayer) {
 		
 		this.name = playerName;
 		
 		this.number = nPlayer;
+		
+		this.orderPlayer = orderPlayer;
 		
 		if(nPlayer == 0) {	//set chair
 			this.chair = true;
@@ -60,6 +63,9 @@ public class Player {
 	public void setPoints(int points) {
 		
 		this.points = points;
+	}
+	public void endPhaseBonus() {
+		this.points++;
 	}
 
 	public boolean isChair() {
@@ -109,7 +115,9 @@ public class Player {
 	public BoxMatrix getShelf() {
 		return shelf;
 	}
-
+	public int getOrder() {
+		return orderPlayer;
+	}
 
 
 	public void setShelf(BoxMatrix shelf) {
