@@ -209,6 +209,7 @@ public class Main {
 					}
 					isNotSorted=true;
 					while(isNotSorted) {
+						isNotSorted=false;
 						for (int i=0; i<contaSpareggio; i++) {
 						if(listaPlayer.get(i+1).getOrder()<listaPlayer.get(i).getOrder()) {//bubble sort per order
 							 tmp = listaPlayer.get(i);
