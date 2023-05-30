@@ -841,15 +841,16 @@ int col_counter = 0;
 	 * dello stesso colore che formano una "X"
 	 */
 	private boolean isPubGoal_11_Done (BoxMatrix playerShelf) {
-		for(int n=1; n<4; n++) {
-			for(int m=1; m<3;m++) {
-				if(playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m+1).getTile().getColor()
-						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m-1).getTile().getColor()
-						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n+1, m-1).getTile().getColor()
-						&& playerShelf.getBox(n, m).getTile().getColor() == playerShelf.getBox(n-1, m+1).getTile().getColor()
-						&& playerShelf.getBox(n, m).isFull() && playerShelf.getBox(n+1, m+1).isFull() 
-						&& playerShelf.getBox(n-1, m-1).isFull() && playerShelf.getBox(n+1, m-1).isFull()&& playerShelf.getBox(n-1, m+1).isFull()) {
-					return true;
+		for(int i=1; i>(playerShelf.getNI()-1); i++) {
+			for(int j=1; j<(playerShelf.getNJ()-1); j++) {
+				if(playerShelf.getBox(i, j).isFull() && playerShelf.getBox((i+1), (j+1)).isFull() 
+						&& playerShelf.getBox((i-1), (j-1)).isFull() && playerShelf.getBox((i+1), (j-1)).isFull()
+						&& playerShelf.getBox((i-1), (j+1)).isFull()) {
+					if (playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i+1), (j+1)).getTile().getColor()
+							&& playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i-1), (j-1)).getTile().getColor()
+						    && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i+1), (j-1)).getTile().getColor()
+						    && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i-1), (j+1)).getTile().getColor())
+						return true;
 				}
 			}
 		}
@@ -862,18 +863,18 @@ int col_counter = 0;
 	 * o decrescente (da 5 a 1) da sinistra verso destra
 	 */
 	private boolean isPubGoal_12_Done (BoxMatrix playerShelf) {
-		final int maxTiles=5;
+		final int maxTiles=6;
 		int count, m, n;
 		boolean verify=false;
 		
 		//Altezza delle colonne decrescente da sinistra verso destra
 		for (m=0; m<4; m++) {
 			count=0;
-			for (n=0; n<5; n++) {
+			for (n=0; n<6; n++) {
 				if (playerShelf.getBox(n, m).isFull())
 					count++;
 			}
-			if ((maxTiles-count)==m)
+			if ((maxTiles-count)== (m+1))
 				verify=true;
 			else
 				verify=false;			
@@ -884,11 +885,11 @@ int col_counter = 0;
 		//Altezza delle colonne crescente da sinistra verso destra
 		for (m=0; m<4; m++) {
 			count=0;
-			for (n=0; n<5; n++) {
+			for (n=0; n<6; n++) {
 				if (playerShelf.getBox(n, m).isFull())
 					count++;
 			}
-			if ((maxTiles-count)==(4-m))
+			if ((maxTiles-count)==(5-m))
 				verify=true;
 			else
 				verify=false;			
