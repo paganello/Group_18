@@ -47,10 +47,14 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 1:
@@ -63,10 +67,14 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 2:
@@ -79,42 +87,54 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 3:
 			
 			int[] iMap_3 = {0, 2, 2, 3, 4, 4};
-			int[] jMap_3 = {4, 0, 2, 4, 1, 2};
+			int[] jMap_3 = {4, 0, 2, 3, 1, 2};
 			int[] colorMap_3 = {2, 5, 4, 6, 2, 2};
 			
 			matches = verifyIfTileMatchByArray(iMap_3, jMap_3, colorMap_3, playerShelf);
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 4:
 			
 			int[] iMap_4 = {1, 3, 3, 4, 5, 5};
-			int[] jMap_4 = {1, 1, 2, 5, 0, 3};
+			int[] jMap_4 = {1, 1, 2, 4, 0, 3};
 			int[] colorMap_4 = {5, 4, 2, 6, 3, 1};
 			
 			matches = verifyIfTileMatchByArray(iMap_4, jMap_4, colorMap_4, playerShelf);
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 5:
@@ -127,10 +147,14 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 6:
@@ -143,10 +167,14 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 7:
@@ -159,10 +187,14 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 8:
@@ -175,10 +207,14 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 9:
@@ -191,10 +227,14 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 10:
@@ -207,10 +247,14 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		case 11:
@@ -223,14 +267,19 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
+				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
+				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
+			//System.out.println(this.points);
+			break;
 			
 			
 		default:
 			this.done = false;
+			break;
 		}
 	}
 	
@@ -246,8 +295,9 @@ public class Privgoal {
 				if(i == iMap[k] && j == jMap[k]) {
 					if (playerShelf.getBox(i, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == colorMap[k]) {
 						k++;
-					}else {
-						return k;
+						if(k == 6) {
+							return k;
+						}
 					}
 				}
 			}
@@ -310,5 +360,11 @@ public class Privgoal {
 		return points;
 	}	
 	
+	/*
+	 *  Setters di debug
+	 * */
+	public void setGoalNumber(int a) {
+		this.nGoal = a;
+	}
 	
 }
