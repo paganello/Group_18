@@ -6,30 +6,57 @@ import structure.*;
 public class Main {
 	public static void main(String[] args) {
 		
+		
+		System.out.println("\nBENVENUTO IN");
+		System.out.println("                  _____ _          _  __ _      ");				//NON MODIFICARE
+		System.out.println("                 /  ___| |        | |/ _(_)     ");
+		System.out.println("  _ __ ___  _   _\\ `--.| |__   ___| | |_ _  ___ ");
+		System.out.println(" | '_ ` _ \\| | | |`--. \\ '_ \\ / _ \\ |  _| |/ _ \\");
+		System.out.println(" | | | | | | |_| /\\__/ / | | |  __/ | | | |  __/");
+		System.out.println(" |_| |_| |_|\\__, \\____/|_| |_|\\___|_|_| |_|\\___|");
+		System.out.println("             __/ |                              ");
+		System.out.println("            |___/                    by Gruop_18\n\n           ");
+
+		
 		GameState stato;
-	
-		int playerNum;
+		int playerNum = 0;
 		int lastTurnPlayer;
-		int contaUltimoTurno = 0;
+		int countLastTourn = 0;
 		
 		ArrayList<Player> listaPlayer= new ArrayList<Player>();
 	
 		Scanner sc = new Scanner(System.in);
+		
+		boolean retry = false;
 		do {
+			retry = false;
 			
-			System.out.print("Inserire il numero di giocatori: "); //ottengo in input il numero di giocatori, che è verificato alla fine di questo loop
-			playerNum = sc.nextInt();
+			try {
+				System.out.print("Inserire il numero di giocatori (min: 2, max: 4): "); //ottengo in input il numero di giocatori, che è verificato alla fine di questo loop
+				playerNum = sc.nextInt();
+				
+			}catch(InputMismatchException c){
+				System.out.println("Devi inserire un NUMERO intero.\n");
+				retry = true;
+			}
+			
+			if(!retry) {
+				if(playerNum < 2 || playerNum > 4) {
+					System.out.println("Per favore inserire solo valori compresi tra 2 e 4.\n");
+					retry = true;
+				}
+			}
 			sc.nextLine();
 			
-			if(playerNum < 2 || playerNum > 4) {
-				System.out.println("Per favore inserire solo valori tra 2 e 4!");
-			}
-		}while(playerNum < 2 || playerNum > 4);	
+		}while(retry);	
 		
+		System.out.println();
 		int[] nGoals = randPubGoals();
+		System.out.println();
 		
 		for(int i = 0; i < playerNum; i++) {
 			System.out.print("Inserire il nome del giocatore " + (i+1) + ": ");
+			
 			if(sc.hasNextLine()) {
 				String playerName = sc.nextLine();
 				listaPlayer.add(new Player((i), nGoals, playerName));
@@ -54,44 +81,21 @@ public class Main {
 				 * */
 				case turnStart:
 					
-					//SCRIPT DI DEBUG
+					/* CODICE DI DEBUG
+					 * 				
 					BoxMatrix m = new BoxMatrix(6, 5);
 					m.fillBoard();
 					listaPlayer.get(0).setShelf(m);
 					
-					listaPlayer.get(0).getShelf().getBox(0, 0).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(1, 0).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(2, 0).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(3, 0).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(4, 0).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(5, 0).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(0, 1).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(1, 1).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(2, 1).getTile().setColor(1);
-			        listaPlayer.get(0).getShelf().getBox(3, 1).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(4, 1).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(5, 1).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(0, 3).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(1, 3).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(2, 3).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(3, 3).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(4, 3).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(5, 3).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(0, 4).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(1, 4).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(2, 4).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(3, 4).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(4, 4).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(5, 4).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(0, 2).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(1, 2).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(2, 2).getTile().setColor(0);
-					listaPlayer.get(0).getShelf().getBox(3, 2).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(4, 2).getTile().setColor(1);
-					listaPlayer.get(0).getShelf().getBox(5, 2).getTile().setColor(1);
-					
 					listaPlayer.get(0).getShelf().showTable();
 					
+					System.out.println("\n1) quale goal vuoi verificare?");
+					int c = sc.nextInt();
+					sc.nextLine();
+					
+					listaPlayer.get(0).getPrivateGoal().setGoalNumber(c);
+					listaPlayer.get(0).getPrivateGoal().verifyAndComputePoints(listaPlayer.get(0).getShelf());
+					System.out.println("end");
 					int[] c = new int[2];
 					
 					System.out.println("\n1) quale goal vuoi verificare?");
@@ -103,13 +107,14 @@ public class Main {
 					sc.nextLine();
 					
 					listaPlayer.get(0).getPublicGoals().verify(listaPlayer.get(0).getShelf(), c);
-					
+					 * 
+					 */
 
-/*					
+					
+				
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
 						System.out.println("E' il turno di " + listaPlayer.get(v).getName() + "\n");
-						
 						tavolo.matrix.showTable();
 						
 						//metodi per prelevare e depositare tiles
@@ -117,18 +122,18 @@ public class Main {
 						int j;
 						do {
 							do{
-								System.out.print("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
-								i = sc.nextInt();
-								sc.nextLine();
+								//System.out.print("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
+								i = getIntData("Inserisci la riga sulla quale si trova la prima tile che vuoi prendere: ");
+								//sc.nextLine();
 								if(i < 1 || i > 9) {
 									System.out.println("Riga non valida!");
 								}
 							}while(i < 1 || i > 9);
 							
 							do {
-								System.out.print("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
-								j = sc.nextInt();
-								sc.nextLine();
+								//System.out.print("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
+								j = getIntData("Inserisci la colonna sulla quale si trova la prima tile che vuoi prendere: ");
+								//sc.nextLine();
 								if(j < 1 || j > 9) {
 									System.out.println("Colonna non valida!");
 								}
@@ -138,10 +143,11 @@ public class Main {
 								System.out.println("La casella selezioanta non contiene una tessera!");
 							}
 							
-							if (!tavolo.matrix.freeSide(i, j))
+							if (!tavolo.matrix.freeSide(i-1, j-1)) {
 								System.out.println("La casella selezionata contiene una tessera che ha tutti i lati occupati.");
+							}
 							
-						}while(!tavolo.matrix.getBox(i-1,j-1).isFillable() || !tavolo.matrix.getBox(i-1,j-1).isFull() || !tavolo.matrix.freeSide(i, j));
+						}while(!tavolo.matrix.getBox(i-1,j-1).isFillable() || !tavolo.matrix.getBox(i-1,j-1).isFull() || !tavolo.matrix.freeSide(i-1, j-1));
 						
 						Tile[] t = new Tile[3];
 						t = tavolo.matrix.removeTilesFromBoard(i-1, j-1);	//decremento in quanto gli array vanno da 0 a 8 e non da 1 a 9
@@ -172,7 +178,6 @@ public class Main {
 						listaPlayer.get(v).computePubGoals();
 					}
 					break;
-*/
 		
 				case endPhase:
 					
@@ -294,4 +299,61 @@ public class Main {
 			break;
 		}
     }
+	
+	/*
+	 * Metodo pubblico per la gestione delle eccezioni in input
+	 * */
+	public static int getIntData(String r) {
+		Scanner sc = new Scanner(System.in);
+		int s = 0;
+		boolean retry;
+		do {
+			retry = false;
+			try {
+				System.out.print(r);
+				s = sc.nextInt();
+			
+			}catch(InputMismatchException c){
+				System.out.println("Devi inserire un NUMERO intero.\n");
+				retry = true;
+			}catch(Exception c){
+				System.out.println("Errore di inserimento: Devi inserire un NUMERO INTERO\n");
+				retry = true;
+			}
+			sc.nextLine();
+			
+		}while(retry);
+		
+		return s;
+	}
+	
+	/*
+	 * Metodo pubblico per la gestione delle eccezioni in input
+	 * */
+	public String getStrData(String r) {
+		Scanner sc = new Scanner(System.in);
+		String s = "";
+		boolean retry;
+		do {
+			retry = false;
+			try {
+				System.out.print(r);
+				s = sc.nextLine();
+				
+			}catch(Exception c){
+				System.out.println("Errore di inserimento: Devi inserire una stringa!\n");
+				retry = true;
+			}
+			
+			if(s == "" || s == "\n" || s == "\t" || s == " ") {
+				System.out.println("Devi inserire una stringa!");
+				retry = false;
+			}
+				
+			sc.nextLine();
+			
+		}while(retry);
+		
+		return s;
+	}
 }

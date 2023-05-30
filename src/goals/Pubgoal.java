@@ -20,6 +20,7 @@ public class Pubgoal {
 		this.done = new boolean[2];
 		this.done[0] = false;	 // init a false
 		this.done[1] = false;
+		this.goalPointsJustAssigned = new boolean[2];
 		this.goalPointsJustAssigned[0] = false;	 // init a false
 		this.goalPointsJustAssigned[1] = false;
 		
