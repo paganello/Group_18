@@ -839,16 +839,19 @@ public class Pubgoal {
 	 * dello stesso colore che formano una "X"
 	 */
 	private boolean isPubGoal_11_Done (BoxMatrix playerShelf) {
-		for(int i=1; i>(playerShelf.getNI()-1); i++) {
-			for(int j=1; j<(playerShelf.getNJ()-1); j++) {
-				if(playerShelf.getBox(i, j).isFull() && playerShelf.getBox((i+1), (j+1)).isFull() 
-						&& playerShelf.getBox((i-1), (j-1)).isFull() && playerShelf.getBox((i+1), (j-1)).isFull()
+		for (int i = 1; i < (playerShelf.getNI()-1); i++) {
+			for (int j = 1; j < (playerShelf.getNJ()-1); j++) {
+				if(playerShelf.getBox(i, j).isFull() 
+						&& playerShelf.getBox((i+1), (j+1)).isFull() 
+						&& playerShelf.getBox((i-1), (j-1)).isFull() 
+						&& playerShelf.getBox((i+1), (j-1)).isFull()
 						&& playerShelf.getBox((i-1), (j+1)).isFull()) {
 					if (playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i+1), (j+1)).getTile().getColor()
 							&& playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i-1), (j-1)).getTile().getColor()
 						    && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i+1), (j-1)).getTile().getColor()
-						    && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i-1), (j+1)).getTile().getColor())
+						    && playerShelf.getBox(i, j).getTile().getColor() == playerShelf.getBox((i-1), (j+1)).getTile().getColor()) {
 						return true;
+					}
 				}
 			}
 		}
