@@ -57,5 +57,4 @@ public class Board {
 		}
 		this.matrix = matrix;
 	}
-
 }

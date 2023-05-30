@@ -51,6 +51,9 @@ public class Box {
 	}
 	
 	public boolean isFull() {
+		if(this.tile == null) {
+			this.full = false;
+		}
 		return this.full;
 	}
 	
