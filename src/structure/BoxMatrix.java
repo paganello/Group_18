@@ -1,6 +1,8 @@
 package structure;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 import java.util.Random;
+import main.Main;
 
 public class BoxMatrix {
 	//dichiarazione variabili
@@ -19,20 +21,7 @@ public class BoxMatrix {
 	/*
 	 * COSTRUTTORE
 	 * */
-	public BoxMatrix(int i, int j) {	//costruttore matrice, Funziona!
-		
-		/*
-		this.nI = i;
-		this.nJ = j;
-		int[][] m = new int[i][j];
-		
-		for (int k = 0; k < i; k++) {
-			for(int n = 0; n < j; n++) {
-				m[k][n] = 0;
-			}
-		};
-		this.m = m;
-		*/
+	public BoxMatrix(int i, int j) {
 		
 		this.nI = i;
 		this.nJ = j;
@@ -178,9 +167,7 @@ public class BoxMatrix {
 		
 		do {
 			do {
-		    System.out.println("Che cosa vuoi fare?\n1-Prendi la casella a destra.\n2-Prendi la casella a sinistra\n3-Prendi la casella in basso.\n4-Prendi la casella in alto\n5-Prendi solo la casella selezionata");
-		    choice=sc.nextInt();
-		    sc.nextLine();
+				choice = getIntData("\nChe cosa vuoi fare?\n1-Prendi la casella a destra.\n2-Prendi la casella a sinistra\n3-Prendi la casella in basso.\n4-Prendi la casella in alto\n5-Prendi solo la casella selezionata");
 			}while(choice<1||choice>5);
 		    
 			switch (choice) {
@@ -192,9 +179,7 @@ public class BoxMatrix {
 				    
 				    do{
 				    	do {
-				    		System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
-				    		choice=sc.nextInt();
-				    		sc.nextLine();
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				    	}while(choice<1||choice>2);
 				        
 				        switch (choice) {
@@ -235,9 +220,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-					        System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
-					        choice=sc.nextInt();
-					        sc.nextLine();
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No");;
 					    }while(choice<1||choice>2);
 				        
 				        switch (choice) {
@@ -278,9 +261,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-				    		System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
-				    		choice=sc.nextInt();
-				    		sc.nextLine();
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No");
 				    	}while(choice<1||choice>2);
 				    
 				        switch (choice) {
@@ -322,9 +303,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-					        System.out.println("Vuoi prendere anche una terza tessera?\n1-Si\n2-No");
-					        choice=sc.nextInt();
-					        sc.nextLine();
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No");
 					    }while(choice<1||choice>2);
 				        
 				        switch (choice) {
@@ -624,4 +603,31 @@ public class BoxMatrix {
 		}
     }
 	
+	
+	/*
+	 * Metodo pubblico per la gestione delle eccezioni in input
+	 * */
+	public static int getIntData(String r) {
+		Scanner sc = new Scanner(System.in);
+		int s = 0;
+		boolean retry;
+		do {
+			retry = false;
+			try {
+				System.out.print(r);
+				s = sc.nextInt();
+			
+			}catch(InputMismatchException c){
+				System.out.println("Devi inserire un NUMERO intero.\n");
+				retry = true;
+			}catch(Exception c){
+				System.out.println("Errore di inserimento: Devi inserire un NUMERO INTERO\n");
+				retry = true;
+			}
+			sc.nextLine();
+			
+		}while(retry);
+		
+		return s;
+	}
 }
