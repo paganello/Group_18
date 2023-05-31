@@ -81,6 +81,55 @@ public class BoxMatrix {
 		System.out.print(this.m[i][j].getTile().getColor() + " ");
 	}
 	
+	/*
+	 * Metodo che permette al giocatore di mettere nell'ordine che preferisce le caselle prese
+	 */
+	private Tile[] orderTilesArray (Tile[] tiles) {
+		Scanner sc = new Scanner (System.in);
+		Tile[] newTilesOrder = new Tile [3];
+		int selectedTile;
+		
+		if(tiles[0] != null) {
+			do {
+			System.out.println("Quale Tessera vuoi inserire per prima nella libreria?\t");
+			selectedTile = sc.nextInt()-1;
+			if(tiles [selectedTile] == null)
+				System.out.println("La posizione selezionata non contiene alcuna tessera.");
+			if(selectedTile>tiles.length)
+				System.out.println("Non esiste questa posizione.");
+			}while(selectedTile>tiles.length ||  tiles [selectedTile] == null);
+			newTilesOrder [0] = tiles[selectedTile];
+			
+			if(tiles[1] != null) {
+				do {
+				System.out.println("Quale Tessera vuoi inserire dopo nella libreria?\t");
+				selectedTile = sc.nextInt()-1;
+				if(tiles [selectedTile] == null)
+					System.out.println("La posizione selezionata non contiene alcuna tessera.");
+				if(selectedTile>tiles.length)
+					System.out.println("Non esiste questa posizione.");
+				}while(selectedTile>tiles.length ||  tiles [selectedTile] == null);
+				newTilesOrder [1] = tiles[selectedTile];
+			}
+			
+			if(tiles[2] != null) {
+				do {
+				System.out.println("Quale Tessera vuoi inserire dopo nella libreria?\t");
+				selectedTile = sc.nextInt()-1;
+				if(tiles [selectedTile] == null)
+					System.out.println("La posizione selezionata non contiene alcuna tessera.");
+				if(selectedTile>tiles.length)
+					System.out.println("Non esiste questa posizione.");
+				}while(selectedTile>tiles.length ||  tiles [selectedTile] == null);
+				newTilesOrder [2] = tiles[selectedTile];
+			}
+		}
+		else {
+			System.out.println("Non e'possibile che si siano prese piu' di 3 tessere.");
+		}
+		sc.close();
+		return newTilesOrder;
+	}
 	
 	/*
 	 * Metedo che inserisce una tile nella shelf del player
@@ -88,7 +137,7 @@ public class BoxMatrix {
 	 * la j che viene fornita DEVE essere gia decrementate e adattandola alla gestione della matrice (che ricordiamo parire da riga zero e non da riga uno)
 	 * */
 	public void putTilesInPlayerShelf(Tile[] tiles, int j, int nPlayer) {
-		
+		tiles = orderTilesArray(tiles);
 		for (int n = 0; n < tiles.length; n++) {
 			if(tiles[n] != null) {
 				for (int i = 0; i < this.nI; i++) {
