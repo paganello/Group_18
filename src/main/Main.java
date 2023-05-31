@@ -126,15 +126,9 @@ public class Main {
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
 						System.out.println("\n\n\t\t----- E' il turno di " + listaPlayer.get(v).getName() + "-----\n\n");
-						showObjs(nGoals[0], nGoals[1], listaPlayer.get(v).getPrivateGoal().getGoalNumber());
-						
 						System.out.println("Ecco il tabellone!\n\n");
 						tavolo.matrix.showTable();
-						System.out.println("\n* Ti ricordimao gli obiettivi comuni.");
-						System.out.print("PRIMO OBIETTIVO: ");
-						showPubGoal (nGoals[0]);
-						System.out.print("SECONDO OBIETTIVO: ");
-						showPubGoal (nGoals[1]);
+						showObjs(nGoals[0], nGoals[1], listaPlayer.get(v).getPrivateGoal().getGoalNumber());
 						
 						//metodi per prelevare e depositare tiles
 						int i;
