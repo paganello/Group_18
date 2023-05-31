@@ -551,7 +551,7 @@ public class Pubgoal {
 			
 			for (int i = 0; i < 6; i++) {
 				//System.out.println(col_colors[0] + " " + col_colors[1] + " " + col_colors[2]);
-				if(playerShelf.getBox(i, j).isFull()) {
+				if(playerShelf.boxExistAndIsFillable(i, j) && playerShelf.getBox(i, j).isFull()) {
 					if(col_colors[0] == 0) {
 						col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
 						
@@ -713,7 +713,7 @@ public class Pubgoal {
 			for (int j = 0; j < 5; j++) {
 				
 				//System.out.println(col_colors[0] + " " + col_colors[1] + " " + col_colors[2]);
-				if(playerShelf.getBox(i, j).isFull()) {
+				if(playerShelf.boxExistAndIsFillable(i, j) && playerShelf.getBox(i, j).isFull()) {
 					
 					if(col_colors[0] == 0) {
 						col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
@@ -799,8 +799,8 @@ public class Pubgoal {
 		for(int j=0;j<5;j++) {	
 			for(int i=0;i<6;i++) {
 				for(int k=0;k<6;k++) {
-					if(playerShelf.getBox(i,j).isFull()){
-						if(playerShelf.getBox(i, k).isFull() && !(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
+					if(playerShelf.boxExistAndIsFillable(i, j) && playerShelf.getBox(i,j).isFull()){
+						if(playerShelf.boxExistAndIsFillable(i, k) && playerShelf.getBox(i, k).isFull() && !(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(k, j).getTile().getColor())) {
 							conta ++;
 						}
 					}
@@ -833,8 +833,8 @@ public class Pubgoal {
 		for(int i = 0; i < 6; i++) {
 			for(int j = 0; j < 5; j++) {
 				for(int k = 0; k < 5; k++) {
-					if(playerShelf.getBox(i,j).isFull()){
-						if(playerShelf.getBox(i, k).isFull() && !(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(i, k).getTile().getColor())) {
+					if(playerShelf.boxExistAndIsFillable(i, j) && playerShelf.getBox(i,j).isFull()){
+						if(playerShelf.boxExistAndIsFillable(i, k) && playerShelf.getBox(i, k).isFull() && !(playerShelf.getBox(i, j).getTile().getColor()==playerShelf.getBox(i, k).getTile().getColor())) {
 							conta ++;
 							//System.out.println("inLine: "+conta);
 						}
