@@ -126,9 +126,11 @@ public class Main {
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
 						System.out.println("\n\n\t\t----- E' il turno di " + listaPlayer.get(v).getName() + "-----\n\n");
+						showObjs(nGoals[0], nGoals[1], listaPlayer.get(v).getPrivateGoal().getGoalNumber());
+						
 						System.out.println("Ecco il tabellone!\n\n");
 						tavolo.matrix.showTable();
-						showObjs(nGoals[0], nGoals[1], listaPlayer.get(v).getPrivateGoal().getGoalNumber());
+						
 						
 						//metodi per prelevare e depositare tiles
 						int i;
@@ -441,36 +443,40 @@ public class Main {
 					switch(c[p]) {
 					case 1:
 						System.out.print(textGreen+"G"+" "+resetTextColor); //G=verde
+						p++;
 						break;
 					case 2:
 						System.out.print(textWhite+"W"+" "+resetTextColor); //W=bianco
+						p++;
 						break;
 					case 3:
 						System.out.print(textYellow+"Y"+" "+resetTextColor); //Y=giallo
+						p++;
 						break;
 					case 4:
 						System.out.print(textBlue+"B"+" "+resetTextColor); //B=blu
+						p++;
 						break;
 					case 5:
 						System.out.print(textCyan+"C"+" "+resetTextColor); //C=azzurro
+						p++;
 						break;
 					case 6:
 						System.out.print(textPink+"P"+" "+resetTextColor); //P=rosa
+						p++;
 						break;
 					}
-					p++;
 					if(p == 6) {
 						break;
 					}
-					
 				}else{
 					System.out.print("  ");
 				}
 			}
 			System.out.print("\n");
 		}
-		
-	}
+	}		
+
 	
 	private static void showObjs(int a, int b, int c) {
 		
