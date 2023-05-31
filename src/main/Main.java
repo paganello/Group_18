@@ -15,7 +15,7 @@ public class Main {
 		System.out.println(" | | | | | | |_| /\\__/ / | | |  __/ | | | |  __/");
 		System.out.println(" |_| |_| |_|\\__, \\____/|_| |_|\\___|_|_| |_|\\___|");
 		System.out.println("             __/ |                              ");
-		System.out.println("            |___/                    by Gruop_18\n\n           ");
+		System.out.println("            |___/                    by Group_18\n\n           ");
 
 		
 		GameState stato;
@@ -116,7 +116,8 @@ public class Main {
 				
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
-						System.out.println("E' il turno di " + listaPlayer.get(v).getName() + "\n");
+						System.out.println("\n\n\t\t----- E' il turno di " + listaPlayer.get(v).getName() + "-----\n\n");
+						System.out.println("Ecco il tabellone!\n\n");
 						tavolo.matrix.showTable();
 						
 						//metodi per prelevare e depositare tiles
@@ -154,7 +155,7 @@ public class Main {
 						Tile[] t = new Tile[3];
 						t = tavolo.matrix.removeTilesFromBoard(i-1, j-1);	//decremento in quanto gli array vanno da 0 a 8 e non da 1 a 9
 						
-						System.out.println("Ecco la tua libreria!");
+						System.out.println("\nEcco la tua libreria!\n");
 						listaPlayer.get(v).getShelf().showTable();
 					
 						do {
@@ -179,6 +180,7 @@ public class Main {
 						}
 						
 						listaPlayer.get(v).computePubGoals();
+						System.out.println("\n\n\n\n\n\n\n\n\n\n");
 					}
 					break;
 		
@@ -224,7 +226,7 @@ public class Main {
 					
 					
 					System.out.println("*--------------------- CLASSIFICA -------------------------*");
-					System.out.println("il giocatore che ha vinto la partita e': " + listaPlayer.get(0).getName() + "\n");
+					System.out.println("Il giocatore che ha vinto la partita e': " + listaPlayer.get(0).getName() + "\n");
 					
 					for (int i = 0; i < listaPlayer.size(); i++) {
 						System.out.println((i+1) + listaPlayer.get(i).getName() + " -> " + listaPlayer.get(i).getPoints() + " punti.");

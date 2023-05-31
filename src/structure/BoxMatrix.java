@@ -167,7 +167,7 @@ public class BoxMatrix {
 		
 		do {
 			do {
-				choice = getIntData("\nChe cosa vuoi fare?\n1-Prendi la casella a destra.\n2-Prendi la casella a sinistra\n3-Prendi la casella in basso.\n4-Prendi la casella in alto\n5-Prendi solo la casella selezionata");
+				choice = getIntData("\nChe cosa vuoi fare?\n1-Prendi la casella a destra.\n2-Prendi la casella a sinistra\n3-Prendi la casella in basso.\n4-Prendi la casella in alto\n5-Prendi solo la casella selezionata\n\nScelta: ");
 			}while(choice<1||choice>5);
 		    
 			switch (choice) {
@@ -179,7 +179,7 @@ public class BoxMatrix {
 				    
 				    do{
 				    	do {
-				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No");
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\n\nScelta: ");
 				    	}while(choice<1||choice>2);
 				        
 				        switch (choice) {
@@ -220,7 +220,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No");;
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\n\nScelta: ");;
 					    }while(choice<1||choice>2);
 				        
 				        switch (choice) {
@@ -261,7 +261,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No");
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\n\nScelta: ");
 				    	}while(choice<1||choice>2);
 				    
 				        switch (choice) {
@@ -303,7 +303,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No");
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\n\nScelta: ");
 					    }while(choice<1||choice>2);
 				        
 				        switch (choice) {
