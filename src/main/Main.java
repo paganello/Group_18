@@ -119,6 +119,11 @@ public class Main {
 						System.out.println("\n\n\t\t----- E' il turno di " + listaPlayer.get(v).getName() + "-----\n\n");
 						System.out.println("Ecco il tabellone!\n\n");
 						tavolo.matrix.showTable();
+						System.out.println("\n* Ti ricordimao gli obiettivi comuni.");
+						System.out.print("PRIMO OBIETTIVO: ");
+						showPubGoal (nGoals[0]);
+						System.out.print("SECONDO OBIETTIVO: ");
+						showPubGoal (nGoals[1]);
 						
 						//metodi per prelevare e depositare tiles
 						int i;
@@ -262,10 +267,6 @@ public class Main {
 			}while(goals[0] == goals[1]);
 		}while(goals[0] < 0 && goals[1] < 0);
 		/*goals[0] = 2; goals[1] = 3;*/
-		System.out.print("PRIMO OBIETTIVO: ");
-		showPubGoal (goals[0]);
-		System.out.print("SECONDO OBIETTIVO: ");
-		showPubGoal (goals[1]);
 		return goals;
 	}
 	
