@@ -91,7 +91,7 @@ public class BoxMatrix {
 		
 		if(tiles[0] != null) {
 			do {
-			System.out.println("Quale Tessera vuoi inserire per prima nella libreria?\t");
+			System.out.print("Quale Tessera vuoi inserire per prima nella libreria?\t");
 			selectedTile = sc.nextInt()-1;
 			if(tiles [selectedTile] == null)
 				System.out.println("La posizione selezionata non contiene alcuna tessera.");
@@ -99,22 +99,24 @@ public class BoxMatrix {
 				System.out.println("Non esiste questa posizione.");
 			}while(selectedTile>tiles.length ||  tiles [selectedTile] == null);
 			newTilesOrder [0] = tiles[selectedTile];
+			tiles [selectedTile] = null;
 			
-			if(tiles[1] != null) {
+			if(tiles[0] != null || tiles[1] != null || tiles[2] != null) {
 				do {
-				System.out.println("Quale Tessera vuoi inserire dopo nella libreria?\t");
+				System.out.print("\nQuale Tessera vuoi inserire dopo nella libreria?\t");
 				selectedTile = sc.nextInt()-1;
 				if(tiles [selectedTile] == null)
-					System.out.println("La posizione selezionata non contiene alcuna tessera.");
+					System.out.println("La posizione selezionata non contiene alcuna tessera o lsa tessera qui presente e' gia' stata posizionata.");
 				if(selectedTile>tiles.length)
 					System.out.println("Non esiste questa posizione.");
 				}while(selectedTile>tiles.length ||  tiles [selectedTile] == null);
 				newTilesOrder [1] = tiles[selectedTile];
+				tiles [selectedTile] = null;
 			}
 			
-			if(tiles[2] != null) {
+			if(tiles[0] != null || tiles[1] != null || tiles[2] != null) {
 				do {
-				System.out.println("Quale Tessera vuoi inserire dopo nella libreria?\t");
+				System.out.print("\nQuale Tessera vuoi inserire dopo nella libreria?\t");
 				selectedTile = sc.nextInt()-1;
 				if(tiles [selectedTile] == null)
 					System.out.println("La posizione selezionata non contiene alcuna tessera.");
@@ -122,6 +124,7 @@ public class BoxMatrix {
 					System.out.println("Non esiste questa posizione.");
 				}while(selectedTile>tiles.length ||  tiles [selectedTile] == null);
 				newTilesOrder [2] = tiles[selectedTile];
+				tiles [selectedTile] = null;
 			}
 		}
 		else {
