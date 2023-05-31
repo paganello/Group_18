@@ -122,11 +122,23 @@ public class Main {
 					 */
 
 					
-				
+					
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
-						System.out.println("\n\n\t\t----- E' il turno di " + listaPlayer.get(v).getName() + "-----\n\n");
-						showObjs(nGoals[0], nGoals[1], listaPlayer.get(v).getPrivateGoal().getGoalNumber());
+						System.out.println("\n\n\n\t\t----- E' il turno di " + listaPlayer.get(v).getName() + "-----\n\n");
+						
+						System.out.print("Digita un carattere se vuoi vedere i tuoi obbiettivi, altrimenti premi invio: ");
+						String s = "";
+						try{
+							s = sc.nextLine();
+						}catch (Exception e) {
+							
+						}finally {
+							System.out.println();
+							if(!s.equals("")) {
+								showObjs(nGoals[0], nGoals[1], listaPlayer.get(v).getPrivateGoal().getGoalNumber());
+							}
+						}						
 						
 						System.out.println("Ecco il tabellone!\n\n");
 						tavolo.matrix.showTable();
