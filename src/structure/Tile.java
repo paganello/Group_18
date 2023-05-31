@@ -84,6 +84,4 @@ public class Tile {
 	public void setColor(int i) {
 		this.color = i;
 	}
-	
-	
 }

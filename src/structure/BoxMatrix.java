@@ -85,10 +85,47 @@ public class BoxMatrix {
 	 * Metodo che permette al giocatore di mettere nell'ordine che preferisce le caselle prese
 	 */
 	private Tile[] orderTilesArray (Tile[] tiles) {
+		System.out.println("Queste sono le tue tessere");
+		System.out.println("1\t2\t3\t ");
+		
+		for (int i=0; i<3; i++) {
+			if(tiles[i]!= null) {
+			switch(tiles[i].getColor()) {
+			case 1:
+				System.out.print(textGreen+"G\t"+resetTextColor); //G=verde
+				break;
+			case 2:
+				System.out.print(textWhite+"W\t"+resetTextColor); //W=bianco
+				break;
+			case 3:
+				System.out.print(textYellow+"Y\t"+resetTextColor); //Y=giallo
+				break;
+			case 4:
+				System.out.print(textBlue+"B\t"+resetTextColor); //B=blu
+				break;
+			case 5:
+				System.out.print(textCyan+"C\t"+resetTextColor); //C=azzurro
+				break;
+			case 6:
+				System.out.print(textPink+"P\t"+resetTextColor); //P=rosa
+				break;
+			default:
+				System.out.print(" \t");
+		};
+		}
+			else {
+				System.out.println("\t");
+			}
+		}
 		Scanner sc = new Scanner (System.in);
 		Tile[] newTilesOrder = new Tile [3];
 		int selectedTile;
-		
+		int modCheck;
+		System.out.println("Vuoi modificare l'ordine di inserimento nella libreria?\n");
+		System.out.println("1-Sì\n");
+		System.out.println("2-No\n");
+		modCheck= sc.nextInt();
+		if(modCheck==1) {
 		if(tiles[0] != null) {
 			do {
 			System.out.print("Quale Tessera vuoi inserire per prima nella libreria?\t");
@@ -126,13 +163,19 @@ public class BoxMatrix {
 				newTilesOrder [2] = tiles[selectedTile];
 				tiles [selectedTile] = null;
 			}
+		
 		}
 		else {
 			System.out.println("Non e'possibile che si siano prese piu' di 3 tessere.");
 		}
+		}
+		else {
+			newTilesOrder=tiles;
+		}
 		sc.close();
 		return newTilesOrder;
 	}
+	
 	
 	/*
 	 * Metedo che inserisce una tile nella shelf del player
