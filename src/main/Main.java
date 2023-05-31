@@ -4,6 +4,15 @@ import structure.*;
 
 
 public class Main {
+	public static final String resetTextColor = "\u001B[0m";
+	public static final String textGreen = "\u001B[32m";
+	public static final String textYellow = "\u001B[33m";
+	public static final String textBlue = "\u001B[34m";
+	public static final String textPink = "\u001B[35m";
+	public static final String textCyan = "\u001B[36m";
+	public static final String textWhite = "\u001B[37m";
+	
+	
 	public static void main(String[] args) {
 		
 		
@@ -117,6 +126,8 @@ public class Main {
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
 						System.out.println("\n\n\t\t----- E' il turno di " + listaPlayer.get(v).getName() + "-----\n\n");
+						showObjs(nGoals[0], nGoals[1], listaPlayer.get(v).getPrivateGoal().getGoalNumber());
+						
 						System.out.println("Ecco il tabellone!\n\n");
 						tavolo.matrix.showTable();
 						System.out.println("\n* Ti ricordimao gli obiettivi comuni.");
@@ -325,6 +336,159 @@ public class Main {
 			break;
 		}
     }
+	
+	private static void showPrivGoal(int c) {
+		switch (c) {
+		case 0:
+			int[] iMap_0 = {0, 0, 1, 2, 3, 5};
+			int[] jMap_0 = {0, 2, 4, 3, 1, 2};
+			int[] colorMap_0 = {6, 4, 1, 2, 3, 5};
+			printGoalCards(iMap_0, jMap_0, colorMap_0);
+			break;
+			
+		case 1:
+			int[] iMap_1 = {1, 2, 2, 3, 4, 5};
+			int[] jMap_1 = {1, 0, 2, 4, 3, 4};
+			int[] colorMap_1 = {6, 1, 3, 2, 5, 4};
+			printGoalCards(iMap_1, jMap_1, colorMap_1);
+			break;
+			
+		case 2:
+			int[] iMap_2 = {1, 1, 2, 3, 3, 5};
+			int[] jMap_2 = {0, 3, 2, 1, 4, 0};
+			int[] colorMap_2 = {4, 3, 6, 1, 5, 2};
+			printGoalCards(iMap_2, jMap_2, colorMap_2);
+			break;
+			
+		case 3:
+			int[] iMap_3 = {0, 2, 2, 3, 4, 4};
+			int[] jMap_3 = {4, 0, 2, 3, 1, 2};
+			int[] colorMap_3 = {2, 5, 4, 6, 2, 2};
+			printGoalCards(iMap_3, jMap_3, colorMap_3);
+			break;
+			
+		case 4:
+			int[] iMap_4 = {1, 3, 3, 4, 5, 5};
+			int[] jMap_4 = {1, 1, 2, 4, 0, 3};
+			int[] colorMap_4 = {5, 4, 2, 6, 3, 1};
+			printGoalCards(iMap_4, jMap_4, colorMap_4);
+			break;
+			
+		case 5:
+			int[] iMap_5 = {0, 0, 2, 4, 4, 5};
+			int[] jMap_5 = {2, 4, 3, 1, 3, 0};
+			int[] colorMap_5 = {5, 1, 2, 3, 4, 6};
+			printGoalCards(iMap_5, jMap_5, colorMap_5);
+			break;
+			
+		case 6:
+			int[] iMap_6 = {0, 1, 2, 3, 4, 5};
+			int[] jMap_6 = {0, 3, 1, 0, 4, 2};
+			int[] colorMap_6 = {1, 4, 6, 5, 3, 2};
+			printGoalCards(iMap_6, jMap_6, colorMap_6);
+			break;
+			
+		case 7:
+			int[] iMap_7 = {0, 1, 2, 3, 4, 5};
+			int[] jMap_7 = {4, 1, 2, 0, 3, 3};
+			int[] colorMap_7 = {4, 1, 5, 6, 2, 3};
+			printGoalCards(iMap_7, jMap_7, colorMap_7);
+			break;
+			
+		case 8:
+			int[] iMap_8 = {0, 2, 3, 4, 4, 5};
+			int[] jMap_8 = {2, 2, 4, 1, 4, 0};
+			int[] colorMap_8 = {3, 1, 2, 5, 6, 4};
+			printGoalCards(iMap_8, jMap_8, colorMap_8);
+			break;
+			
+		case 9:
+			int[] iMap_9 = {0, 1, 2, 3, 4, 5};
+			int[] jMap_9 = {4, 1, 0, 3, 1, 3};
+			int[] colorMap_9 = {5, 3, 2, 1, 4, 6};
+			printGoalCards(iMap_9, jMap_9, colorMap_9);
+			break;
+			
+		case 10:
+			int[] iMap_10 = {0, 1, 2, 3, 4, 5};
+			int[] jMap_10 = {2, 1, 0, 2, 4, 3};
+			int[] colorMap_10 = {6, 2, 3, 4, 1, 5};
+			printGoalCards(iMap_10, jMap_10, colorMap_10);
+			break;
+			
+		case 11:
+			int[] iMap_11 = {0, 1, 2, 3, 4, 5};
+			int[] jMap_11 = {2, 1, 2, 3, 4, 0};
+			int[] colorMap_11 = {2, 6, 4, 5, 3, 1};
+			printGoalCards(iMap_11, jMap_11, colorMap_11);
+			break;
+				
+
+		default:
+			break;
+		}
+	}
+	
+	private static void printGoalCards(int[] a, int[] b, int[] c) {
+		
+		int i = 6;
+		int j = 5;
+		System.out.print("   ");
+		for (int k = 0; k < j; k++) {
+			System.out.print(k+1 + " ");
+		}
+		System.out.println();
+		
+		int p = 0;
+		for (int k = 0; k < i; k++) {
+			System.out.print(" " + (k+1) + " ");
+			for (int y = 0; y < j; y++) {
+				if(k == a[p]  && y == b[p]) {
+					switch(c[p]) {
+					case 1:
+						System.out.print(textGreen+"G"+" "+resetTextColor); //G=verde
+						break;
+					case 2:
+						System.out.print(textWhite+"W"+" "+resetTextColor); //W=bianco
+						break;
+					case 3:
+						System.out.print(textYellow+"Y"+" "+resetTextColor); //Y=giallo
+						break;
+					case 4:
+						System.out.print(textBlue+"B"+" "+resetTextColor); //B=blu
+						break;
+					case 5:
+						System.out.print(textCyan+"C"+" "+resetTextColor); //C=azzurro
+						break;
+					case 6:
+						System.out.print(textPink+"P"+" "+resetTextColor); //P=rosa
+						break;
+					}
+					p++;
+					if(p == 6) {
+						break;
+					}
+					
+				}else{
+					System.out.print("  ");
+				}
+			}
+			System.out.print("\n");
+		}
+		
+	}
+	
+	private static void showObjs(int a, int b, int c) {
+		
+		System.out.println("Ti ricordiamo che gli obbiettivi comuni sono i seguenti:");
+		System.out.print("PRIMO OBIETTIVO: ");
+		showPubGoal (a);
+		System.out.print("SECONDO OBIETTIVO: ");
+		showPubGoal (b);
+		System.out.println("Mentre il tuo obbiettivo privato e':\n");
+		showPrivGoal (c);
+		System.out.println("\n\n");
+	}
 	
 	/*
 	 * Metodo pubblico per la gestione delle eccezioni in input
