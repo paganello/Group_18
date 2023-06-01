@@ -557,12 +557,37 @@ public class BoxMatrix {
 	 * @return boolean
 	 */
 	public boolean checkIfBoardNeedToBeRefilled () {
+		int sideCovered = 0;
+
 		//int emptyBox = 0;
 		for(int i = 0; i < 9; i++) {
 			for(int j = 0; j < 9; j++) {
 				if(m[i][j].isFull()) { //se la casella e' piena controllo che si possa prendere
-					if(takeable(i, j)) {
-						return false; //se anche solo una casella è prendibile e ne ha una accanto allora torno false
+					//System.out.print("i = "+i+"   j = " + j + "  --> ");
+					//System.out.println(takeable(i, j));
+					if(boxExistAndIsFillable(i+1, j)) {
+						if(m[i+1][j].isFull()) { //controlla la box accanto
+							sideCovered++; 
+						}
+					}
+					if(boxExistAndIsFillable(i-1, j)) {
+						if(m[i-1][j].isFull()) { //controlla la box accanto
+							sideCovered++; 
+						}
+					}
+					if(boxExistAndIsFillable(i, j+1)) {
+						if(m[i][j+1].isFull()) { //controlla la box accanto
+							sideCovered++; 
+						}
+					}
+					if(boxExistAndIsFillable(i, j-1)) {
+						if(m[i][j-1].isFull()) { //controlla la box accanto
+							sideCovered++; 
+						}
+					}
+					
+					if(sideCovered > 0) {
+						return false;
 					}
 				}
 			}
@@ -742,14 +767,14 @@ public class BoxMatrix {
 		for (int n=0; n<tiles.length; n++) {
 			if(tiles[n] != null) {
 				compare++;
-			    System.out.println("Vettore: "+compare);
+			   //System.out.println("Vettore: " + compare);
 			}	
 		}
-		for (int i=0; i<this.getNI(); i++)
-		{
-			if (this.m[i][column].isFull()==false) {
+		for (int i = 0; i < this.getNI(); i++){
+			//System.out.println(this.m[i][column].isFull());
+			if (!this.m[i][column].isFull()) {
 				freeSpaces++;
-				System.out.println("Colonna: "+freeSpaces);
+				//System.out.println("Colonna: " + freeSpaces);
 			}
 		}
 		if(freeSpaces >= compare)

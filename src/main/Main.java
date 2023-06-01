@@ -184,19 +184,19 @@ public class Main {
 							if(j<1||j>9) {
 								System.out.println("Colonna non valida!");
 							}
-							if(!listaPlayer.get(v).getShelf().eligibleColumn(t, j))
+							if(!listaPlayer.get(v).getShelf().eligibleColumn(t, j-1))
 								System.out.println("La colonna scelta non ha abbastanza slot vuoti!\n");
-						}
-						while (j<1||j>9 || !listaPlayer.get(v).getShelf().eligibleColumn(t, j));
+						
+						}while (j<1 || j>9 || !listaPlayer.get(v).getShelf().eligibleColumn(t, j-1));
 						
 						listaPlayer.get(v).getShelf().putTilesInPlayerShelf(t, j-1, v); //decremento in quanto l'array va da 0 a 4 e non da 1 a 5
 						
 						System.out.println();
 						
-						//debug
+						/*debug
 						BoxMatrix m = new BoxMatrix(6, 5);
 						m.fillBoard();
-						listaPlayer.get(v).setShelf(m);
+						listaPlayer.get(v).setShelf(m);*/
 						
 						
 						listaPlayer.get(v).getShelf().showTable();
@@ -209,6 +209,7 @@ public class Main {
 						
 						listaPlayer.get(v).computePubGoals();
 						
+						System.out.println(tavolo.matrix.checkIfBoardNeedToBeRefilled());
 						if(tavolo.matrix.checkIfBoardNeedToBeRefilled()) {
 							tavolo.matrix.fillBoard();
 						}
