@@ -95,21 +95,13 @@ public class Player {
 	
 	
 	public boolean isShelfFull() {
-		int verifier=1;
 		for (int i=0; i<6; i++) {
 			for(int j=0; j<5;j++) {
-				if (shelf.getBox(i,j).isFull());
-				verifier=0;
-					{
-					verifier=verifier*1;}
-				}
+				if (!shelf.getBox(i,j).isFull())
+					return false;
 			}
-		if (verifier==0) {
-			return false;
 		}
-		else {
 			return true;
-		}
 	}
 	
 	public BoxMatrix getShelf() {
