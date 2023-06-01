@@ -9,7 +9,7 @@ import java.util.*;
 public class Player {
 	public int number;
 	private String name;
-	private int points = 0;
+	private int points;
 	private boolean chair;
 	private Privgoal privateGoal;
 	private Pubgoal publicGoals;
@@ -26,6 +26,8 @@ public class Player {
 		this.name = playerName;
 		
 		this.number = nPlayer;
+		
+		this.points = 0;
 		
 		this.orderPlayer = orderPlayer;
 		
@@ -64,6 +66,7 @@ public class Player {
 		
 		this.points = points;
 	}
+	
 	public void endPhaseBonus() {
 		this.points++;
 	}

@@ -71,7 +71,7 @@ public class Pubgoal {
 		
 		for (int i = 0; i < 2; i++) {
 			if(!this.done[i]) {
-				
+				System.out.println("analisi pgoals: "+i);
 				switch (this.nGoals[i]) {
 					case 0:		//verificato
 						if(isPubGoal_1_Done(playerShelf)) {
@@ -354,6 +354,7 @@ public class Pubgoal {
 					
 					if(scoreTilesGoal1[j] != 0) {
 						this.points = this.points + scoreTilesGoal1[j];
+						//System.out.println(scoreTilesGoal1[j]);
 						scoreTilesGoal1[j] = 0;
 						goalPointsJustAssigned[i] = true;
 					}else {
@@ -371,6 +372,7 @@ public class Pubgoal {
 					
 					if(scoreTilesGoal2[j] != 0) {
 						this.points = this.points + scoreTilesGoal2[j];
+						//System.out.println(scoreTilesGoal2[j]);
 						scoreTilesGoal2[j] = 0;
 						goalPointsJustAssigned[i] = true;
 					}else {
@@ -662,7 +664,7 @@ public class Pubgoal {
 			}
 		}
 			
-		if (counter == 8) {
+		if (counter >= 8) {
 				return true;
 			}
 				

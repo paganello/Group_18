@@ -20,6 +20,7 @@ public class Privgoal {
 	 * */
 	public Privgoal() { 
 		this.points = 0;
+		this.done = false;
 		
 		Random rand = new Random();
 		do {
@@ -289,20 +290,24 @@ public class Privgoal {
 	private int verifyIfTileMatchByArray(int[] iMap, int[] jMap, int[] colorMap, BoxMatrix playerShelf) {
 		
 		int k = 0;
+		int r = 0;
 		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
 			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(i == iMap[k] && j == jMap[k]) {
+					//System.out.println("i: " + i + "  j: "+ j);
 					if (playerShelf.getBox(i, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == colorMap[k]) {
-						k++;
-						if(k == 6) {
-							return k;
-						}
+						System.out.println(colorMap[k]);
+						r++;
+					}
+					k++;
+					if(k == 6) {
+						return r;
 					}
 				}
 			}
 		}
-		return k;
+		return r;
 	}
 
 	
