@@ -37,8 +37,12 @@ public class Gengoal {
 		for (int i = 0; i < playerShelf.getNI(); i++) {
 			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				if(playerShelf.getBox(i, j).isFull()) {
-					int k = 1;
-					k = playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, k);
+					int k = 0;
+					for (int l = 0; l < 4; l++) {
+						int a = 0;
+						k = k + playerShelf.countNumberOfAdjacentsTilesWithSameColor(i, j, a);
+					}
+					k = k + 1;
 					//System.out.println(k);
 					if(k == 3) {
 						this.points = this.points + 2;
