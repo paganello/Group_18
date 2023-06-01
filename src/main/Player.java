@@ -155,5 +155,8 @@ public class Player {
 			}
 		
 		}
+		sc.close();
 	}
+	
+
 }

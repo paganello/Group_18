@@ -184,8 +184,10 @@ public class Main {
 							if(j<1||j>9) {
 								System.out.println("Colonna non valida!");
 							}
+							if(!listaPlayer.get(v).getShelf().eligibleColumn(t, j))
+								System.out.println("La colonna scelta non ha abbastanza slot vuoti!\n");
 						}
-						while (j<1||j>9);
+						while (j<1||j>9 || !listaPlayer.get(v).getShelf().eligibleColumn(t, j));
 						
 						listaPlayer.get(v).getShelf().putTilesInPlayerShelf(t, j-1, v); //decremento in quanto l'array va da 0 a 4 e non da 1 a 5
 						

@@ -138,7 +138,7 @@ public class BoxMatrix {
 				do {
 				selectedTile = getIntData("\nQuale Tessera vuoi inserire dopo nella libreria?\nScelta:")-1;
 				if(tiles [selectedTile] == null)
-					System.out.println("La posizione selezionata non contiene alcuna tessera o lsa tessera qui presente e' gia' stata posizionata.");
+					System.out.println("La posizione selezionata non contiene alcuna tessera o la tessera qui presente e' gia' stata posizionata.");
 				if(selectedTile>tiles.length)
 					System.out.println("Non esiste questa posizione.");
 				}while(selectedTile>tiles.length ||  tiles [selectedTile] == null);
@@ -176,7 +176,9 @@ public class BoxMatrix {
 	 * la j che viene fornita DEVE essere gia decrementate e adattandola alla gestione della matrice (che ricordiamo parire da riga zero e non da riga uno)
 	 * */
 	public void putTilesInPlayerShelf(Tile[] tiles, int j, int nPlayer) {
-		tiles = orderTilesArray(tiles);
+		if (tiles [1] != null) {
+			tiles = orderTilesArray(tiles);
+		}
 		for (int n = 0; n < tiles.length; n++) {
 			if(tiles[n] != null) {
 				for (int i = 0; i < this.nI; i++) {
@@ -717,5 +719,30 @@ public class BoxMatrix {
 		}while(retry);
 		
 		return s;
+	}
+	
+	/*
+	 * Metodo che verifica se la colonna della shelf in cui si vogliono inserire le tiles prese puo' contenere tutte le tiles
+	 */
+	public boolean eligibleColumn (Tile [] tiles, int column) {
+		int freeSpaces=0;
+		int compare=0;
+		for (int n=0; n<tiles.length; n++) {
+			if(tiles[n] != null) {
+				compare++;
+			    System.out.println("Vettore: "+compare);
+			}	
+		}
+		for (int i=0; i<this.getNI(); i++)
+		{
+			if (this.m[i][column].isFull()==false) {
+				freeSpaces++;
+				System.out.println("Colonna: "+freeSpaces);
+			}
+		}
+		if(freeSpaces >= compare)
+			return true;
+		else
+			return false;	
 	}
 }
