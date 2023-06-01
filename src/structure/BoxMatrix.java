@@ -2,7 +2,7 @@ package structure;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.util.Random;
-import main.Main;
+
 
 public class BoxMatrix {
 	//dichiarazione variabili
@@ -90,46 +90,42 @@ public class BoxMatrix {
 		
 		for (int i=0; i<3; i++) {
 			if(tiles[i]!= null) {
-			switch(tiles[i].getColor()) {
-			case 1:
-				System.out.print(textGreen+"G\t"+resetTextColor); //G=verde
-				break;
-			case 2:
-				System.out.print(textWhite+"W\t"+resetTextColor); //W=bianco
-				break;
-			case 3:
-				System.out.print(textYellow+"Y\t"+resetTextColor); //Y=giallo
-				break;
-			case 4:
-				System.out.print(textBlue+"B\t"+resetTextColor); //B=blu
-				break;
-			case 5:
-				System.out.print(textCyan+"C\t"+resetTextColor); //C=azzurro
-				break;
-			case 6:
-				System.out.print(textPink+"P\t"+resetTextColor); //P=rosa
-				break;
-			default:
-				System.out.print(" \t");
-		};
-		}
-			else {
+				switch(tiles[i].getColor()) {
+				case 1:
+					System.out.print(textGreen+"G\t"+resetTextColor); //G=verde
+					break;
+				case 2:
+					System.out.print(textWhite+"W\t"+resetTextColor); //W=bianco
+					break;
+				case 3:
+					System.out.print(textYellow+"Y\t"+resetTextColor); //Y=giallo
+					break;
+				case 4:
+					System.out.print(textBlue+"B\t"+resetTextColor); //B=blu
+					break;
+				case 5:
+					System.out.print(textCyan+"C\t"+resetTextColor); //C=azzurro
+					break;
+				case 6:
+					System.out.print(textPink+"P\t"+resetTextColor); //P=rosa
+					break;
+				default:
+					System.out.print(" \t");
+				};
+			}else {
 				System.out.println("\t");
 			}
 		}
+		
 		Scanner sc = new Scanner (System.in);
 		Tile[] newTilesOrder = new Tile [3];
 		int selectedTile;
 		int modCheck;
-		System.out.println("Vuoi modificare l'ordine di inserimento nella libreria?\n");
-		System.out.println("1-Sì\n");
-		System.out.println("2-No\n");
-		modCheck= sc.nextInt();
+		modCheck= getIntData("Vuoi modificare l'ordine di inserimento nella libreria?\n1-Si\n2-No\nScelta:");
 		if(modCheck==1) {
 		if(tiles[0] != null) {
 			do {
-			System.out.print("Quale Tessera vuoi inserire per prima nella libreria?\t");
-			selectedTile = sc.nextInt()-1;
+			selectedTile = getIntData("Quale Tessera vuoi inserire per prima nella libreria?\nScelta:")-1;
 			if(tiles [selectedTile] == null)
 				System.out.println("La posizione selezionata non contiene alcuna tessera.");
 			if(selectedTile>tiles.length)
@@ -140,8 +136,7 @@ public class BoxMatrix {
 			
 			if(tiles[0] != null || tiles[1] != null || tiles[2] != null) {
 				do {
-				System.out.print("\nQuale Tessera vuoi inserire dopo nella libreria?\t");
-				selectedTile = sc.nextInt()-1;
+				selectedTile = getIntData("\nQuale Tessera vuoi inserire dopo nella libreria?\nScelta:")-1;
 				if(tiles [selectedTile] == null)
 					System.out.println("La posizione selezionata non contiene alcuna tessera o lsa tessera qui presente e' gia' stata posizionata.");
 				if(selectedTile>tiles.length)
@@ -153,8 +148,7 @@ public class BoxMatrix {
 			
 			if(tiles[0] != null || tiles[1] != null || tiles[2] != null) {
 				do {
-				System.out.print("\nQuale Tessera vuoi inserire dopo nella libreria?\t");
-				selectedTile = sc.nextInt()-1;
+				selectedTile = getIntData("\nQuale Tessera vuoi inserire dopo nella libreria?\nScelta:")-1;
 				if(tiles [selectedTile] == null)
 					System.out.println("La posizione selezionata non contiene alcuna tessera.");
 				if(selectedTile>tiles.length)
@@ -172,7 +166,6 @@ public class BoxMatrix {
 		else {
 			newTilesOrder=tiles;
 		}
-		sc.close();
 		return newTilesOrder;
 	}
 	
@@ -262,7 +255,7 @@ public class BoxMatrix {
 		
 		do {
 			do {
-				choice = getIntData("\nChe cosa vuoi fare?\n1-Prendi la casella a destra.\n2-Prendi la casella a sinistra\n3-Prendi la casella in basso.\n4-Prendi la casella in alto\n5-Prendi solo la casella selezionata\n\nScelta: ");
+				choice = getIntData("\nChe cosa vuoi fare?\n1-Prendi la casella a destra.\n2-Prendi la casella a sinistra\n3-Prendi la casella in basso.\n4-Prendi la casella in alto\n5-Prendi solo la casella selezionata\nScelta: ");
 			}while(choice<1||choice>5);
 		    
 			switch (choice) {
@@ -274,7 +267,7 @@ public class BoxMatrix {
 				    
 				    do{
 				    	do {
-				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\n\nScelta: ");
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\nScelta: ");
 				    	}while(choice<1||choice>2);
 				        
 				        switch (choice) {
@@ -285,7 +278,7 @@ public class BoxMatrix {
 						        tileExist=true;
 					        }
 					        else {
-					        	System.out.println("Non è possibile prendere questa tessera.");
+					        	System.err.println("Non è possibile prendere questa tessera.");
 					        	tileExist=false;
 					        }
 					        break;
@@ -295,14 +288,14 @@ public class BoxMatrix {
 					    	break;
 					       
 				        default:
-					       System.out.println("Alla scelta fatta non corrisponde alcuna azione.");
+					       System.err.println("Alla scelta fatta non corrisponde alcuna azione.");
 					       tileExist=false;
 					       break;
 				        } 
 				    } while (!tileExist);
 				    
 			    }else {
-				    System.out.println("Non è possibile prendere questa tessera.");
+				    System.err.println("Non è possibile prendere questa tessera.");
 				    tileExist=false;
 			    }
 			    break;
@@ -315,7 +308,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\n\nScelta: ");;
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\nScelta: ");;
 					    }while(choice<1||choice>2);
 				        
 				        switch (choice) {
@@ -325,7 +318,7 @@ public class BoxMatrix {
 				    	    	tileExist=true;
 				    	    }
 					        else {
-					        	System.out.println("Non è possibile prendere questa tessera.");
+					        	System.err.println("Non e' possibile prendere questa tessera.");
 					        	tileExist=false;
 					        }
 						    break;
@@ -335,7 +328,7 @@ public class BoxMatrix {
 					        break;
 					    
 					    default:
-						    System.out.println("Alla scelta fatta non corrisponde alcuna azione.");
+						    System.err.println("Alla scelta fatta non corrisponde alcuna azione.");
 					        tileExist=false;
 						    break;
 				        }
@@ -343,7 +336,7 @@ public class BoxMatrix {
 			    }
 			    
 			    else {
-			    	System.out.println("Non è possibile prendere questa tessera.");
+			    	System.err.println("Non e' possibile prendere questa tessera.");
 			    	tileExist=false;
 			    }
 			    break;
@@ -356,7 +349,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\n\nScelta: ");
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\nScelta: ");
 				    	}while(choice<1||choice>2);
 				    
 				        switch (choice) {
@@ -366,7 +359,7 @@ public class BoxMatrix {
 					        	tileExist=true;
 					        }
 					        else {
-					    	    System.out.println("Non è possibile prendere questa tessera.");
+					    	    System.err.println("Non e' possibile prendere questa tessera.");
 					    	    tileExist=false;
 					        }
 					        break;
@@ -376,7 +369,7 @@ public class BoxMatrix {
 					        break;
 					    
 				        default:
-					        System.out.println("Alla scelta fatta non corrisponde alcuna azione.");
+					        System.err.println("Alla scelta fatta non corrisponde alcuna azione.");
 					        tileExist=false;
 					        break;
 				        }
@@ -385,7 +378,7 @@ public class BoxMatrix {
 			    }
 			    
 			    else {
-				    System.out.println("Non è possibile prendere questa tessera.");
+				    System.err.println("Non e' possibile prendere questa tessera.");
 				    tileExist=false;
 			    }
 			    break;
@@ -398,7 +391,7 @@ public class BoxMatrix {
 				    
 				    do {
 				    	do {
-				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\n\nScelta: ");
+				    		choice = getIntData("\nVuoi prendere anche una terza tessera?\n1-Si\n2-No\nScelta: ");
 					    }while(choice<1||choice>2);
 				        
 				        switch (choice) {
@@ -408,7 +401,7 @@ public class BoxMatrix {
 					    	    tileExist=true;
 					        }
 					        else {
-						        System.out.println("Non è possibile prendere questa tessera.");
+						        System.err.println("Non e' possibile prendere questa tessera.");
 						        tileExist=false;
 					        }
 					        break;
@@ -418,7 +411,7 @@ public class BoxMatrix {
 					        break;
 					    
 				        default:
-					        System.out.println("Alla scelta fatta non corrisponde alcuna azione");
+					        System.err.println("Alla scelta fatta non corrisponde alcuna azione");
 					        tileExist=false;
 					        break;
 				        }
@@ -426,7 +419,7 @@ public class BoxMatrix {
 			    }
 			    
 			    else {
-				    System.out.println("Non è possibile prendere questa tessera.");
+				    System.err.println("Non e' possibile prendere questa tessera.");
 				    tileExist=false;
 			    }
 			    break;
@@ -436,7 +429,7 @@ public class BoxMatrix {
 			    break;
 			    
 		    default:
-			    System.out.println("Alla scelta fatta non corrisponde alcuna azione.");
+			    System.err.println("Alla scelta fatta non corrisponde alcuna azione.");
 			    tileExist=false;
 			    break;
 		   }
@@ -713,10 +706,10 @@ public class BoxMatrix {
 				s = sc.nextInt();
 			
 			}catch(InputMismatchException c){
-				System.out.println("Devi inserire un NUMERO intero.\n");
+				System.err.println("Devi inserire un NUMERO intero.");
 				retry = true;
 			}catch(Exception c){
-				System.out.println("Errore di inserimento: Devi inserire un NUMERO INTERO\n");
+				System.err.println("Errore di inserimento: Devi inserire un NUMERO INTERO");
 				retry = true;
 			}
 			sc.nextLine();

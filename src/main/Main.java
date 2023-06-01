@@ -29,8 +29,8 @@ public class Main {
 		
 		GameState stato;
 		int playerNum = 0;
-		int lastTurnPlayer;
-		int countLastTourn = 0;
+		//int lastTurnPlayer;
+		//int countLastTourn = 0;
 		
 		ArrayList<Player> listaPlayer= new ArrayList<Player>();
 	
@@ -45,7 +45,7 @@ public class Main {
 				playerNum = sc.nextInt();
 				
 			}catch(InputMismatchException c){
-				System.out.println("Devi inserire un NUMERO intero.\n");
+				System.err.println("Devi inserire un NUMERO intero.");
 				retry = true;
 			}
 			
@@ -125,7 +125,7 @@ public class Main {
 					
 					for (int v=0; v < listaPlayer.size(); v++) {
 						
-						System.out.println("\n\n\n\t\t----- E' il turno di " + listaPlayer.get(v).getName() + "-----\n\n");
+						System.out.println("\n\n\n\t\t----- E' il turno di \"" + listaPlayer.get(v).getName() + "\" -----\n\n");
 						
 						System.out.print("Digita un carattere se vuoi vedere i tuoi obbiettivi, altrimenti premi invio: ");
 						String s = "";
@@ -183,9 +183,7 @@ public class Main {
 						listaPlayer.get(v).getShelf().showTable();
 					
 						do {
-						System.out.print("\nInserisci la colonna dove vuoi inserire le tile selezionate: ");
-						j = sc.nextInt();
-						sc.nextLine();
+							j = getIntData("\nInserisci la colonna dove vuoi inserire le tile selezionate: ");
 							if(j<1||j>9) {
 								System.out.println("Colonna non valida!");
 							}
@@ -193,7 +191,8 @@ public class Main {
 						while (j<1||j>9);
 						
 						listaPlayer.get(v).getShelf().putTilesInPlayerShelf(t, j-1, v); //decremento in quanto l'array va da 0 a 4 e non da 1 a 5
-					
+						
+						System.out.println();
 						listaPlayer.get(v).getShelf().showTable();
 
 						
@@ -204,7 +203,7 @@ public class Main {
 						}
 						
 						listaPlayer.get(v).computePubGoals();
-						System.out.println("\n\n\n\n\n\n\n\n\n\n");
+						sc.reset();
 					}
 					break;
 		
@@ -516,10 +515,10 @@ public class Main {
 				s = sc.nextInt();
 			
 			}catch(InputMismatchException c){
-				System.out.println("Devi inserire un NUMERO intero.\n");
+				System.err.println("Devi inserire un NUMERO intero.");
 				retry = true;
 			}catch(Exception c){
-				System.out.println("Errore di inserimento: Devi inserire un NUMERO INTERO\n");
+				System.err.println("Errore di inserimento: Devi inserire un NUMERO INTERO");
 				retry = true;
 			}
 			sc.nextLine();
