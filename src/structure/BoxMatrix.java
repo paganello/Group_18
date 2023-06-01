@@ -547,12 +547,12 @@ public class BoxMatrix {
 	/*
 	 * Metodo di verifica se la board e' da rifillare di tiles
 	 * */
-	public boolean checkIfBoardNeedToBeRefilled (int nPlayer) {
+	public boolean checkIfBoardNeedToBeRefilled () {
 		//int emptyBox = 0;
 		for(int i = 0; i < 9; i++) {
 			for(int j = 0; j < 9; j++) {
 				if(m[i][j].isFull()) { //se la casella e' piena controllo che si possa prendere
-					if(takeable(i, j) == true) {
+					if(takeable(i, j)) {
 						return false; //se anche solo una casella è prendibile e ne ha una accanto allora torno false
 					}
 				}
