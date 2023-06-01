@@ -97,8 +97,9 @@ public class Player {
 	public boolean isShelfFull() {
 		for (int i=0; i<6; i++) {
 			for(int j=0; j<5;j++) {
-				if (!shelf.getBox(i,j).isFull())
+				if (!shelf.getBox(i,j).isFull()) {
 					return false;
+				}
 			}
 		}
 			return true;

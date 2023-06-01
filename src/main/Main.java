@@ -190,8 +190,14 @@ public class Main {
 						listaPlayer.get(v).getShelf().putTilesInPlayerShelf(t, j-1, v); //decremento in quanto l'array va da 0 a 4 e non da 1 a 5
 						
 						System.out.println();
+						
+						//debug
+						BoxMatrix m = new BoxMatrix(6, 5);
+						m.fillBoard();
+						listaPlayer.get(v).setShelf(m);
+						
+						
 						listaPlayer.get(v).getShelf().showTable();
-
 						
 						if(listaPlayer.get(v).isShelfFull() == true && stato == GameState.turnStart) {
 							stato = GameState.endPhase;

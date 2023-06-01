@@ -338,6 +338,7 @@ public class Pubgoal {
 	
 	/**
 	 * Metodo di asseganzione dei punti (viene aggiornato l'attributo "points") in base al raggiungimento dei singoli goals pubblici.
+	 * si basa sull'attributo goalPointsJustAssigned per determinare se i punti per un determinato obbiettivo sono stati gia contati
 	 */
 	public void computePoints() {
 		for (int i = 0; i < 2; i++) {
