@@ -18,9 +18,11 @@ public class BoxMatrix {
 	public static final String textCyan = "\u001B[36m";
 	public static final String textWhite = "\u001B[37m";
 	
-	/*
-	 * COSTRUTTORE
-	 * */
+	/**
+	 * Realizza una matrice di oggetti Box di dimensioni i j (Paramentri in input)
+	 * @param i
+	 * @param j
+	 */
 	public BoxMatrix(int i, int j) {
 		
 		this.nI = i;
@@ -37,33 +39,40 @@ public class BoxMatrix {
 	}
 	
 	
-	/*
-	 * Getter m
-	 * */
+	/**
+	 * Ritorna l'oggetto Box alla posizione i j
+	 * @param i
+	 * @param j
+	 * @return
+	 */
 	public Box getBox(int i, int j){
 		return this.m[i][j];
 	}
 	
 	
-	/*
-	 * Getter nI
-	 * */
+	/**
+	 * Ritorna in numero di righe della matrice
+	 * @return
+	 */
 	public int getNI(){
 		return this.nI;
 	}
 	
-	
-	/*
-	 * Getter nJ
-	 * */
+	/**
+	 * Ritorna in numero di colonne della matrice
+	 * @return
+	 */
 	public int getNJ(){
 		return this.nJ;
 	}
 	
 	
-	/*
-	 * Metodo che modifica lo stato dell'attributo fillable dati array di coordinate e il nuovo valore di fillable
-	 * */
+	/**
+	 * Metodo che modifica lo stato dell'attributo fillable delle boxes passate (arrays)
+	 * @param iMap
+	 * @param jMap
+	 * @param fillable
+	 */
 	public void modFillableByArrayMaps(int[] iMap, int[] jMap, boolean fillable) {
 		for(int i = 0; i < iMap.length; i++) {
 			this.m[iMap[i]-1][jMap[i]-1].setFillable(fillable);
@@ -71,18 +80,10 @@ public class BoxMatrix {
 	}
 	
 	
-	/*
-	 * Metodi di print (pincipalmente usati in debug)
-	 * */
-	public void printTileFillable(int i, int j) {	//temporaneo, stampa il val di fillable
-		System.out.print(this.m[i][j].isFillable() + " ");
-	}
-	public void printTileColor(int i, int j) {	//temporaneo, stampa il val di color
-		System.out.print(this.m[i][j].getTile().getColor() + " ");
-	}
-	
-	/*
-	 * Metodo che permette al giocatore di mettere nell'ordine che preferisce le caselle prese
+	/**
+	 * Metodo che permette al giocatore di mettere nell'ordine di preferenza le caselle prese dal tavolo di gioco
+	 * @param tiles
+	 * @return
 	 */
 	private Tile[] orderTilesArray (Tile[] tiles) {
 		System.out.println("Queste sono le tue tessere");
@@ -170,11 +171,13 @@ public class BoxMatrix {
 	}
 	
 	
-	/*
+	/**
 	 * Metedo che inserisce una tile nella shelf del player
-	 * 
 	 * la j che viene fornita DEVE essere gia decrementate e adattandola alla gestione della matrice (che ricordiamo parire da riga zero e non da riga uno)
-	 * */
+	 * @param tiles
+	 * @param j
+	 * @param nPlayer
+	 */
 	public void putTilesInPlayerShelf(Tile[] tiles, int j, int nPlayer) {
 		tiles = orderTilesArray(tiles);
 		for (int n = 0; n < tiles.length; n++) {
@@ -195,9 +198,12 @@ public class BoxMatrix {
 	}
 	
 	
-	/*
-	 * Method freeSide checks if the input tile has at least a free side in the board 
-	 * */
+	/**
+	 * Metodo che verifica che una data box piena sia abbia almeno un lato confinante con una box vuota
+	 * @param i
+	 * @param j
+	 * @return
+	 */
 	public boolean freeSide (int i, int j) {
 		
 		if(boxExistAndIsFillable(i, j+1)) {
@@ -232,19 +238,14 @@ public class BoxMatrix {
 	}	
 
 	
-	
-	/*
-	 * Metodo che serve per rimuovere tiles dalla board
-	 * */
+	/**
+	 * Metodo che date le coordinate di una tile (param) verifica la sua idoneita' e permette di selezionare aletre tile;
+	 * le tile vengono quaidni ritornate sotto forma di array di Tile.
+	 * @param i
+	 * @param j
+	 * @return Tile array
+	 */
 	public Tile [] removeTilesFromBoard (int i, int j) {
-		/*nel main
-		 * System.out.println("Inserisci le coordinate della prima tessera che vuoi prendere dal tabellone.");
-		Scanner sc=new Scanner (System.in);
-		do{
-			scatola.nI=sc.nextInt();
-			scatola.nJ=sc.nextInt();
-			
-		}while (!scatola.freeSide(nI, nJ));*/
 		Scanner sc=new Scanner (System.in);
 		Tile  removedTiles [] = new Tile [3];
 		
@@ -449,9 +450,11 @@ public class BoxMatrix {
 	}
 	
 	
-	/*
+	/**
 	 * Metodo che riempie la board in modo randomico
-	 * */
+	 * Date le dimensioni della matrice di box (se essere sono vuote e riempibili) 
+	 * gli assegna un nuovo oggetto tile di colore randomico (una per box)
+	 */
 	public void fillBoard () {
 		for(int i = 0; i < nI; i++) {
 			for(int j = 0; j < nJ; j++) {
@@ -472,14 +475,17 @@ public class BoxMatrix {
 	}
 
 	
-	/* 
-	 * 	Metodo di verifica delle caselle (box).
+	/**
+	 * Metodo di verifica delle caselle (box).
 	 * 
-	 * 	vanno verificate che le caselle intorno a quelle piene siano piene,
-	 *  basta che 1 tile sia prendibile per tornare falso, affinchè 1 tile sia
-	 *  prendibile deve avere almeno un lato scoperto ma non può averli tutti scoperti,
-	 *  non devo verificare i lati, coperti devo verificare che abbia un lato in comune
-	 *  con un altra tile.
+	 * vanno verificate che le caselle intorno a quelle piene siano piene,
+	 * basta che 1 tile sia prendibile per tornare falso, affinchè 1 tile sia
+	 * prendibile deve avere almeno un lato scoperto ma non può averli tutti scoperti,
+	 * non devo verificare i lati, coperti devo verificare che abbia un lato in comune
+	 * con un altra tile.
+	 * @param i
+	 * @param j
+	 * @return boolean
 	 */
 	public boolean takeable(int i, int j) {
 		int sideCovered = 0;
@@ -544,9 +550,10 @@ public class BoxMatrix {
 	}
 	
 	
-	/*
+	/**
 	 * Metodo di verifica se la board e' da rifillare di tiles
-	 * */
+	 * @return boolean
+	 */
 	public boolean checkIfBoardNeedToBeRefilled () {
 		//int emptyBox = 0;
 		for(int i = 0; i < 9; i++) {
@@ -556,21 +563,18 @@ public class BoxMatrix {
 						return false; //se anche solo una casella è prendibile e ne ha una accanto allora torno false
 					}
 				}
-				/*else if(matrix.m[i][j].empty == true) {
-					emptyBox++;
-				}*/
 			}
 		}
-		/*if(nPlayer == 2 && emptyBox == 28 || nPlayer == 3 && emptyBox == 36 || nPlayer == 4 && emptyBox == 42) {
-			return true;	//se la board è vuota torno true
-		}*/
 		return true;
 	}
 	
 	
-	/*
-	 * Metedo che verifica se una determinata box esiste ed e' riempibile 
-	 * */
+	/**
+	 * Metedo che verifica se una determinata box (coordinate in param) esiste ed e' riempibile 
+	 * @param i
+	 * @param j
+	 * @return boolean
+	 */
 	public boolean boxExistAndIsFillable(int i, int j) {
 		if(i >= 0 && i < this.nI) {
 			if(j >= 0 && j < this.nJ) {
@@ -583,9 +587,13 @@ public class BoxMatrix {
 	}
 	
 	
-	/*
-	 * Metodo ricorsivo che controlla che data una box esista almeno una tile nelle box adiacenti dello stesso colore.
-	 * */
+	/**
+	 * Metodo ricorsivo che controlla che data una box esista almeno una tile, tra le box adiacenti, dello stesso colore.
+	 * k viene incrementato un numero di volte pari al numero di tile "in fila" o comunque "attaccate" trovate
+	 * @param j
+	 * @param k
+	 * @return k incrementato
+	 */
 	public int countNumberOfAdjacentsTilesWithSameColor(int i, int j, int k) {
 
 		
@@ -629,9 +637,10 @@ public class BoxMatrix {
 
 	
 	
-	/*
-	 * Metodo che setta tutti gli attributi verified di tutte le tile a un valore boleano specificato
-	 * */
+	/**
+	 * Metodo che setta tutti gli attributi verified di tutte le tile a un valore boleano specificato (param)
+	 * @param b
+	 */
 	public void setAllVerifiedTileAttribute(boolean b) {
 		
 		for (int i = 0; i < nI; i++) {
@@ -643,8 +652,9 @@ public class BoxMatrix {
 		}
 	}
 	
-	/*
-	 * Metodo che stampa la tabella con relativi colori
+	
+	/**
+	 * Metodo di print della matrice (con relativi colori)
 	 */
 	public void showTable () {
 		int i = this.nI;
@@ -692,9 +702,11 @@ public class BoxMatrix {
     }
 	
 	
-	/*
-	 * Metodo pubblico per la gestione delle eccezioni in input
-	 * */
+	/**
+	 * Metodo pubblico per la gestione delle eccezioni in input, stampa la String passata in param
+	 * @param r
+	 * @return
+	 */
 	public static int getIntData(String r) {
 		Scanner sc = new Scanner(System.in);
 		int s = 0;

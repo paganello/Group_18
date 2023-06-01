@@ -10,9 +10,7 @@ public class Pubgoal {
 	static int[] scoreTilesGoal1 = {8,6,6,4,4,2,2,2,2}; //array delle tessere che assegnano i punti
 	static int[] scoreTilesGoal2 = {8,6,6,4,4,2,2,2,2};	//array delle tessere che assegnano i punti
 	
-	/*
-	 *COSTRUTTORE 
-	 */
+	
 	public Pubgoal(int a, int b){
 		
 		this.nGoals = new int[2];
@@ -31,32 +29,27 @@ public class Pubgoal {
 	}
 	
 	
-	/*
-	 * Override metodo toString per lo stamp dei goal number
+	/**
+	 * getter del punteggio calcolato
+	 * @return
 	 */
-	public String toString(){	//Sovrascrive il metodo toString di java
-		return ("Goal 1 = " + nGoals[0]+1 + "/nGoal 2 = " + nGoals[1]+1);
-	}
-	
-	
-	/*
-	 * Getter di points
-	 * */
 	public int getpoints() {
 		return points;
 	}
 	
 	
-	/*
-	 * Getter di done
-	 * */
+	/**
+	 * getter di done
+	 * @return [boolean]
+	 */
 	public boolean[] isDone() {
 		return done;
 	}
 	
 	
-	/*
-	 * Metodo che ritorna l'array dei goals
+	/**
+	 * getter che ritorna i common goals numbers
+	 * @return int array
 	 */
 	public int[] getGoalsNumber() {
 		
@@ -67,10 +60,12 @@ public class Pubgoal {
 	}
 	
 	
-	/*
+	/**
+	 * Selettore di verifica.
 	 * Metodo che esegue la verifica se un goal è stato completato con successo, verrà chiamato due volte, una per ogni goal da verificare
 	 * Ritorna true se è stato completato altrimenti false.
 	 * nGoal è l'obbiettivo pubblico da verificare, playerShelf è la board del player che eventualmente riceve i punti in palio
+	 * @param playerShelf
 	 */
 	public void verify(BoxMatrix playerShelf) {
 		
@@ -341,9 +336,9 @@ public class Pubgoal {
 	}*/
 	
 	
-	/*
+	/**
 	 * Metodo di asseganzione dei punti (viene aggiornato l'attributo "points") in base al raggiungimento dei singoli goals pubblici.
-	 * */
+	 */
 	public void computePoints() {
 		for (int i = 0; i < 2; i++) {
 			if(done[i] && !goalPointsJustAssigned[i]) {
@@ -386,15 +381,16 @@ public class Pubgoal {
 	}
 	
 	
-	/*
-	 * METODI DI VERIFICA DEI SINGOLI GOALS, SONO PRIVATI E VENGONO RICHIAMATI IN verify.
-	 * 
-	 * ritornano true o false.
-	 * */
+	/**
+	 * Metodo per la verifica del Common Goal nr.1
+	 * il metodo, medinate l'uso di una funzione ricorsiva, conta le singole tile dello stesso colore adiacenti e verifica che non confinino
+	 * con altre tiles dello stesso colore; quindi verifica che il numero di tile adiacenti sia pari a 2 e conta il numero di coppie (con 6 coppie il goal e' soddisfatto).
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_1_Done(BoxMatrix playerShelf){
 		
 		int n = 0; 
-		
 		for (int i = 0; i < playerShelf.getNI(); i++) {
 			for (int j = 0; j < playerShelf.getNJ(); j++) {
 				//System.out.print("I = " + i + "  J = " + j + "  ");
@@ -415,12 +411,19 @@ public class Pubgoal {
 		}
 		playerShelf.setAllVerifiedTileAttribute(false);
 		//System.out.println(n);
-		if(n == 6) {
+		if(n >= 6) {
 			return true;
 		}
 		return false;
 	}
 
+	
+	/**
+	 * Metodo per la verifica del Common Goal nr.2
+	 * il metodo verifica se le tile agli angoli sono dello stesso colore
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_2_Done(BoxMatrix playerShelf){
 	
 		if(playerShelf.getBox(0, 0).isFull() && playerShelf.getBox(0, 4).isFull() && playerShelf.getBox(0, 0).getTile().getColor() == playerShelf.getBox(0, 4).getTile().getColor()) {
@@ -433,16 +436,16 @@ public class Pubgoal {
 		return false;
 	}
 	
-
+	
+	/**
+	 * Metodo per la verifica del Common Goal nr.3
+	 * il metodo, medinate l'uso di una funzione ricorsiva, conta le singole tile dello stesso colore adiacenti e verifica che non confinino
+	 * con altre tiles dello stesso colore; quindi verifica che il numero di tile adiacenti sia pari a 4 e conta il numero di gruppi (con 4 coppie il goal e' soddisfatto).
+	 * viene eseguita inoltre la verifica che queste 4 tiles siano poste tutte sulla stessa riga o colonna.
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_3_Done(BoxMatrix playerShelf){
-		/*
-		 * Quattro gruppi separati formati ciascuno da quattro tessere adiacenti dello stesso tipo
-		 * quindi per ogni tessera verificare che ne abbia almeno 1 adicente dello steso tipo e passare a quella dopo, raggiunte le 4 adiacenti passare
-		 * a quelle dopo
-		 * quindi devo scorrere tutta la shelf, parto dalla prima tessera e guardo se ne ha una adiacente se ce l'ha passo a quella e vado avanti così fino a 4
-		 * poi devo scartare quelle appena conteggiate e passare alla tessera dopo, fare la stessa cosa fatta in precedenza e scartare quelle conteggiare e cosi via
-		 * se riesco a trovarne 4 per 4 volte allora torna vero 
-		 */
 		
 		int n = 0; 
 		for (int i = 0; i < playerShelf.getNI(); i++) {
@@ -479,19 +482,23 @@ public class Pubgoal {
 		}
 		playerShelf.setAllVerifiedTileAttribute(false);
 		//System.out.println(n);
-		if(n == 4) {
+		if(n >= 4) {
 			return true;
 		}
 		return false;
 	}
 	
+	
+	/**
+	 * Metodo per la verifica del Common Goal nr.4
+	 * Due gruppi separati di 4 tessere dello stesso tipo che formano un quadrato 2x2.
+	 * Le tessere dei due gruppi devono essere dello stesso tipo.
+	 * quindi posso fare una verifica per tipo, quindi passo il primo tipo, scorro tutta la shelf, verifico il tipo e che ne ha 3 adiacenti (per formare un quadrato...)
+	 * scarto quelle trovate e faccio la stessa cosa per lo stesso tipo, se ne trovo 2 allora passo al tipo successivo 
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_4_Done(BoxMatrix playerShelf){
-		/*
-		 * Due gruppi separati di 4 tessere dello stesso tipo che formano un quadrato 2x2.
-		 * Le tessere dei due gruppi devono essere dello stesso tipo.
-		 * quindi posso fare una verifica per tipo, quindi passo il primo tipo, scorro tutta la shelf, verifico il tipo e che ne ha 3 adiacenti (per formare un quadrato...)
-		 * scarto quelle trovate e faccio la stessa cosa per lo stesso tipo, se ne trovo 2 allora passo al tipo successivo 
-		 */
 		
 		int n = 0; 
 		int tmpColorMem = 0;
@@ -539,6 +546,14 @@ public class Pubgoal {
 	}
 	
 	
+	/**
+	 * Metodo per la verifica del Common Goal nr.5
+	 * Verifica che 3 colonne siano composte da tile di massimo 3 colori differenti.
+	 * Il metodo immagazzina i colori in un array in modo che se i colori da immagazzinare sono > 3 passi alla colonna successiva, se ci sono 3 colonne
+	 * che soddisfano la condizione allora ritorna true
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_5_Done(BoxMatrix playerShelf) {	//da sistemare
 
 		int col_counter = 0;
@@ -627,7 +642,12 @@ public class Pubgoal {
 		return false; 
 	}
 
-	
+	/**
+	 * Metodo per la verifica del Common Goal nr.6
+	 * fa scorrere la matrice fino a che non trova 8 tessere dello stesso colore, se non le trova ritorna false.
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_6_Done(BoxMatrix playerShelf) {
 		
 		int counter=0;
@@ -653,7 +673,12 @@ public class Pubgoal {
 		return false;
 	}
 
-	
+	/**
+	 * Metodo per la verifica del Common Goal nr.7
+	 * Verifica che le tile (se ci sono) siano nelle posizone prescritte dal goal (diagonale nella shelf)
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_7_Done(BoxMatrix playerShelf) {
 	    if (playerShelf.getBox(0, 0).isFull() && playerShelf.getBox(1, 1).isFull() && playerShelf.getBox(2, 2).isFull()
 	    		&& playerShelf.getBox(3, 3).isFull() && playerShelf.getBox(4, 4).isFull()) {
@@ -698,14 +723,21 @@ public class Pubgoal {
 		return false;
 	}
 	
+	
+	/**
+	 * Metodo per la verifica del Common Goal nr.8
+	 * Verifica che 3 riche siano composte da tile di massimo 3 colori differenti.
+	 * Il metodo immagazzina i colori in un array in modo che se i colori da immagazzinare sono > 3 passi alla riga successiva, se ci sono 3 righe
+	 * che soddisfano la condizione allora ritorna true
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_8_Done(BoxMatrix playerShelf) {
 		
 		int col_counter = 0;
-		
 		int[] col_colors = new int[3];
 		
 		for (int i = 0; i < 6; i++) {
-			
 			for (int j = 0; j < col_colors.length; j++) {
 				col_colors[j] = 0;
 			}
@@ -790,7 +822,13 @@ public class Pubgoal {
 		return false;
 	}
 	
-	
+	/**
+	 * Metodo per la verifica del Common Goal nr.9
+	 * Per ogni colonna conta il numero di tile differenti, se in 2 colonne differenti troviamo 6 differenti tile, allora il goal e' verificato.
+	 * Il metodo fa scorrere (per ogni box della Shelf) tutta la colonna in cui il cursore si trova confrontando i colori e contando i match.
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_9_Done (BoxMatrix playerShelf) {
 
 		int conta = 0;
@@ -824,9 +862,15 @@ public class Pubgoal {
 		return false;
 	}
 
+	
+	/**
+	 * Metodo per la verifica del Common Goal nr.10
+	 * Per ogni riga conta il numero di tile differenti, se in 2 righe differenti troviamo 5 differenti tile, allora il goal e' verificato.
+	 * Il metodo fa scorrere (per ogni box della Shelf) tutta la riga in cui il cursore si trova confrontando i colori e contando i match.
+	 * @param playerShelf
+	 * @return [boolean]
+	 */
 	private boolean isPubGoal_10_Done (BoxMatrix playerShelf) {
-
-		
 		int conta = 0;
 		int incremento = 0;
 		int righeDiverse = 0;
@@ -862,10 +906,12 @@ public class Pubgoal {
 	}
 	
 	
-	/*
+	/**
 	 * Metodo per la verifica del Common Goal nr.11
 	 * Scorre la Shelf personale del giocatore e conrolla se ci sono 5 Tiles
 	 * dello stesso colore che formano una "X"
+	 * @param playerShelf
+	 * @return [boolean]
 	 */
 	private boolean isPubGoal_11_Done (BoxMatrix playerShelf) {
 		for (int i = 1; i < (playerShelf.getNI()-1); i++) {
@@ -886,11 +932,14 @@ public class Pubgoal {
 		}
 		return false;
 	}
+
 	
-	/*
+	/**
 	 * Metodo per la verifica del Common Goal nr.12
 	 * Verifica che le colonne della Shelf di un Player abbiano altezza crescente (da 1 a 5)
 	 * o decrescente (da 5 a 1) da sinistra verso destra
+	 * @param playerShelf
+	 * @return [boolean]
 	 */
 	private boolean isPubGoal_12_Done (BoxMatrix playerShelf) {
 		final int maxTiles=6;
