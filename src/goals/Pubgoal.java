@@ -71,125 +71,125 @@ public class Pubgoal {
 		
 		for (int i = 0; i < 2; i++) {
 			if(!this.done[i]) {
-				System.out.println("analisi pgoals: "+i);
+				//System.out.println("analisi pgoals: "+i);
 				switch (this.nGoals[i]) {
 					case 0:		//verificato
 						if(isPubGoal_1_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 1:		//verificato
 						if(isPubGoal_2_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 2:		//verificato
 						if(isPubGoal_3_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 3:		//verificato
 						if(isPubGoal_4_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 4:		//verificato
 						if(isPubGoal_5_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 5:		//verificato
 						if(isPubGoal_6_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 6:		//verificato
 						if(isPubGoal_7_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}	
 						break;
 				
 					case 7:
 						if(isPubGoal_8_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 8:
 						if(isPubGoal_9_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 9:		//verificato
 						if(isPubGoal_10_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 10:	//verificato
 						if(isPubGoal_11_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 				
 					case 11:	//
 						if(isPubGoal_12_Done(playerShelf)) {
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " raggiunto");
 							this.done[i] = true;
 						}else {
 							this.done[i] = false;
-							//System.out.println("Goal " + (this.nGoals[i]+1) + " non verificato");
+							System.out.println("PubGoal " + (this.nGoals[i]+1) + " non raggiunto");
 						}
 						break;
 					
@@ -558,92 +558,58 @@ public class Pubgoal {
 	 * @return [boolean]
 	 */
 	private boolean isPubGoal_5_Done(BoxMatrix playerShelf) {	//da sistemare
-
-		int col_counter = 0;
-		int[] col_colors = new int[3];
+		
+		int a[] = new int[6];
+		boolean s;
+		int c = 0;
 		
 		for (int j = 0; j < 5; j++) {
-			for (int i = 0; i < col_colors.length; i++) {
-				col_colors[i] = 0;
-			}
-			
+			for (int k = 0; k < a.length; k++) {
+				a[k] = 0;
+			}	
+			s = true;
 			for (int i = 0; i < 6; i++) {
-				//System.out.println(col_colors[0] + " " + col_colors[1] + " " + col_colors[2]);
-				if(playerShelf.boxExistAndIsFillable(i, j) && playerShelf.getBox(i, j).isFull()) {
-					if(col_colors[0] == 0) {
-						col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
-						
-					}else if(col_colors[1] == 0) {
-						col_colors[1] = playerShelf.getBox(i, j).getTile().getColor();
-						
-					}else if(col_colors[2] == 0) {
-						col_colors[2] = playerShelf.getBox(i, j).getTile().getColor();
-						
-					}else {
-						
-						if(col_colors[0] != 0 && col_colors[1] != 0 && col_colors[2] != 0) {	
-							if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-								
-								if(col_colors[0] != 0 && col_colors[1] != 0 && col_colors[0] == col_colors[1]) {
-									col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
-									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-										break;
-									}else {
-										if(i == 5) {
-											col_counter++;
-											//System.out.println("CC = " + col_counter);
-										}
-									}
-								}else if(col_colors[1] != 0 && col_colors[2] != 0 && col_colors[1] == col_colors[2]) {
-									col_colors[1] = playerShelf.getBox(i, j).getTile().getColor();
-									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-										break;
-									}else {
-										if(i == 5) {
-											col_counter++;
-											//System.out.println("CC = " + col_counter);
-										}
-									}
-									
-								}else if(col_colors[0] != 0 && col_colors[2] != 0 && col_colors[0] == col_colors[2]) {
-									col_colors[2] = playerShelf.getBox(i, j).getTile().getColor();
-									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-										break;
-									}else {
-										if(i == 5) {
-											col_counter++;
-											//System.out.println("CC = " + col_counter);
-										}
-									}
-								}else{
-									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-										break;
-									}else {
-										if(i == 5) {
-											col_counter++;
-											//System.out.println("CC = " + col_counter);
-										}
-									}
-								}
-							}else {
-								if(i == 5) {
-									col_counter++;
-									//System.out.println("CC = " + col_counter);
-								}
-							}
-						}
+				if (playerShelf.getBox(i, j).isFull()) {
+					if (playerShelf.getBox(i, j).getTile().getColor() == 1) {
+						a[0]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 2) {
+						a[1]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 3) {
+						a[2]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 4) {
+						a[3]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 5) {
+						a[4]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 6) {
+						a[5]++;
 					}
-					if (col_counter <= 3) {
-						return true;
-					}
+
 				}else {
+					s = false;
 					break;
 				}
 			}
 			
+			if(s) {
+				int r = 0;
+				for (int n = 0; n < 6; n++) {
+					if (a[n] == 0) {
+						r++;
+					}
+				}
+				if (r >= 3) {
+				//System.out.println("ver");
+					c++;
+				}
+			}
 		}
-		return false; 
+		
+		if (c >= 3) {
+			return true;
+		}
+		return false;
 	}
+
 
 	/**
 	 * Metodo per la verifica del Common Goal nr.6
@@ -737,93 +703,57 @@ public class Pubgoal {
 	 */
 	private boolean isPubGoal_8_Done(BoxMatrix playerShelf) {
 		
-		int col_counter = 0;
-		int[] col_colors = new int[3];
+		int a[] = new int[6];
+		boolean s;
+		int c = 0;
 		
 		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < col_colors.length; j++) {
-				col_colors[j] = 0;
-			}
-			
+			for (int k = 0; k < a.length; k++) {
+				a[k] = 0;
+			}		
+			s = true;
 			for (int j = 0; j < 5; j++) {
-				
-				//System.out.println(col_colors[0] + " " + col_colors[1] + " " + col_colors[2]);
-				if(playerShelf.boxExistAndIsFillable(i, j) && playerShelf.getBox(i, j).isFull()) {
-					
-					if(col_colors[0] == 0) {
-						col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
-						
-					}else if(col_colors[1] == 0) {
-						col_colors[1] = playerShelf.getBox(i, j).getTile().getColor();
-						
-					}else if(col_colors[2] == 0) {
-						col_colors[2] = playerShelf.getBox(i, j).getTile().getColor();
-						
-					}else {
-						
-						if(col_colors[0] != 0 && col_colors[1] != 0 && col_colors[2] != 0) {	
-							if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-								
-								if(col_colors[0] != 0 && col_colors[1] != 0 && col_colors[0] == col_colors[1]) {
-									col_colors[0] = playerShelf.getBox(i, j).getTile().getColor();
-									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-										break;
-									}else {
-										if(j == 4) {
-											col_counter++;
-											//System.out.println("CC = " + col_counter);
-										}
-									}
-								}else if(col_colors[1] != 0 && col_colors[2] != 0 && col_colors[1] == col_colors[2]) {
-									col_colors[1] = playerShelf.getBox(i, j).getTile().getColor();
-									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-										break;
-									}else {
-										if(j == 4) {
-											col_counter++;
-											//ystem.out.println("CC = " + col_counter);
-										}
-									}
-								}else if(col_colors[0] != 0 && col_colors[2] != 0 && col_colors[0] == col_colors[2]) {
-									col_colors[2] = playerShelf.getBox(i, j).getTile().getColor();
-									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-										break;
-									}else {
-										if(j == 4) {
-											col_counter++;
-											//System.out.println("CC = " + col_counter);
-										}
-									}
-								}else{
-									if(col_colors[0] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[1] != playerShelf.getBox(i, j).getTile().getColor() && col_colors[2] != playerShelf.getBox(i, j).getTile().getColor()) {
-										break;
-									}else {
-										if(j == 4) {
-											col_counter++;
-											//System.out.println("CC = " + col_counter);
-										}
-									}
-								}
-							}else {
-								if(j == 4) {
-									col_counter++;
-									//System.out.println("CC = " + col_counter);
-								}
-							}
-						}
+				if (playerShelf.getBox(i, j).isFull()) {
+					if (playerShelf.getBox(i, j).getTile().getColor() == 1) {
+						a[0]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 2) {
+						a[1]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 3) {
+						a[2]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 4) {
+						a[3]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 5) {
+						a[4]++;
+					}else if (playerShelf.getBox(i, j).getTile().getColor() == 6) {
+						a[5]++;
 					}
-					if (col_counter <= 3) {
-						return true;
-					}
+
 				}else {
+					s = false;
 					break;
 				}
 			}
-			
+
+			if(s) {
+				int r = 0;
+				for (int n = 0; n < 6; n++) {
+					if (a[n] == 0) {
+						r++;
+					}
+				}
+				if (r >= 3) {
+					//System.out.println("ver");
+					c++;
+				}
+			}
 		}
 		
+		if (c >= 4) {
+			return true;
+		}
 		return false;
 	}
+		
 	
 	/**
 	 * Metodo per la verifica del Common Goal nr.9
@@ -895,13 +825,13 @@ public class Pubgoal {
 			}
 			if(incremento == 5) {
 				righeDiverse++;
-				System.out.println("Gli elementi della riga " + (i+1) + " sono tutti diversi");
+				//System.out.println("Gli elementi della riga " + (i+1) + " sono tutti diversi");
 			}
 			incremento = 0;
 		}
 		
 		if(righeDiverse >= 2) {
-			System.out.println("Punti Guadagnati");
+			//System.out.println("Punti Guadagnati");
 			return true;
 		}
 		
