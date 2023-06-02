@@ -48,11 +48,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -68,11 +68,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -88,11 +88,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -108,11 +108,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -128,11 +128,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -148,11 +148,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -168,11 +168,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -188,11 +188,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				 //System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -208,11 +208,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -228,11 +228,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -248,11 +248,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -268,11 +268,11 @@ public class Privgoal {
 			
 			if (matches > 0) {
 				this.done = true;
-				System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
+				//System.out.println("Goal privato numero " + (this.nGoal+1) + " non verificato con " + matches +" corrispondenze.");
 				computePoints(matches);
 			}else {
 				this.done = false;
-				System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
+				//System.out.println("Goal privato numero "+(this.nGoal+1)+" non verificato. ");
 			}
 			//System.out.println(this.points);
 			break;
@@ -297,7 +297,7 @@ public class Privgoal {
 				if(i == iMap[k] && j == jMap[k]) {
 					//System.out.println("i: " + i + "  j: "+ j);
 					if (playerShelf.getBox(i, j).isFull() && playerShelf.getBox(i, j).getTile().getColor() == colorMap[k]) {
-						System.out.println(colorMap[k]);
+						//System.out.println(colorMap[k]);
 						r++;
 					}
 					k++;

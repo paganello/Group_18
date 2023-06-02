@@ -67,6 +67,8 @@ public class Main {
 			
 			if(sc.hasNextLine()) {
 				String playerName = sc.nextLine();
+				nGoals[0] = 7;
+				nGoals[1] = 4;
 				listaPlayer.add(new Player((i), nGoals, playerName,i+1));
 
 			}else {
@@ -196,8 +198,23 @@ public class Main {
 						/*debug
 						BoxMatrix m = new BoxMatrix(6, 5);
 						m.fillBoard();
-						listaPlayer.get(v).setShelf(m);*/
-						
+						listaPlayer.get(v).setShelf(m);
+						listaPlayer.get(v).getShelf().getBox(0, 0).getTile().setColor(1);
+						listaPlayer.get(v).getShelf().getBox(0, 1).getTile().setColor(2);
+						listaPlayer.get(v).getShelf().getBox(0, 2).getTile().setColor(3);
+						listaPlayer.get(v).getShelf().getBox(0, 3).getTile().setColor(4);
+						listaPlayer.get(v).getShelf().getBox(0, 4).getTile().setColor(5);
+						listaPlayer.get(v).getShelf().getBox(1, 0).getTile().setColor(1);
+						listaPlayer.get(v).getShelf().getBox(1, 1).getTile().setColor(2);
+						listaPlayer.get(v).getShelf().getBox(1, 2).getTile().setColor(3);
+						listaPlayer.get(v).getShelf().getBox(1, 3).getTile().setColor(4);
+						listaPlayer.get(v).getShelf().getBox(1, 4).getTile().setColor(6);
+						listaPlayer.get(v).getShelf().getBox(3, 0).getTile().setColor(1);
+						listaPlayer.get(v).getShelf().getBox(4, 1).getTile().setColor(1);
+						listaPlayer.get(v).getShelf().getBox(3, 2).getTile().setColor(1);
+						listaPlayer.get(v).getShelf().getBox(4, 3).getTile().setColor(1);
+						listaPlayer.get(v).getShelf().getBox(3, 4).getTile().setColor(1);
+						listaPlayer.get(v).getShelf().getBox(4, 2).getTile().setColor(1);*/
 						
 						listaPlayer.get(v).getShelf().showTable();
 						
@@ -209,7 +226,7 @@ public class Main {
 						
 						listaPlayer.get(v).computePubGoals();
 						
-						System.out.println(tavolo.matrix.checkIfBoardNeedToBeRefilled());
+						//System.out.println(tavolo.matrix.checkIfBoardNeedToBeRefilled());
 						if(tavolo.matrix.checkIfBoardNeedToBeRefilled()) {
 							tavolo.matrix.fillBoard();
 						}
