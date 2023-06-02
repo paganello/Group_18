@@ -29,8 +29,6 @@ public class Main {
 		
 		GameState stato;
 		int playerNum = 0;
-		//int lastTurnPlayer;
-		//int countLastTourn = 0;
 		
 		ArrayList<Player> listaPlayer= new ArrayList<Player>();
 	
@@ -195,27 +193,6 @@ public class Main {
 						
 						System.out.println();
 						
-						/*debug
-						BoxMatrix m = new BoxMatrix(6, 5);
-						m.fillBoard();
-						listaPlayer.get(v).setShelf(m);
-						listaPlayer.get(v).getShelf().getBox(0, 0).getTile().setColor(1);
-						listaPlayer.get(v).getShelf().getBox(0, 1).getTile().setColor(2);
-						listaPlayer.get(v).getShelf().getBox(0, 2).getTile().setColor(3);
-						listaPlayer.get(v).getShelf().getBox(0, 3).getTile().setColor(4);
-						listaPlayer.get(v).getShelf().getBox(0, 4).getTile().setColor(5);
-						listaPlayer.get(v).getShelf().getBox(1, 0).getTile().setColor(1);
-						listaPlayer.get(v).getShelf().getBox(1, 1).getTile().setColor(2);
-						listaPlayer.get(v).getShelf().getBox(1, 2).getTile().setColor(3);
-						listaPlayer.get(v).getShelf().getBox(1, 3).getTile().setColor(4);
-						listaPlayer.get(v).getShelf().getBox(1, 4).getTile().setColor(6);
-						listaPlayer.get(v).getShelf().getBox(3, 0).getTile().setColor(1);
-						listaPlayer.get(v).getShelf().getBox(4, 1).getTile().setColor(1);
-						listaPlayer.get(v).getShelf().getBox(3, 2).getTile().setColor(1);
-						listaPlayer.get(v).getShelf().getBox(4, 3).getTile().setColor(1);
-						listaPlayer.get(v).getShelf().getBox(3, 4).getTile().setColor(1);
-						listaPlayer.get(v).getShelf().getBox(4, 2).getTile().setColor(1);*/
-						
 						listaPlayer.get(v).getShelf().showTable();
 						
 						if(listaPlayer.get(v).isShelfFull() == true && stato == GameState.turnStart) {
@@ -278,7 +255,7 @@ public class Main {
 					System.out.println("Il giocatore che ha vinto la partita e': " + listaPlayer.get(0).getName() + "\n");
 					
 					for (int i = 0; i < listaPlayer.size(); i++) {
-						System.out.println((i+1) + listaPlayer.get(i).getName() + " -> " + listaPlayer.get(i).getPoints() + " punti.");
+						System.out.println((i+1) + ") "+ listaPlayer.get(i).getName() + " -> " + listaPlayer.get(i).getPoints() + " punti.");
 					}
 					
 					stato = GameState.gameEnd;
@@ -286,7 +263,7 @@ public class Main {
 					break;
 			
 				case gameEnd:
-					System.out.println("Grazie per aver giocato ");
+					System.out.println("Grazie per aver giocato <3 ");
 					break;
 			
 				default:
